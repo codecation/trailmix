@@ -1,0 +1,24 @@
+before_install:
+  - "echo '--colour' > ~/.rspec"
+  - "echo 'gem: --no-document' > ~/.gemrc"
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+before_script:
+  - cp .sample.env .env
+  
+  - psql -c 'create database "trailmix_test";' -U postgres
+  
+branches:
+  only:
+    - master
+cache:
+  - bundler
+language:
+  - ruby
+notifications:
+  email:
+    - false
+rvm:
+  - 2.1.2
+addons:
+  postgresql: "9.3"
