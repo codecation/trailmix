@@ -1,5 +1,3 @@
-require "rails_helper"
-
 feature "User signs out" do
   scenario "and we miss them" do
     user = create(:user)

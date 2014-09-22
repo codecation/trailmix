@@ -1,5 +1,3 @@
-require "rails_helper"
-
 feature "User signs up" do
   scenario "using valid credentials" do
     visit new_user_registration_path
