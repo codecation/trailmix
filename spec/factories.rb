@@ -5,4 +5,9 @@ FactoryGirl.define do
     email
     password 'abc123'
   end
+
+  factory :entry do
+    user
+    body 'hey'
+  end
 end

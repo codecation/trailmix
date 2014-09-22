@@ -1,13 +1,15 @@
 require 'rails_helper'
 require 'rack/test'
 
-feature "The email api endpoint" do
+feature "User sends email" do
   include Rack::Test::Methods
 
-  scenario "can successfully receive a response" do
-    response = post("/email_processor", email_params)
+  scenario "and an entry is created" do
+    user = create(:user)
 
-    expect(response).to be_successful
+    response = post("/email_processor", email_params.merge(from: user.email))
+
+    expect(user.entries).not_to be_empty
   end
 
   def email_params
