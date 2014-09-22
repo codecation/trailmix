@@ -6,5 +6,6 @@ feature "User signs up" do
     click_button "Sign up"
 
     expect(current_path).to eq dashboard_path
+    expect(ActionMailer::Base.deliveries).not_to be_empty
   end
 end
