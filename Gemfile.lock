@@ -99,9 +99,15 @@ GEM
       activesupport
       capybara
       i18n
+    griddler (1.0.0)
+      htmlentities
+      rails (>= 3.2.0)
+    griddler-sendgrid (0.0.1)
+      griddler
     high_voltage (2.2.1)
     highline (1.6.21)
     hike (1.2.3)
+    htmlentities (4.3.2)
     i18n (0.6.11)
     i18n-tasks (0.7.6)
       activesupport
@@ -262,6 +268,8 @@ DEPENDENCIES
   factory_girl_rails
   flutie
   formulaic
+  griddler
+  griddler-sendgrid
   high_voltage
   i18n-tasks
   jquery-rails
