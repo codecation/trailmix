@@ -19,7 +19,7 @@
     <div class="collapse navbar-collapse" id="navbar-links">
       <ul class="nav navbar-nav navbar-right">
         <li>
-        <% if current_user %>
+        <% if user_signed_in? %>
           <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
         <% else %>
           <%= link_to "Sign in", new_session_path(resource_name) %>
