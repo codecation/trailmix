@@ -1,0 +1,22 @@
+<%= form_tag subscriptions_path, id: "sign-up-form", class: "form-inline" do %>
+  <div class="form-group">
+    <input type="email"
+           class="form-control"
+           id="email"
+           name="email"
+           placeholder="Email address">
+  </div>
+
+  <div class="form-group">
+    <input type="password"
+           class="form-control"
+           id="password"
+           name="password"
+           placeholder="Password">
+  </div>
+
+  <input type="hidden" id="stripe_card_id" name="stripe_card_id">
+  <button id="sign-up-button" class="btn btn-default">Sign up</button>
+<% end %>
+
+<%= render "subscriptions/stripe_javascript" %>

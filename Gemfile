@@ -25,6 +25,7 @@ gem "redis"
 gem "sass-rails", "~> 4.0.3"
 gem "sidekiq"
 gem "simple_form"
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem "title"
 gem "uglifier"
 gem "unicorn"
@@ -44,10 +45,11 @@ group :development, :test do
 end
 
 group :test do
-  gem "capybara-webkit", ">= 1.2.0"
   gem "database_cleaner"
+  gem "fake_stripe"
   gem "formulaic"
   gem "launchy"
+  gem "selenium-webdriver"
   gem "shoulda-matchers", require: false
   gem "timecop"
   gem "webmock"

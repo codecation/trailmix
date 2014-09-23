@@ -1,0 +1,24 @@
+<% content_for :javascript do %>
+  <%= javascript_include_tag "https://checkout.stripe.com/checkout.js" %>
+  <%= javascript_tag do %>
+    var handler = StripeCheckout.configure({
+      key: "<%= Rails.configuration.stripe[:publishable_key] %>",
+      image: "<%= image_path 'logo-stripe.png' %>",
+      name: "Trailmix",
+      description: "A month's subscription",
+      amount: 900,
+      token: function(token) {
+        $("#stripe_card_id").val(token.id);
+        $("#sign-up-form").submit();
+      }
+    });
+
+    $("#sign-up-button").on("click", function(e) {
+      e.preventDefault();
+
+      handler.open({
+        email: $("#email").val()
+      });
+    });
+  <% end %>
+<% end %>
