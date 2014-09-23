@@ -1,3 +1,5 @@
-body {
-  text-align: center;
+.alert-danger, .alert-success {
+  color: $brown;
+  background: $lighter-brown;
+  border-color: $light-brown;
 }
