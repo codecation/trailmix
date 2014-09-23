@@ -8,6 +8,6 @@ FactoryGirl.define do
 
   factory :entry do
     user
-    body 'hey'
+    body 'Entry body'
   end
 end

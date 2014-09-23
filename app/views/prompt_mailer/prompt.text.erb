@@ -1,0 +1,7 @@
+Simply reply to this email with your entry.
+
+<% if @entry %>
+Remember this? <%= time_ago_in_words(@entry.created_at) %> ago you wrote the following:
+
+<%= @entry.body %>
+<% end %>

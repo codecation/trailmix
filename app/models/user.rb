@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   def newest_entry
     entries.last
   end
+
+  def random_entry
+    entries.sample
+  end
 end

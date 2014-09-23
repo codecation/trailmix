@@ -1,15 +1,19 @@
 require 'rails_helper'
 require 'rack/test'
 
-feature "User sends email" do
+feature "User responds to a prompt" do
   include Rack::Test::Methods
 
   scenario "and an entry is created" do
-    user = create(:user)
+    user = create(:user, entries: [])
 
-    response = post("/email_processor", email_params.merge(from: user.email))
+    simulate_email_from(user)
 
-    expect(user.entries).not_to be_empty
+    expect(user.reload.entries).not_to be_empty
+  end
+
+  def simulate_email_from(user)
+    post("/email_processor", email_params.merge(from: user.email))
   end
 
   def email_params
