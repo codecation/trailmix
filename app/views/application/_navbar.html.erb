@@ -1,0 +1,29 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button"
+              class="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#navbar-links">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <%= link_to "Trailmix", dashboard_path, class: "navbar-brand" %>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-links">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+        <% if current_user %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "Sign in", new_session_path(resource_name) %>
+        <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
