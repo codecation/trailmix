@@ -1,0 +1,39 @@
+body {
+  padding-top: 70px;
+}
+
+.navbar {
+  background: white;
+  border-color: $light-grey;
+
+  .navbar-toggle {
+    color: $brown;
+    background: $light-brown;
+    border-color: $light-brown;
+
+    &:hover {
+      background: $lighter-brown;
+      border-color: $lighter-brown;
+    }
+
+    &:focus {
+      background: $light-brown;
+      border-color: $light-brown;
+    }
+  }
+
+  img {
+    height: 20px;
+  }
+
+  .navbar-right {
+    li a {
+      color: $brown;
+      font-weight: bold;
+
+      &:hover {
+        color: $brown;
+      }
+    }
+  }
+}
