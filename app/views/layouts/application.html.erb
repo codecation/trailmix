@@ -13,8 +13,15 @@
 <body>
   <div class="container-fluid">
     <%= render "navbar" -%>
-    <%= render "flashes" -%>
-    <%= yield %>
+
+    <div class="row">
+      <div class="col-md-4 col-sm-3"></div>
+      <div class="col-md-4 col-sm-6">
+        <%= render "flashes" -%>
+        <%= yield %>
+      <div class="col-md-4 col-sm-3"></div>
+    </div>
+
     <%= render "javascript" %>
   </div>
 </body>
