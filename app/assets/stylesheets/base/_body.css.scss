@@ -1,0 +1,34 @@
+a {
+  color: $brown;
+  font-weight: bold;
+
+  &:hover {
+    color: $brown;
+  }
+}
+
+.btn-default {
+  background: $lighter-brown;
+  border-color: $light-brown;
+
+  &:hover, &:focus {
+    background: $lighter-brown;
+    border-color: $light-brown;
+  }
+}
+
+.btn-primary {
+  background: $brown;
+  border-color: $brown;
+
+  &:hover, &:focus {
+    background: $brown;
+    border-color: $brown;
+  }
+}
+
+.alert-danger, .alert-success {
+  color: $brown;
+  background: $lighter-brown;
+  border-color: $light-brown;
+}

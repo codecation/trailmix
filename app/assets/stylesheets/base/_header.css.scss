@@ -1,0 +1,38 @@
+body {
+  padding-top: 70px;
+}
+
+.navbar {
+  background: white;
+
+  .navbar-toggle {
+    color: $brown;
+    background: white;
+
+    &:hover {
+      background: $lighter-brown;
+      border-color: $lighter-brown;
+    }
+
+    &:focus {
+      background: $light-brown;
+      border-color: $light-brown;
+    }
+  }
+
+  img {
+    height: 25px;
+    margin-top: -5px;
+  }
+
+  .navbar-right {
+    li a {
+      color: $brown;
+      font-weight: bold;
+
+      &:hover {
+        color: $brown;
+      }
+    }
+  }
+}

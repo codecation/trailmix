@@ -1,16 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="ROBOTS" content="NOODP" />
-  <meta name="viewport" content="initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title><%= title %></title>
+
+  <%= favicon_link_tag "favicon.ico" %>
   <%= stylesheet_link_tag :application, media: "all" %>
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= body_class %>">
-  <%= render "flashes" -%>
-  <%= yield %>
-  <%= render "javascript" %>
+<body>
+  <div class="container-fluid">
+    <%= render "navbar" -%>
+
+    <div class="row">
+      <div class="col-md-4 col-sm-3"></div>
+      <div class="col-md-4 col-sm-6">
+        <%= render "flashes" -%>
+        <%= yield %>
+      <div class="col-md-4 col-sm-3"></div>
+    </div>
+
+    <%= render "javascript" %>
+  </div>
 </body>
 </html>
