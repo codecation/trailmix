@@ -2,12 +2,12 @@ describe WelcomeMailer do
   describe ".welcome"  do
     it "welcomes the user" do
       user = create(:user)
-      mailer = WelcomeMailer.welcome(user)
+      mail = WelcomeMailer.welcome(user)
 
-      expect(mailer.body.encoded).to include("Welcome")
-      expect(mailer.subject).to include("Write your first entry")
-      expect(mailer.from).to eq(["today@trailmix.life"])
-      expect(mailer.to).to eq([user.email])
+      expect(mail.body.encoded).to include("Welcome")
+      expect(mail.subject).to include("Write your first entry")
+      expect(mail.from).to eq(["today@#{ENV.fetch('SMTP_DOMAIN')}"])
+      expect(mail.to).to eq([user.email])
     end
   end
 end

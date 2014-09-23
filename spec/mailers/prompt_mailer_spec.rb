@@ -9,7 +9,7 @@ describe PromptMailer do
       mail = PromptMailer.prompt(user, entry)
 
       expect(mail.to).to eq([user.email])
-      expect(mail.from).to eq(["today@trailmix.life"])
+      expect(mail.from).to eq(["today@#{ENV.fetch('SMTP_DOMAIN')}"])
     end
 
     context "when the user has a previous entry" do
