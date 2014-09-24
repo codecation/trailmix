@@ -4,7 +4,6 @@ FactoryGirl.define do
   factory :user do
     email
     password 'abc123'
-    stripe_customer_id 'cus_4phNjusXeulx1R'
   end
 
   factory :entry do

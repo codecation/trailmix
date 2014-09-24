@@ -1,7 +1,7 @@
 class SubscriptionsController < ApplicationController
   def create
     stripe_customer = create_stripe_customer
-    user = create_user(stripe_customer.id)
+    user = create_user
     send_welcome_email(user)
 
   rescue Stripe::CardError => e
@@ -19,10 +19,9 @@ class SubscriptionsController < ApplicationController
     )
   end
 
-  def create_user(stripe_customer_id)
+  def create_user
     User.create!(email: params[:email],
-                 password: params[:password],
-                 stripe_customer_id: stripe_customer_id)
+                 password: params[:password])
   end
 
   def send_welcome_email(user)
