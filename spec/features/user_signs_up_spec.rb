@@ -13,25 +13,6 @@ feature "User signs up", js: true do
     expect(ActionMailer::Base.deliveries).not_to be_empty
   end
 
-  def fill_in_signup_form
-    visit new_registration_path
-    fill_in "email", with: "very-long-email-lol@example.com"
-    fill_in "password", with: "password"
-    click_button "Sign up"
-  end
-
-  def fill_in_stripe_checkout(values={})
-    within_frame("stripe_checkout_app") do
-      page.execute_script(%Q{ $('#card_number').val('#{values[:card_number]}'); })
-      sleep 0.1
-      page.execute_script(%Q{ $('#cc-exp').val('01/20'); })
-      sleep 0.1
-      fill_in "cc-csc", with: "123"
-      sleep 0.1
-      click_button "submitButton"
-    end
-  end
-
   scenario "without providing email or password", js: true do
     visit new_registration_path
 
@@ -49,6 +30,25 @@ feature "User signs up", js: true do
     fill_in "password", with: "password"
 
     expect_button_to_be_enabled
+  end
+
+  def fill_in_signup_form
+    visit new_registration_path
+    fill_in "email", with: "very-long-email-lol@example.com"
+    fill_in "password", with: "password"
+    click_button "Sign up"
+  end
+
+  def fill_in_stripe_checkout(values={})
+    within_frame("stripe_checkout_app") do
+      page.execute_script(%Q{ $('#card_number').val('#{values[:card_number]}'); })
+      sleep 0.1
+      page.execute_script(%Q{ $('#cc-exp').val('01/20'); })
+      sleep 0.1
+      fill_in "cc-csc", with: "123"
+      sleep 0.1
+      click_button "submitButton"
+    end
   end
 
   [true, false].each do |disabled|
