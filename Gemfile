@@ -25,10 +25,10 @@ gem "redis"
 gem "sass-rails", "~> 4.0.3"
 gem "sidekiq"
 gem "simple_form"
+gem "stripe", :git => "https://github.com/stripe/stripe-ruby"
 gem "title"
 gem "uglifier"
 gem "unicorn"
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :development do
   gem "spring"
