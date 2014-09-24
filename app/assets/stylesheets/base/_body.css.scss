@@ -15,7 +15,7 @@ a {
   background: $lighter-brown;
   border-color: $light-brown;
 
-  &:hover, &:focus {
+  &:hover, &:focus, &:disabled {
     color: $brown;
     background: $light-brown;
     border-color: $light-brown;

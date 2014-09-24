@@ -13,6 +13,25 @@ feature "User signs up", js: true do
     expect(ActionMailer::Base.deliveries).not_to be_empty
   end
 
+  scenario "without providing email or password", js: true do
+    visit new_registration_path
+
+    fill_in "email", with: ""
+    fill_in "password", with: "password"
+
+    expect_button_to_be_disabled
+
+    fill_in "password", with: ""
+    fill_in "email", with: "me@example.com"
+
+    expect_button_to_be_disabled
+
+    fill_in "email", with: "me@example.com"
+    fill_in "password", with: "password"
+
+    expect_button_to_be_enabled
+  end
+
   def fill_in_signup_form
     visit new_registration_path
     fill_in "email", with: "very-long-email-lol@example.com"
@@ -29,6 +48,12 @@ feature "User signs up", js: true do
       fill_in "cc-csc", with: "123"
       sleep 0.1
       click_button "submitButton"
+    end
+  end
+
+  [true, false].each do |disabled|
+    define_method "expect_button_to_be_#{disabled ? 'dis' : 'en'}abled" do
+      find_button("Sign up", disabled: disabled)
     end
   end
 end
