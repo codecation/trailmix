@@ -2,7 +2,7 @@ feature "User signs up" do
   Capybara.default_wait_time = 6
 
   scenario "using valid data", js: true do
-    email = "test@example.com"
+    email = "very-long-email-lol@example.com"
 
     visit landing_path
     fill_in "email", with: email

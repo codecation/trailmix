@@ -168,6 +168,7 @@ GEM
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
+    rack-ssl-enforcer (0.2.4)
     rack-test (0.6.2)
       rack (>= 1.0)
     rack-timeout (0.0.4)
@@ -322,6 +323,7 @@ DEPENDENCIES
   normalize-rails (~> 3.0.0)
   pg
   pry-rails
+  rack-ssl-enforcer
   rack-timeout
   rails (= 4.1.4)
   rails_12factor
