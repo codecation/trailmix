@@ -26,6 +26,7 @@ gem "redis"
 gem "sass-rails", "~> 4.0.3"
 gem "sidekiq"
 gem "simple_form"
+gem "sinatra", ">= 1.3.0", require: false
 gem "stripe", :git => "https://github.com/stripe/stripe-ruby"
 gem "title"
 gem "uglifier"

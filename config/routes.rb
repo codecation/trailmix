@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   mount_griddler
 
+  require "sidekiq/web"
+  mount Sidekiq::Web => "/jobs"
+
   get "/landing", to: "landing#show"
 
   resources :subscriptions, only: [:create]

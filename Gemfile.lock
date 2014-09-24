@@ -335,6 +335,7 @@ DEPENDENCIES
   shoulda-matchers
   sidekiq
   simple_form
+  sinatra (>= 1.3.0)
   spring
   spring-commands-rspec
   stripe!
