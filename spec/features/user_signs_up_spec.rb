@@ -32,7 +32,7 @@ feature "User signs up", js: true do
     end
   end
 
-  scenario "password and email required", js: true do
+  scenario "without providing email or password", js: true do
     visit new_registration_path
 
     fill_in "email", with: ""
