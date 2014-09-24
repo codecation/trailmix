@@ -3,11 +3,8 @@ body {
 }
 
 .navbar {
-  background: white;
-
   .navbar-toggle {
     color: $brown;
-    background: white;
 
     &:hover {
       background: $lighter-brown;
@@ -28,7 +25,6 @@ body {
   .navbar-right {
     li a {
       color: $brown;
-      font-weight: bold;
 
       &:hover {
         color: $brown;

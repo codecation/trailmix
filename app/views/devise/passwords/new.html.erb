@@ -1,5 +1,6 @@
 <% content_for :header do %>
-  <h2>Forgot your password?</h2>
+  <h1>Forgot your password?</h1>
+  <p class="lead">We'll email you reset instructions.</p>
 <% end %>
 
 <%= simple_form_for(
@@ -19,5 +20,5 @@
       placeholder: "Email address" %>
   </div>
 
-  <%= f.button :submit, "Submit" %> Send me password reset instructions.
+  <%= f.button :submit, "Email me" %>
 <% end %>

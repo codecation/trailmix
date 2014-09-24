@@ -1,6 +1,9 @@
+body {
+  font-size: 16px;
+}
+
 a {
   color: $brown;
-  font-weight: bold;
 
   &:hover {
     color: $brown;
@@ -8,20 +11,24 @@ a {
 }
 
 .btn-default {
+  color: $brown;
   background: $lighter-brown;
   border-color: $light-brown;
 
   &:hover, &:focus {
+    color: $brown;
     background: $light-brown;
     border-color: $light-brown;
   }
 }
 
 .btn-primary {
+  color: white;
   background: $brown;
   border-color: $brown;
 
   &:hover, &:focus {
+    color: white;
     background: $brown;
     border-color: $brown;
   }
