@@ -18,14 +18,17 @@
 
   <input type="hidden" id="stripe_card_id" name="stripe_card_id">
 
-  <button
-    type="button"
-    id="sign-up-button"
-    class="btn btn-default btn-lg"
+  <div
+    id="sign-up-button-tooltip"
     title="Email and password required"
     data-toggle="tooltip"
-    data-placement="right"
-  >Sign up</button>
+    data-placement="right">
+    <button
+      type="button"
+      id="sign-up-button"
+      class="btn btn-default btn-lg"
+    >Sign up</button>
+  </div>
 
   or <%= link_to "Sign in", new_session_path(:user) %>.
 <% end %>
