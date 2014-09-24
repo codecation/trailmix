@@ -1,6 +1,5 @@
 class DashboardController < ApplicationController
-  before_action :authenticate_user!
-
   def index
+    redirect_to new_registration_path unless user_signed_in?
   end
 end

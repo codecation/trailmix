@@ -8,6 +8,6 @@ feature "User signs out" do
 
     click_link "Sign out"
 
-    expect(current_path).to eq new_user_session_path
+    expect(current_path).to eq new_registration_path
   end
 end
