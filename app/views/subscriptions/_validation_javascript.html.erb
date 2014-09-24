@@ -10,7 +10,7 @@
       $signUpButton.prop("disabled", false);
     }
 
-    function disableSignup() {
+    function disableSignUp() {
       $signUpButton.prop("disabled", true);
       $tooltip.attr("data-original-title", "Email and password required");
     }
@@ -19,10 +19,10 @@
       if ($email.val() && $password.val()) {
         enableSignUp();
       } else {
-        disableSignup();
+        disableSignUp();
       }
     });
 
-    disableSignup();
+    disableSignUp();
   <% end %>
 <% end %>
