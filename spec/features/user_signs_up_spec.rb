@@ -31,4 +31,23 @@ feature "User signs up", js: true do
       click_button "submitButton"
     end
   end
+
+  scenario "password and email required", js: true do
+    visit new_registration_path
+
+    fill_in "email", with: ""
+    fill_in "password", with: "password"
+
+    find_button("Sign up", disabled: true)
+
+    fill_in "password", with: ""
+    fill_in "email", with: "me@example.com"
+
+    find_button("Sign up", disabled: true)
+
+    fill_in "email", with: "me@example.com"
+    fill_in "password", with: "password"
+
+    find_button("Sign up", disabled: false)
+  end
 end
