@@ -4,7 +4,7 @@ feature "User signs up" do
   scenario "using valid data", js: true do
     email = "very-long-email-lol@example.com"
 
-    visit landing_path
+    visit new_registration_path
     fill_in "email", with: email
     fill_in "password", with: "password"
     click_button "Sign up"

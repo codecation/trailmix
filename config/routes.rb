@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   require "sidekiq/web"
   mount Sidekiq::Web => "/jobs"
 
-  get "/landing", to: "landing#show"
+  get "/landing", to: "landing#show", as: :new_registration
 
   resources :subscriptions, only: [:create]
 
