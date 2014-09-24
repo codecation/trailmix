@@ -15,7 +15,7 @@ class SubscriptionsController < ApplicationController
     Stripe::Customer.create(
       email: params[:email],
       card: params[:stripe_card_id],
-      plan: ENV.fetch("STRIPE_PLAN_NAME")
+      plan: Rails.configuration.stripe[:plan_name]
     )
   end
 
