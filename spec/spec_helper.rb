@@ -25,5 +25,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 end
 
+Capybara.javascript_driver = :webkit
+
 ActiveRecord::Migration.maintain_test_schema!
 WebMock.disable_net_connect!(allow_localhost: true)

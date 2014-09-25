@@ -48,11 +48,11 @@ group :development, :test do
 end
 
 group :test do
+  gem "capybara-webkit"
   gem "database_cleaner"
   gem "fake_stripe"
   gem "formulaic"
   gem "launchy"
-  gem "selenium-webdriver"
   gem "shoulda-matchers", require: false
   gem "timecop"
   gem "webmock"
