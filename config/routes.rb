@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/landing", to: "landing#show", as: :new_registration
 
   resources :subscriptions, only: [:create]
+  resource :import, only: [:new]
 
   root to: "dashboard#index", as: "dashboard"
 end
