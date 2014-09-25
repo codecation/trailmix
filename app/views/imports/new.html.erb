@@ -2,25 +2,29 @@
   <h1>How to import your OhLife</h1>
 <% end %>
 
-<ol>
-  <li>
-    If you haven't exported your OhLife entries yet, do so now. (And hurry,
-    exports won't be available after October 4th!) Export your entries by
-    visiting <%= link_to "OhLife", "www.ohlife.com" %> and clicking the link in
-    the red header.
-  </li>
+<p>
+  <ol>
+    <li>
+      If you haven't exported your OhLife entries yet, do so now. (And hurry,
+      exports won't be available after October 4th!) Export your entries by
+      visiting the OhLife
+      <%= link_to "export page", "https://ohlife.com/export" %>.
+    </li>
 
-  <li>
-    Click "Choose File" below, and select the export you just downloaded.
-  </li>
+    <li>
+      Click "Choose File" below, and select the export you just downloaded.
+    </li>
 
-  <li>
-    Click "Start Import"
-  </li>
-</ol>
+    <li>
+      Click "Start Import"
+    </li>
+  </ol>
+</p>
 
 <%= form_for @import, url: imports_path, html: { multipart: true } do |form| %>
-  <%= form.file_field :raw_file %>
+  <div class="form-group">
+    <%= form.file_field :raw_file %>
+  </div>
 
-  <%= form.submit "Start Import" %>
+  <%= form.submit "Start Import", class: "btn btn-default btn-lg" %>
 <% end %>
