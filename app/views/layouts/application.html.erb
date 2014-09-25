@@ -18,11 +18,7 @@
       <% if content_for?(:content) %>
         <%= yield :content %>
       <% else %>
-        <div class="col-md-4 col-sm-3"></div>
-        <div class="col-md-4 col-sm-6">
-          <%= render "layouts/content" %>
-        </div>
-        <div class="col-md-4 col-sm-3"></div>
+        <%= render "layouts/default_content" %>
       <% end %>
     </div>
   </div>

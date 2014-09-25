@@ -1,7 +1,9 @@
 <% content_for :content do %>
   <div class="col-md-3 col-sm-2"></div>
   <div class="col-md-6 col-sm-8">
-    <%= render "layouts/content" %>
+    <%= yield :header %>
+    <%= render "flashes" -%>
+    <%= yield %>
   </div>
   <div class="col-md-3 col-sm-2"></div>
 <% end %>
