@@ -9,7 +9,7 @@ feature "User imports their OhLife entries" do
     click_link "import your OhLife entries"
     file_path = Rails.root + "spec/fixtures/ohlife_export.txt"
     attach_file('import_raw_file', file_path)
-    click_button "Upload"
+    click_button "Start Import"
 
     expect(page).to have_content("Import complete!")
     expect(Import.count).to eq(1)
