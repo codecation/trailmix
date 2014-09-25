@@ -23,7 +23,7 @@ feature "User visits dashboard" do
     visit dashboard_path
 
     expect(current_path).to eq dashboard_path
-    expect(page).to have_content("You have no journal entries.")
+    expect(page).to have_content("Welcome to Trailmix!")
   end
 
   scenario "when signed out" do
