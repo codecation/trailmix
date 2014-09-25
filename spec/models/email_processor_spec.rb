@@ -27,7 +27,7 @@ describe EmailProcessor do
 
         expect do
           EmailProcessor.new(email).process
-        end.to raise_error(ActiveRecord::StatementInvalid)
+        end.to raise_error(ActiveRecord::ActiveRecordError)
       end
     end
   end
