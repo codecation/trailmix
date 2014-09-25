@@ -5,8 +5,10 @@
       key: "<%= Rails.configuration.stripe[:publishable_key] %>",
       image: "<%= image_path 'logo-stripe.png' %>",
       name: "Trailmix",
-      description: "A month's subscription",
-      amount: 900,
+      description: "Monthly subscription",
+      amount: 899,
+      panelLabel: "{{amount}} a month",
+      allowRememberMe: false,
       token: function(token) {
         $("#stripe_card_id").val(token.id);
         $("#sign-up-form").submit();
