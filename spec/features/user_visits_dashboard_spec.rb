@@ -5,7 +5,6 @@ feature "User visits dashboard" do
     create(:entry, user: user, body: "My latest entry")
 
     login_as(user)
-
     visit dashboard_path
 
     expect(page).to have_content("My latest entry")
