@@ -3,13 +3,16 @@ require "rails_helper"
 describe PromptMailer do
   describe "#prompt" do
     it "has the correct headers" do
-      user = build_stubbed(:user)
-      entry = build_stubbed(:entry)
+      Timecop.freeze do
+        user = build_stubbed(:user)
+        entry = build_stubbed(:entry)
 
-      mail = PromptMailer.prompt(user, entry)
+        mail = PromptMailer.prompt(user, entry)
 
-      expect(mail.to).to eq([user.email])
-      expect(mail.from).to eq(["today@#{ENV.fetch('SMTP_DOMAIN')}"])
+        expect(mail.to).to eq([user.email])
+        expect(mail.from).to eq(["today@#{ENV.fetch('SMTP_DOMAIN')}"])
+        expect(mail.subject).to eq("It's #{I18n.l(Date.today, format: :for_prompt)}. How was your day?")
+      end
     end
 
     context "when the user has a previous entry" do
