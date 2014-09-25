@@ -1,10 +1,17 @@
 <div class="entry">
   <h1>
-    <%= l entry.created_at, format: :day_of_week %>
+    <% if entry.created_at.today? %>
+      Today
+    <% else %>
+      <%= l entry.created_at, format: :day_of_week %>
+    <% end %>
   </h1>
   <p class="lead">
     <%= l entry.created_at, format: :month_day_year %>
   </p>
+
+  <%= paginate @entries %>
+
   <p>
     <%= entry.body %>
   </p>
