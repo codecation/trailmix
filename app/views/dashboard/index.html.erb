@@ -1,19 +1,5 @@
 <% if @entries.empty? %>
-  Welcome to Trailmix! You're now well on your way to a journaling habit that
-  will stick.
-
-  You don't have any entries yet, but you'll be creating one soon.
-
-  <strong>Entries are created using email.</strong>
-
-  We email you to ask how your day was and you just hit reply and start typing.
-  Your entries will be saved here automatically.
-
-  Your first email is probably already in your inbox. Try writing just a
-  sentence or two at first. It's fine to write more, but even short entries
-  will be interesting when you read them later.
-
-  <%= link_to "Import your OhLife entries", new_import_path %>
+  <%= render "welcome" %>
 <% else %>
   <%= render partial: "entry", collection: @entries %>
 <% end %>

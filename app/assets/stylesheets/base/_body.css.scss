@@ -11,6 +11,10 @@ a {
   }
 }
 
+p {
+  margin-bottom: 25px;
+}
+
 .btn-default,
 .pagination > li > a,
 .pagination > li > span {
@@ -52,4 +56,9 @@ a {
   color: $brown;
   background: $lighter-brown;
   border-color: $light-brown;
+}
+
+.jumbotron {
+  background: $lighter-grey;
+  padding: 0 0 10px 0;
 }
