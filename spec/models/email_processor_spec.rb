@@ -19,5 +19,16 @@ describe EmailProcessor do
         end.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
+
+    context "when the entry can't be created" do
+      it "raises an exception" do
+        user = create(:user)
+        email = double('email', from: { email: user.email }, body: nil)
+
+        expect do
+          EmailProcessor.new(email).process
+        end.to raise_error(ActiveRecord::ActiveRecordError)
+      end
+    end
   end
 end
