@@ -7,10 +7,33 @@ feature "User signs up", js: true do
     fill_in_signup_form
     fill_in_stripe_checkout(card_number: VALID_CARD_NUMBER)
 
-    expect(page).to have_content("Success!")
+    expect_to_be_on_dashboard
     expect(User.count).to eq(1)
     expect(FakeStripe.customer_count).to eq(1)
     expect(ActionMailer::Base.deliveries).not_to be_empty
+  end
+
+  scenario "using a duplicate email address" do
+    existing_user = create(:user, email: "user@example.com")
+
+    fill_in_signup_form("user@example.com")
+    fill_in_stripe_checkout(card_number: VALID_CARD_NUMBER)
+
+    expect(page).to have_content("Email has already been taken")
+    expect(FakeStripe.customer_count).to eq(0)
+    expect(ActionMailer::Base.deliveries).to be_empty
+  end
+
+  scenario "with a credit card that fails to charge" do
+    stub_stripe_charge_failure
+
+    fill_in_signup_form
+    fill_in_stripe_checkout(card_number: VALID_CARD_NUMBER)
+
+    expect(page).to have_content("Failed to charge card")
+    expect(User.count).to eq(0)
+    expect(FakeStripe.customer_count).to eq(0)
+    expect(ActionMailer::Base.deliveries).to be_empty
   end
 
   scenario "without providing email or password", js: true do
@@ -32,15 +55,27 @@ feature "User signs up", js: true do
     expect_button_to_be_enabled
   end
 
-  def fill_in_signup_form
+  def stub_stripe_charge_failure
+    error = Stripe::CardError.new(double, double, double)
+    allow(error).to(receive(:message).and_return("Failed to charge card"))
+
+    allow(Stripe::Customer).to(receive(:create).and_raise(error))
+  end
+
+  def expect_to_be_on_dashboard
+    expect(page).to have_content("You're on the dashboard!")
+  end
+
+  def fill_in_signup_form(email="very-long-email-lol@example.com")
     visit new_registration_path
-    fill_in "email", with: "very-long-email-lol@example.com"
+    fill_in "email", with: email
     fill_in "password", with: "password"
     click_button "Sign up"
   end
 
   def fill_in_stripe_checkout(values={})
     within_frame("stripe_checkout_app") do
+      sleep 0.1
       page.execute_script(%Q{ $('#card_number').val('#{values[:card_number]}'); })
       sleep 0.1
       page.execute_script(%Q{ $('#cc-exp').val('01/20'); })

@@ -1,15 +1,29 @@
 class SubscriptionsController < ApplicationController
   def create
-    stripe_customer = create_stripe_customer
-    user = create_user
-    send_welcome_email(user)
+    user = build_user
+
+    if user.valid?
+      create_stripe_customer
+      user.save!
+      send_welcome_email(user)
+      sign_in(user)
+      redirect_to dashboard_path
+    else
+      flash[:error] = user.errors.full_messages.to_sentence
+      redirect_to new_registration_path
+    end
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to subscriptions_path
+    redirect_to new_registration_path
   end
 
   private
+
+  def build_user
+    User.new(email: params[:email],
+             password: params[:password])
+  end
 
   def create_stripe_customer
     Stripe::Customer.create(
@@ -17,11 +31,6 @@ class SubscriptionsController < ApplicationController
       card: params[:stripe_card_id],
       plan: Rails.configuration.stripe[:plan_name]
     )
-  end
-
-  def create_user
-    User.create!(email: params[:email],
-                 password: params[:password])
   end
 
   def send_welcome_email(user)
