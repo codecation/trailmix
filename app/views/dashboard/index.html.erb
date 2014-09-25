@@ -2,4 +2,5 @@
   You have no journal entries.
 <% else %>
   <%= render partial: "entry", collection: @entries %>
+  <%= paginate @entries %>
 <% end %>
