@@ -1,1 +1,11 @@
-<p><%= entry.body %></p>
+<div class="entry">
+  <h1>
+    <%= l entry.created_at, format: :day_of_week %>
+  </h1>
+  <p class="lead">
+    <%= l entry.created_at, format: :month_day_year %>
+  </p>
+  <p>
+    <%= entry.body %>
+  </p>
+</div>
