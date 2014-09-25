@@ -1,6 +1,4 @@
 class DashboardController < ApplicationController
-  layout "wide"
-
   def index
     if user_signed_in?
       @entries = current_user.entries.newest.page(params[:page])
