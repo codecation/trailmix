@@ -1,5 +1,5 @@
 <li class="<%= ' disabled' if current_page.last? %>">
-  <%= link_to "Older &rarr;".html_safe,
+  <%= link_to "&larr; Older".html_safe,
     current_page.last? ? "#" : url,
     :remote => remote
   %>
