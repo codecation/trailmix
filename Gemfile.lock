@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: 3ec2599d13c1c4d6ab7c5bd291b8ff31e625915e
+  specs:
+    paperclip (4.2.0)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
+
+GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: 2c6f4caa99916c33d3f9af57f66422ff5ea913cf
   specs:
@@ -45,6 +55,12 @@ GEM
       execjs
     awesome_print (1.2.0)
     bcrypt (3.1.7)
+    better_errors (2.0.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     bourbon (3.2.3)
@@ -66,6 +82,10 @@ GEM
       json
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.4)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -79,6 +99,7 @@ GEM
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     database_cleaner (1.3.0)
+    debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     devise (3.3.0)
       bcrypt (~> 3.0)
@@ -197,8 +218,6 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.3.2)
-    recipient_interceptor (0.1.2)
-      mail
     redis (3.1.0)
     redis-namespace (1.5.1)
       redis (~> 3.0, >= 3.0.4)
@@ -296,6 +315,8 @@ DEPENDENCIES
   airbrake
   autoprefixer-rails
   awesome_print
+  better_errors
+  binding_of_caller
   bootstrap-sass (~> 3.2.0)
   bourbon (~> 3.2.1)
   byebug
@@ -319,13 +340,12 @@ DEPENDENCIES
   neat (~> 1.5.1)
   newrelic_rpm (>= 3.7.3)
   normalize-rails (~> 3.0.0)
+  paperclip!
   pg
   pry-rails
   rack-ssl-enforcer
   rack-timeout
-  rails (= 4.1.4)
   rails_12factor
-  recipient_interceptor
   redis
   rspec-rails (~> 3.0.0)
   sass-rails (~> 4.0.3)

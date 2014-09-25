@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Entry, :type => :model do
+  it { should belong_to(:import) }
+
   describe ".newest" do
     it "sorts entries with the newest first" do
       user = create(:user)

@@ -3,6 +3,7 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path("../../config/environment", __FILE__)
 
 require "rspec/rails"
+require "paperclip/matchers"
 require "shoulda/matchers"
 require "webmock/rspec"
 
@@ -18,6 +19,7 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
+  config.include Paperclip::Shoulda::Matchers
   config.include Features, type: :feature
   config.infer_base_class_for_anonymous_controllers = false
   config.infer_spec_type_from_file_location!
