@@ -26,6 +26,8 @@ feature "User imports their OhLife entries" do
     attach_file('import_raw_file', file_path)
     click_button "Upload"
 
-    expect(page).to have_content("Only text files can be uploaded")
+    expect(page).to have_content(
+      "Only text files please. Need help? Contact us at team@trailmix.life"
+    )
   end
 end

@@ -12,7 +12,8 @@ class ImportsController < ApplicationController
       flash[:notice] = "Import complete!"
       redirect_to dashboard_path
     else
-      flash[:error] = "Only text files can be uploaded"
+      flash[:error] = \
+        "Only text files please. Need help? Contact us at team@trailmix.life"
       redirect_to new_import_path
     end
   end
