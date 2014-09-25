@@ -12,7 +12,5 @@
 
   <%= paginate @entries %>
 
-  <p>
-    <%= entry.body %>
-  </p>
+  <%= simple_format(entry.body) %>
 </div>
