@@ -9,7 +9,7 @@ feature "User imports their OhLife entries" do
     click_link "import your OhLife entries"
     file_path = Rails.root + "spec/fixtures/ohlife_export.txt"
     attach_file('import_raw_file', file_path)
-    click_button "Upload"
+    click_button "Start Import"
 
     expect(page).to have_content("Import complete!")
     expect(Import.count).to eq(1)
@@ -24,7 +24,7 @@ feature "User imports their OhLife entries" do
     click_link "import your OhLife entries"
     file_path = Rails.root + "spec/fixtures/wrong_filetype_ohlife_export.png"
     attach_file('import_raw_file', file_path)
-    click_button "Upload"
+    click_button "Start Import"
 
     expect(page).to have_content(
       "Only text files please. Need help? Contact us at team@trailmix.life"

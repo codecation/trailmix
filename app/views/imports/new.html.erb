@@ -1,9 +1,26 @@
 <% content_for :header do %>
-  <h1>OhLife Refugee Import Area</h1>
+  <h1>How to import your OhLife</h1>
 <% end %>
+
+<ol>
+  <li>
+    If you haven't exported your OhLife entries yet, do so now. (And hurry,
+    exports won't be available after October 4th!) Export your entries by
+    visiting <%= link_to "OhLife", "www.ohlife.com" %> and clicking the link in
+    the red header.
+  </li>
+
+  <li>
+    Click "Choose File" below, and select the export you just downloaded.
+  </li>
+
+  <li>
+    Click "Start Import"
+  </li>
+</ol>
 
 <%= form_for @import, url: imports_path, html: { multipart: true } do |form| %>
   <%= form.file_field :raw_file %>
 
-  <%= form.submit "Upload" %>
+  <%= form.submit "Start Import" %>
 <% end %>
