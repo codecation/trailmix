@@ -1,4 +1,6 @@
 RSpec.describe User, :type => :model do
+  it { should have_many(:imports) }
+
   describe "#newest_entry" do
     it "returns the newest entry" do
       user = create(:user)

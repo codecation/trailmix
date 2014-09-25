@@ -10,4 +10,8 @@ FactoryGirl.define do
     user
     body 'Entry body'
   end
+
+  factory :import do
+    user
+  end
 end

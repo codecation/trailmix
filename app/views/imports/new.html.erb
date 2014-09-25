@@ -1,3 +1,9 @@
 <% content_for :header do %>
   <h1>OhLife Refugee Import Area</h1>
 <% end %>
+
+<%= form_for @import, url: imports_path, html: { multipart: true } do |form| %>
+  <%= form.file_field :raw_file %>
+
+  <%= form.submit "Upload" %>
+<% end %>

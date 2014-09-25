@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
          :validatable
 
   has_many :entries
+  has_many :imports
 
   def newest_entry
     entries.last
