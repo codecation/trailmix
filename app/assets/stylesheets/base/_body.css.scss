@@ -60,11 +60,5 @@ p {
 
 .jumbotron {
   background: $lighter-grey;
-  padding-bottom: 40px;
-}
-
-@media (max-width: 768px) {
-  .jumbotron {
-    padding: 0 0 10px 0;
-  }
+  padding: 0 0 10px 0;
 }
