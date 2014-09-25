@@ -3,3 +3,5 @@
 <% else %>
   <%= render partial: "entry", collection: @entries %>
 <% end %>
+
+<%= link_to 'Import your OhLife entries', new_import_path %>
