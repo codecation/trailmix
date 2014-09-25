@@ -15,6 +15,11 @@ p {
   margin-bottom: 25px;
 }
 
+.jumbotron {
+  background: $lighter-grey;
+  padding: 0 0 20px 0;
+}
+
 .btn-default,
 .pagination > li > a,
 .pagination > li > span {

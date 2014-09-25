@@ -1,12 +1,14 @@
 <% content_for :header do %>
-  <h1>Welcome to Trailmix.</h1>
-  <p class="lead">Private journaling about your life.</p>
-<% end %>
+  <div class="jumbotron">
+    <h1>Welcome to Trailmix.</h1>
+    <p class="lead">Private journaling about your life.</p>
 
-<%= link_to "Get started today",
-  "#sign-up-form",
-  class: "btn btn-default btn-lg sign-up-link"
-%>
+    <%= link_to "Get started",
+      "#sign-up-form",
+      class: "btn btn-default btn-lg sign-up-link"
+    %>
+  </div>
+<% end %>
 
 <h3>Hey there,</h3>
 
