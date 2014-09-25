@@ -15,12 +15,15 @@
     <%= render "navbar" -%>
 
     <div class="row">
-      <div class="col-md-4 col-sm-3"></div>
-      <div class="col-md-4 col-sm-6">
-        <%= yield :header %>
-        <%= render "flashes" -%>
-        <%= yield %>
-      <div class="col-md-4 col-sm-3"></div>
+      <% if content_for?(:content) %>
+        <%= yield :content %>
+      <% else %>
+        <div class="col-md-4 col-sm-3"></div>
+        <div class="col-md-4 col-sm-6">
+          <%= render "layouts/content" %>
+        </div>
+        <div class="col-md-4 col-sm-3"></div>
+      <% end %>
     </div>
   </div>
 
