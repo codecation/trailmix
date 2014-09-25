@@ -3,6 +3,11 @@
   <p class="lead">Private journaling about your life.</p>
 <% end %>
 
+<%= link_to "Get started today",
+  "#sign-up-form",
+  class: "btn btn-default btn-lg sign-up-link"
+%>
+
 <h3>Hey there,</h3>
 
 <p>Want to know the <strong>hardest part about keeping a journal?</strong>
@@ -47,3 +52,4 @@ but we're not in this to get rich. We're in it because <strong>we believe daily
 journalers are happier people and we want you to become one.</p></strong>
 
 <%= render "subscriptions/payment_form" %>
+<%= render "subscriptions/sign_up_link_javascript" %>

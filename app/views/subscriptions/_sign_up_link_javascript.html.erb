@@ -1,0 +1,7 @@
+<% content_for :javascript do %>
+  <%= javascript_tag do %>
+    $(".sign-up-link").on("click", function(e) {
+      $("#email").focus();
+    });
+  <% end %>
+<% end %>
