@@ -1,6 +1,8 @@
 <% content_for :header do %>
-  <h1>Trailmix</h1>
-  <p class="lead">Private journaling about your life.</p>
+  <h1>Sign in</h1>
+  <p class="lead">
+    <%= link_to "Forget your password?", new_password_path(:user) %>
+  </p>
 <% end %>
 
 <%= simple_form_for(
@@ -26,5 +28,4 @@
 
   <%= f.button :submit, "Sign in" %>
   or <%= link_to "Sign up", new_registration_path %>.
-  <%= link_to "Forget your password?", new_password_path(:user) %>
 <% end %>
