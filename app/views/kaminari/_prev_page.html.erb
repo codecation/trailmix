@@ -1,11 +1,3 @@
-<%# Link to the "Previous" page
-  - available local variables
-    url:           url to the previous page
-    current_page:  a page object for the currently displayed page
-    total_pages:   total number of pages
-    per_page:      number of items to fetch per page
-    remote:        data-remote
--%>
 <li class="<%= ' disabled' if current_page.first? %>">
   <%= link_to "&larr; Newer".html_safe,
     current_page.first? ? "#" : url,
