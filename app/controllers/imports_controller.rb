@@ -4,11 +4,17 @@ class ImportsController < ApplicationController
   end
 
   def create
-    import = Import.create!(import_params.merge(user: current_user))
-    OhlifeImporter.new(current_user, import).run
+    import = Import.new(import_params.merge(user: current_user))
 
-    flash[:notice] = "Import complete!"
-    redirect_to dashboard_path
+    if import.save
+      OhlifeImporter.new(current_user, import).run
+
+      flash[:notice] = "Import complete!"
+      redirect_to dashboard_path
+    else
+      flash[:error] = "Only text files can be uploaded"
+      redirect_to new_import_path
+    end
   end
 
   private
