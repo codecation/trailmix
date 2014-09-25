@@ -14,3 +14,7 @@ en:
         "%b %-d, %Y"
       short:
         "%B %d"
+      month_day_year:
+        "%B %d, %Y"
+      day_of_week:
+        "%A"

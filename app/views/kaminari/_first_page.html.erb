@@ -1,0 +1,6 @@
+<li class="<%= ' disabled' if current_page.first? %>">
+  <%= link_to "Latest".html_safe,
+    current_page.first? ? "#" : url,
+    :remote => remote
+  %>
+</li>

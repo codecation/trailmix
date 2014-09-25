@@ -1,0 +1,6 @@
+<li class="<%= ' disabled' if current_page.last? %>">
+  <%= link_to "Older &rarr;".html_safe,
+    current_page.last? ? "#" : url,
+    :remote => remote
+  %>
+</li>
