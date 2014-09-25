@@ -1,1 +1,5 @@
-You're on the dashboard!
+<% if @entries.empty? %>
+  You have no journal entries.
+<% else %>
+  <%= render partial: "entry", collection: @entries %>
+<% end %>
