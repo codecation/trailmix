@@ -8,7 +8,7 @@ feature "User imports their OhLife entries" do
     visit dashboard_path
     click_link "import your OhLife entries"
     file_path = Rails.root + "spec/fixtures/ohlife_export.txt"
-    attach_file('import_raw_file', file_path)
+    attach_file('import_ohlife_export', file_path)
     click_button "Start Import"
 
     expect(page).to have_content("Import complete!")
@@ -23,7 +23,7 @@ feature "User imports their OhLife entries" do
     visit dashboard_path
     click_link "import your OhLife entries"
     file_path = Rails.root + "spec/fixtures/wrong_filetype_ohlife_export.png"
-    attach_file('import_raw_file', file_path)
+    attach_file('import_ohlife_export', file_path)
     click_button "Start Import"
 
     expect(page).to have_content(

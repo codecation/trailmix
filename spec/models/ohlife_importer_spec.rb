@@ -44,7 +44,7 @@ describe OhlifeImporter do
   end
 
   def create_import
-    create(:import, raw_file: File.new(ohlife_export))
+    create(:import, ohlife_export: File.new(ohlife_export))
   end
 
   def ohlife_export
