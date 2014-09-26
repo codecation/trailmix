@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby "2.1.2"
 
-gem "airbrake", require: "airbrake/rails"
+gem "airbrake"
 gem "autoprefixer-rails"
 gem "binding_of_caller"
 gem "bootstrap-sass", "~> 3.2.0"
