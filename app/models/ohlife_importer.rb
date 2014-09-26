@@ -48,7 +48,7 @@ class OhlifeImporter
   end
 
   def export
-    import.ohlife_export.file.to_file
+    import.ohlife_export.read
   end
 
   def separator
