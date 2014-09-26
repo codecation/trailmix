@@ -48,7 +48,13 @@ class OhlifeImporter
   end
 
   def export
-    import.ohlife_export.read
+    ohlife_export = import.ohlife_export
+
+    if ohlife_export.file.is_a?(CarrierWave::SanitizedFile)
+      ohlife_export.read
+    else
+      open(ohlife_export.url)
+    end
   end
 
   def separator
