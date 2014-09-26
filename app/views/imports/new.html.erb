@@ -23,7 +23,7 @@
 
 <%= form_for @import, url: imports_path, html: { multipart: true } do |form| %>
   <div class="form-group">
-    <%= form.file_field :raw_file %>
+    <%= form.file_field :ohlife_export %>
   </div>
 
   <%= form.submit "Start Import", class: "btn btn-default btn-lg" %>

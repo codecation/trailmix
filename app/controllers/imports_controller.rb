@@ -21,6 +21,6 @@ class ImportsController < ApplicationController
   private
 
   def import_params
-    params.require(:import).permit(:raw_file)
+    params.require(:import).permit(:ohlife_export)
   end
 end
