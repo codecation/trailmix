@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable
 
-  has_many :entries
+  has_many :entries, dependent: :destroy
   has_many :imports
 
   def newest_entry
