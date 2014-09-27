@@ -15,4 +15,10 @@ feature "User imports their OhLife entries" do
     expect(Import.count).to eq(1)
     expect(user.entries.count).to eq(2)
   end
+
+  scenario "when signed out" do
+    visit new_import_path
+
+    expect(current_path).to eq(new_user_session_path)
+  end
 end
