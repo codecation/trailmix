@@ -9,11 +9,12 @@ class ImportsController < ApplicationController
     if import.save
       OhlifeImportWorker.perform_async(current_user.id, import.id)
 
-      flash[:notice] = "We're importing your entries. Try refreshing the page in a few seconds."
+      flash[:notice] = "We're importing your entries. Try refreshing the page"\
+                       "in a few seconds."
       redirect_to dashboard_path
     else
-      flash[:error] = \
-        "Only text files please. Need help? Contact us at team@trailmix.life"
+      flash[:error] = "Sorry, we had trouble importing that. :( Need help?"\
+                      "Contact us at team@trailmix.life"
       redirect_to new_import_path
     end
   end
