@@ -17,6 +17,7 @@ describe ImportsController do
   end
 
   def stub_current_user
+    allow(controller).to(receive(:authenticate_user!))
     allow(controller).to(receive(:current_user))
   end
 end
