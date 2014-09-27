@@ -7,7 +7,7 @@ class OhlifeImporter
   def run
     export.each_line(separator) do |line|
       if is_start_of_entry?(line)
-        process_new_entry(line)
+        build_new_entry(line)
       else
         append_to_existing_entry(line)
       end
@@ -24,7 +24,7 @@ class OhlifeImporter
     line =~ /\d\d\d\d-\d\d-\d\d/
   end
 
-  def process_new_entry(line)
+  def build_new_entry(line)
     if @entry
       save_entry
     end
