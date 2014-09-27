@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "User imports their OhLife entries" do
-  scenario "immediately after creating their account" do
+  scenario "immediately after creating their account", sidekiq: :inline do
     user = create(:user)
 
     login_as(user)
@@ -11,7 +11,7 @@ feature "User imports their OhLife entries" do
     attach_file('import_ohlife_export', file_path)
     click_button "Start Import"
 
-    expect(page).to have_content("Import complete!")
+    expect(page).to have_content("We're importing your entries")
     expect(Import.count).to eq(1)
     expect(user.entries.count).to eq(2)
   end

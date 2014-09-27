@@ -7,9 +7,9 @@ class ImportsController < ApplicationController
     import = Import.new(import_params.merge(user: current_user))
 
     if import.save
-      OhlifeImporter.new(current_user, import).run
+      OhlifeImportWorker.perform_async(current_user.id, import.id)
 
-      flash[:notice] = "Import complete!"
+      flash[:notice] = "We're importing your entries. Try refreshing the page in a few seconds."
       redirect_to dashboard_path
     else
       flash[:error] = \
