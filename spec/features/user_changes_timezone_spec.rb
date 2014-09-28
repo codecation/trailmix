@@ -1,7 +1,7 @@
 feature "User changes timezone" do
   scenario "from Pacific Time to Melbourne" do
     user = create(:user, time_zone: "Pacific Time (US & Canada)")
-    entry = create(:entry, user: user, created_at: "2014-01-01 00:00:00")
+    create(:entry, user: user, created_at: "2014-01-01 00:00:00")
     login_as(user)
 
     visit dashboard_path
