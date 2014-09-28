@@ -19,4 +19,4 @@ en:
       day_of_week:
         "%A"
       for_prompt:
-        "%A, %b %d" # Thursday, Sept 17
+        "%A, %b %-d" # Thursday, Sept 17

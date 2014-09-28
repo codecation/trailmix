@@ -3,17 +3,15 @@ require "rails_helper"
 describe PromptMailer do
   describe "#prompt" do
     it "has the correct headers" do
-      Timecop.freeze do
-        user = build_stubbed(:user)
+      Timecop.freeze(Time.utc(2014, 1, 1)) do
+        user = build_stubbed(:user, time_zone: "UTC")
         entry = build_stubbed(:entry)
 
         mail = PromptMailer.prompt(user, entry)
 
         expect(mail.to).to eq([user.email])
         expect(mail.from).to eq(["today@#{ENV.fetch('SMTP_DOMAIN')}"])
-        expect(mail.subject).to eq(
-          "It's #{I18n.l(Time.zone.now, format: :for_prompt)}. How was your day?"
-        )
+        expect(mail.subject).to eq("It's Wednesday, Jan 1. How was your day?")
       end
     end
 
