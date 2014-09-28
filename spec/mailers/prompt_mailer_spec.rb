@@ -11,7 +11,28 @@ describe PromptMailer do
 
         expect(mail.to).to eq([user.email])
         expect(mail.from).to eq(["today@#{ENV.fetch('SMTP_DOMAIN')}"])
-        expect(mail.subject).to eq("It's #{I18n.l(Date.today, format: :for_prompt)}. How was your day?")
+        expect(mail.subject).to eq(
+          "It's #{I18n.l(Time.zone.now, format: :for_prompt)}. How was your day?"
+        )
+      end
+    end
+
+    context "when the user has set their timezone" do
+      it "shows today's date in their timezone" do
+        Timecop.freeze(Time.utc(2014, 1, 1)) do
+          user = create(:user)
+          entry = build_stubbed(:entry)
+
+          user.time_zone = "Pacific Time (US & Canada)"
+          mail = PromptMailer.prompt(user, entry)
+
+          expect(mail.subject).to include("Tuesday")
+
+          user.time_zone = "Melbourne"
+          mail = PromptMailer.prompt(user, entry)
+
+          expect(mail.subject).to include("Wednesday")
+        end
       end
     end
 

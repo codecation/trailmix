@@ -5,8 +5,6 @@ en:
         "%m/%d/%Y"
       with_weekday:
         "%a %m/%d/%y"
-      for_prompt:
-        "%A, %b %d" # Thursday, Sept 17
 
   time:
     formats:
@@ -20,3 +18,5 @@ en:
         "%B %d, %Y"
       day_of_week:
         "%A"
+      for_prompt:
+        "%A, %b %d" # Thursday, Sept 17
