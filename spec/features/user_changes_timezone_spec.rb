@@ -8,7 +8,7 @@ feature "User changes timezone" do
     expect(page).to have_content("Tuesday")
 
     visit edit_settings_path
-    select "(GMT+10:00) Melbourne", from: :user_time_zone
+    select "Melbourne", from: :user_time_zone
     click_button "Save"
 
     expect(page).to have_content("settings have been saved")
