@@ -10,9 +10,7 @@ Rails.application.routes.draw do
 
   resources :subscriptions, only: [:create]
   resources :imports, only: [:new, :create]
-
-  get "/settings", to: "settings#edit", as: :edit_settings
-  put "/settings", to: "settings#update", as: :settings
+  resource :settings, only: [:edit, :update]
 
   root to: "dashboard#index", as: "dashboard"
 end
