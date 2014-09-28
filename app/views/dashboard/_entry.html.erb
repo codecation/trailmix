@@ -1,4 +1,4 @@
-<div class="entry">
+<% content_for :header do %>
   <h1>
     <% if entry.created_at.today? %>
       Today
@@ -9,8 +9,8 @@
   <p class="lead">
     <%= l entry.created_at, format: :month_day_year %>
   </p>
+<% end %>
 
-  <%= paginate @entries %>
+<%= paginate @entries %>
 
-  <%= simple_format(entry.body) %>
-</div>
+<%= simple_format(entry.body) %>
