@@ -25,18 +25,22 @@ feature "User changes settings" do
 
   scenario "email delivery time from 9PM to 6AM" do
     user = create(:user,
-      time_zone: "GMT",
-      prompt_delivery_hour: 21 # 9PM UTC
+      time_zone: "Melbourne",
+      prompt_delivery_hour: 11 # 9PM GMT+10:00 Melbourne
     )
     login_as(user)
-
     visit edit_settings_path
+
+    expect(page).to have_select(
+      :date_prompt_delivery_hour,
+      selected: "09 PM"
+    )
+
     select "06 AM", from: :date_prompt_delivery_hour
     click_button "Save"
 
-    expect(current_path).to eq dashboard_path
-
     click_link "Settings"
+
     expect(page).to have_select(
       :date_prompt_delivery_hour,
       selected: "06 AM"
