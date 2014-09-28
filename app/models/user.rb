@@ -19,6 +19,6 @@ class User < ActiveRecord::Base
   end
 
   def in_time_zone(time)
-    time.in_time_zone(self.time_zone)
+    time.in_time_zone time_zone
   end
 end
