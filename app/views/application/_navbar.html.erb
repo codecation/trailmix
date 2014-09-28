@@ -25,6 +25,9 @@
           <%= link_to "Privacy", page_path("privacy") %>
         </li>
         <li>
+          <%= link_to "Settings", edit_settings_path %>
+        </li>
+        <li>
         <% if user_signed_in? %>
           <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
         <% else %>

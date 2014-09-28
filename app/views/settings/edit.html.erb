@@ -1,0 +1,18 @@
+<% content_for :header do %>
+  <h1>Settings</h1>
+  <p class="lead">Set your time zone.</p>
+<% end %>
+
+<%= form_tag settings_path, method: :put, id: "settings-form" do %>
+  <div class="form-group">
+    <%= time_zone_select :user,
+      :time_zone,
+      ActiveSupport::TimeZone.us_zones,
+      { default: current_user.time_zone },
+      { class: "form-control input-lg" }
+    %>
+  </div>
+
+  <button type="submit" class="btn btn-default btn-lg">Save</button>
+  or <%= link_to "cancel", dashboard_path %>.
+<% end %>
