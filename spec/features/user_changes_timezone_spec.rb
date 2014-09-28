@@ -7,7 +7,7 @@ feature "User changes timezone" do
     visit dashboard_path
     expect(page).to have_content("Tuesday")
 
-    visit edit_settings_path
+    click_link "Settings"
     select "Melbourne", from: :user_time_zone
     click_button "Save"
 
