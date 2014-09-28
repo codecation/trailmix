@@ -1,5 +1,6 @@
 RSpec.describe User, :type => :model do
-  it { should have_many(:imports) }
+  it { should have_many(:entries).dependent(:destroy) }
+  it { should have_many(:imports).dependent(:destroy) }
 
   describe "#newest_entry" do
     it "returns the newest entry" do
