@@ -7,7 +7,10 @@ class SettingsController < ApplicationController
   end
 
   def update
-    current_user.update_attribute :time_zone, params[:user][:time_zone]
+    current_user.update_attributes(
+      time_zone: params[:user][:time_zone],
+      prompt_delivery_hour: params[:date][:prompt_delivery_hour],
+    )
 
     flash[:notice] = "Your settings have been saved."
 
