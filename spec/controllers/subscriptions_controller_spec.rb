@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe SubscriptionsController do
+describe SubscriptionsController, sidekiq: :inline do
   describe "#create" do
     before do
       stub_sign_in
