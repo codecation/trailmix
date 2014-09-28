@@ -24,16 +24,18 @@
         <li>
           <%= link_to "Privacy", page_path("privacy") %>
         </li>
-        <li>
-          <%= link_to "Settings", edit_settings_path %>
-        </li>
-        <li>
         <% if user_signed_in? %>
+          <li>
+            <%= link_to "Settings", edit_settings_path %>
+          </li>
+          <li>
           <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+          </li>
         <% else %>
-          <%= link_to "Sign in", new_session_path(:user) %>
+          <li>
+            <%= link_to "Sign in", new_session_path(:user) %>
+          </li>
         <% end %>
-        </li>
       </ul>
     </div>
   </div>
