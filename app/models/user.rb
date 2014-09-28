@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
   def random_entry
     entries.sample
   end
+
+  def in_time_zone(time)
+    time.in_time_zone(self.time_zone)
+  end
 end
