@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :subscriptions, only: [:create]
   resources :imports, only: [:new, :create]
+  resource :settings, only: [:edit, :update]
 
   root to: "dashboard#index", as: "dashboard"
 end
