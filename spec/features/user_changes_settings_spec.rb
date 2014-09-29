@@ -24,7 +24,8 @@ feature "User changes settings" do
   end
 
   scenario "email delivery time from 9PM to 6AM" do
-    user = create(:user,
+    user = create(
+      :user,
       time_zone: "Melbourne",
       prompt_delivery_hour: 11 # 9PM GMT+10:00 Melbourne
     )
