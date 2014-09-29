@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :entries, dependent: :destroy
   has_many :imports, dependent: :destroy
 
-  def self.promptable(time = Time.zone.now)
+  def self.promptable(time = Time.zone.now.utc)
     where(prompt_delivery_hour: time.hour)
   end
 

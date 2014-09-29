@@ -4,15 +4,13 @@ RSpec.describe User, :type => :model do
 
   describe ".promptable" do
     it "returns promptable users for the current hour" do
-      utc_11am = Time.utc(2014, 1, 1, 11)
+      Timecop.freeze(Time.utc(2014, 1, 1, 11)) do # 11AM UTC
+        utc_10am = create(:user, time_zone: "UTC", prompt_delivery_hour: 10)
+        utc_11am = create(:user, time_zone: "UTC", prompt_delivery_hour: 11)
+        utc_12pm = create(:user, time_zone: "UTC", prompt_delivery_hour: 12)
 
-      utc_10am_user = create(:user, time_zone: "UTC", prompt_delivery_hour: 10)
-      utc_11am_user = create(:user, time_zone: "UTC", prompt_delivery_hour: 11)
-      utc_12pm_user = create(:user, time_zone: "UTC", prompt_delivery_hour: 12)
-
-      promptable = User.promptable(utc_11am)
-
-      expect(promptable).to eq [utc_11am_user]
+        expect(User.promptable).to eq [utc_11am]
+      end
     end
   end
 
