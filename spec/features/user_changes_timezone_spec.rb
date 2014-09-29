@@ -22,10 +22,4 @@ feature "User changes timezone" do
       selected: "(GMT+10:00) Melbourne"
     )
   end
-
-  scenario "when signed out" do
-    visit edit_settings_path
-
-    expect(current_path).to eq(new_user_session_path)
-  end
 end
