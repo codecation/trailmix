@@ -19,4 +19,21 @@ RSpec.describe Entry, :type => :model do
         "expected #{entries.map(&:id)}, got #{newest_entries.map(&:id)}"
     end
   end
+
+  describe "#created_today?" do
+    context "when the entry was created today in the user's time zone" do
+      it "returns true" do
+        Timecop.freeze(Time.utc(2014, 1, 1, 8)) do
+          user = create(:user, time_zone: "UTC")
+          entry = create(:entry, user: user, created_at: 1.hour.ago)
+
+          expect(entry).to be_created_today
+
+          user.update_attribute(:time_zone, "Pacific Time (US & Canada)")
+
+          expect(entry).to_not be_created_today
+        end
+      end
+    end
+  end
 end

@@ -1,6 +1,6 @@
 <% content_for :header do %>
   <h1>
-    <% if entry.created_at.today? %>
+    <% if entry.created_today? %>
       Today
     <% else %>
       <%= l(
