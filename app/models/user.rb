@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
   has_many :entries, dependent: :destroy
   has_many :imports, dependent: :destroy
 
+  def self.promptable(time = Time.zone.now)
+    where(prompt_delivery_hour: time.hour)
+  end
+
   def newest_entry
     entries.last
   end
