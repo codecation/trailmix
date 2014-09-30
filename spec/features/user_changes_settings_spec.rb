@@ -27,7 +27,7 @@ feature "User changes settings" do
     user = create(
       :user,
       time_zone: "Melbourne",
-      prompt_delivery_hour: 11 # 9PM GMT+10:00 Melbourne
+      prompt_delivery_hour: 21
     )
     login_as(user)
     visit edit_settings_path
