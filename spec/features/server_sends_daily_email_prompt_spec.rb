@@ -7,7 +7,7 @@ feature "The server executes the prompt task", sidekiq: :inline do
     third_user = create(:user)
     users = [first_user, second_user, third_user]
 
-    PromptTask.new(users, PromptWorker).run
+    PromptTask.new(User.pluck(:id), PromptWorker).run
 
     users.each do |user|
       expect(emailed_addresses).to include(user.email)
