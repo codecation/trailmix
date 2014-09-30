@@ -22,6 +22,14 @@ class User < ActiveRecord::Base
     entries.sample
   end
 
+  def prompt_delivery_hour
+    PromptDeliveryHour.new(super, time_zone_offset).in_time_zone
+  end
+
+  def prompt_delivery_hour=(hour)
+    super PromptDeliveryHour.new(hour, time_zone_offset).in_utc
+  end
+
   def time_zone_offset
     ActiveSupport::TimeZone[time_zone].utc_offset / 1.hour
   end
