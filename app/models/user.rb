@@ -21,4 +21,8 @@ class User < ActiveRecord::Base
   def random_entry
     entries.sample
   end
+
+  def time_zone_offset
+    ActiveSupport::TimeZone[time_zone].utc_offset / 1.hour
+  end
 end

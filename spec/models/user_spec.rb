@@ -32,4 +32,14 @@ RSpec.describe User, :type => :model do
       expect(user.random_entry).to eq(entry)
     end
   end
+
+  describe "#time_zone_offset" do
+    it "returns the time zone offset for the user in hours" do
+      user = create(:user, time_zone: "Melbourne")
+
+      time_zone_offset = user.time_zone_offset
+
+      expect(time_zone_offset).to eq(10)
+    end
+  end
 end
