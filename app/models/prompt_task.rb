@@ -1,12 +1,12 @@
 class PromptTask
-  def initialize(users, worker)
-    @users = users
+  def initialize(user_ids, worker)
+    @user_ids = user_ids
     @worker = worker
   end
 
   def run
-    @users.each do |user|
-      @worker.perform_async(user.id)
+    @user_ids.each do |user_id|
+      @worker.perform_async(user_id)
     end
   end
 end
