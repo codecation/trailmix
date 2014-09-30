@@ -23,14 +23,10 @@ class User < ActiveRecord::Base
   end
 
   def prompt_delivery_hour
-    PromptDeliveryHour.new(super, time_zone_offset).in_time_zone
+    PromptDeliveryHour.new(super, time_zone).in_time_zone
   end
 
   def prompt_delivery_hour=(hour)
-    super PromptDeliveryHour.new(hour, time_zone_offset).in_utc
-  end
-
-  def time_zone_offset
-    ActiveSupport::TimeZone[time_zone].utc_offset / 1.hour
+    super PromptDeliveryHour.new(hour, time_zone).in_utc
   end
 end

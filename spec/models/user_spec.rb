@@ -54,14 +54,4 @@ RSpec.describe User, :type => :model do
       expect(prompt_delivery_hour).to eq(19)
     end
   end
-
-  describe "#time_zone_offset" do
-    it "returns the time zone offset for the user in hours" do
-      user = create(:user, time_zone: "Melbourne")
-
-      time_zone_offset = user.time_zone_offset
-
-      expect(time_zone_offset).to eq(10)
-    end
-  end
 end

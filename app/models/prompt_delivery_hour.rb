@@ -1,9 +1,9 @@
 class PromptDeliveryHour
-  attr_reader :hour, :time_zone_offset
+  attr_reader :hour, :time_zone
 
-  def initialize(hour, time_zone_offset)
+  def initialize(hour, time_zone)
     @hour = hour.to_i
-    @time_zone_offset = time_zone_offset.to_i
+    @time_zone = time_zone
   end
 
   def in_time_zone
@@ -24,5 +24,9 @@ class PromptDeliveryHour
     else
       hour
     end
+  end
+
+  def time_zone_offset
+    ActiveSupport::TimeZone[time_zone].utc_offset / 1.hour
   end
 end
