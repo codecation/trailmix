@@ -8,10 +8,10 @@ describe "trailmix:schedule_all_prompts", sidekiq: :inline do
 
   it "sends prompts to all users that would like a prompt" do
     Timecop.freeze(Time.utc(2014, 1, 1, 8)) do # 8AM UTC
-      utc_7am = create(:user, time_zone: "UTC", prompt_delivery_hour: 7)
+      create(:user, time_zone: "UTC", prompt_delivery_hour: 7)
       utc_8am = create(:user, time_zone: "UTC", prompt_delivery_hour: 8)
       arz_1am = create(:user, time_zone: "Arizona", prompt_delivery_hour: 1)
-      utc_9am = create(:user, time_zone: "UTC", prompt_delivery_hour: 9)
+      create(:user, time_zone: "UTC", prompt_delivery_hour: 9)
 
       Rake::Task["trailmix:schedule_all_prompts"].invoke
 
