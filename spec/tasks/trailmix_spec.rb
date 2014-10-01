@@ -15,7 +15,7 @@ describe "trailmix:schedule_all_prompts", sidekiq: :inline do
 
       Rake::Task["trailmix:schedule_all_prompts"].invoke
 
-      expect(emailed_addresses).to eq([utc_8am.email, arz_1am.email])
+      expect(emailed_addresses).to contain_exactly(utc_8am.email, arz_1am.email)
     end
   end
 
