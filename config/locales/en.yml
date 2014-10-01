@@ -15,7 +15,7 @@ en:
       short:
         "%B %d"
       month_day_year:
-        "%B %d, %Y"
+        "%B %-d, %Y"
       day_of_week:
         "%A"
       for_prompt:

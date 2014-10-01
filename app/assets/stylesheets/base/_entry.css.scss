@@ -1,0 +1,59 @@
+.entry {
+  position: relative;
+  padding: 40px;
+  background-color: white;
+  margin: 20px auto 0 auto;
+  max-width: 700px;
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+.entry:before,
+.entry:after {
+  position: absolute;
+  width: 40%;
+  height: 10px;
+  content: ' ';
+  left: 12px;
+  bottom: 12px;
+  background: transparent;
+  -webkit-transform: skew(-5deg) rotate(-5deg);
+  -moz-transform: skew(-5deg) rotate(-5deg);
+  -ms-transform: skew(-5deg) rotate(-5deg);
+  -o-transform: skew(-5deg) rotate(-5deg);
+  transform: skew(-5deg) rotate(-5deg);
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  z-index: -1;
+}
+
+.entry:after {
+  left: auto;
+  right: 12px;
+  -webkit-transform: skew(5deg) rotate(5deg);
+  -moz-transform: skew(5deg) rotate(5deg);
+  -ms-transform: skew(5deg) rotate(5deg);
+  -o-transform: skew(5deg) rotate(5deg);
+  transform: skew(5deg) rotate(5deg);
+}
+
+.tape{
+  position:absolute;
+  top: -15px;
+  right: 38%;
+  width: 130px;
+  height: 35px;
+  background-color: white;
+  opacity: 0.6;
+  border-left: 1px dashed rgba(0, 0, 0, 0.1);
+  border-right: 1px dashed rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 0px 1px 0px #cccccc;
+  -moz-box-shadow: 0px 0px 1px 0px #cccccc;
+  box-shadow: 0px 0px 1px 0px #cccccc;
+  -webkit-transform: rotate(-2deg) skew(0,0) translate(0%,-5px);
+  -moz-transform: rotate(-2deg) skew(0,0) translate(0%,-5px);
+  -o-transform: rotate(-2deg) skew(0,0) translate(0%,-5px);
+  transform: rotate(-2deg) skew(0,0) translate(0%,-5px);
+}
