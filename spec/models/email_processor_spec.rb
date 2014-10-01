@@ -12,7 +12,7 @@ describe EmailProcessor do
     it "creates an entry even if the email address is uppercase" do
       user = create(:user)
       email = double(
-        'email',
+        "email",
         from: { email: user.email.upcase },
         body: "I am great"
       )
