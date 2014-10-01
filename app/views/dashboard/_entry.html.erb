@@ -1,22 +1,30 @@
 <% content_for :header do %>
-  <h1>
-    <% if entry.created_today? %>
-      Today
-    <% else %>
+  <div class="text-center">
+    <h1>
+      <% if entry.created_today? %>
+        Today
+      <% else %>
+        <%= l(
+          entry.created_at.in_time_zone(current_user.time_zone),
+          format: :day_of_week
+        )%>
+      <% end %>
+    </h1>
+
+    <p class="lead">
       <%= l(
         entry.created_at.in_time_zone(current_user.time_zone),
-        format: :day_of_week
+        format: :month_day_year
       )%>
-    <% end %>
-  </h1>
-  <p class="lead">
-    <%= l(
-      entry.created_at.in_time_zone(current_user.time_zone),
-      format: :month_day_year
-    )%>
-  </p>
+    </p>
+  </div>
 <% end %>
 
-<%= paginate @entries %>
+<div class="text-center">
+  <%= paginate @entries %>
+</div>
 
-<%= simple_format(entry.body) %>
+<div class="entry">
+  <div class="tape"></div>
+  <%= simple_format(entry.body) %>
+</div>
