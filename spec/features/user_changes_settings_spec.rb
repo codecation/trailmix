@@ -24,12 +24,12 @@ feature "User changes settings" do
     login_as(user)
 
     visit edit_settings_path
-    select "06 AM", from: :date_prompt_delivery_hour
+    select "06 AM", from: :user_prompt_delivery_hour
     click_button "Save"
 
     click_link "Settings"
     expect(page).to have_select(
-      :date_prompt_delivery_hour,
+      :user_prompt_delivery_hour,
       selected: "06 AM"
     )
   end

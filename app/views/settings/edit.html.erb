@@ -15,7 +15,7 @@
 
   <div class="form-group">
     <%= select_hour current_user.prompt_delivery_hour,
-      { ampm: true, field_name: :prompt_delivery_hour },
+      { ampm: true, prefix: :user, field_name: :prompt_delivery_hour },
       { class: "form-control input-lg" }
     %>
   </div>

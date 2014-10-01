@@ -8,7 +8,7 @@ class SettingsController < ApplicationController
 
   def update
     current_user.time_zone = params[:user][:time_zone]
-    current_user.prompt_delivery_hour = params[:date][:prompt_delivery_hour]
+    current_user.prompt_delivery_hour = params[:user][:prompt_delivery_hour]
 
     current_user.save!
 
