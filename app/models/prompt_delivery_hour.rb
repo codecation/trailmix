@@ -1,6 +1,4 @@
 class PromptDeliveryHour
-  attr_reader :hour, :time_zone
-
   def initialize(hour, time_zone)
     @hour = hour.to_i
     @time_zone = time_zone
@@ -15,6 +13,8 @@ class PromptDeliveryHour
   end
 
   private
+
+  attr_reader :hour, :time_zone
 
   def in_24_hours(hour)
     if hour < 0
