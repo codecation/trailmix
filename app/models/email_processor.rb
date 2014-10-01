@@ -4,7 +4,7 @@ class EmailProcessor
   end
 
   def process
-    user = User.find_by!(email: @email.from[:email])
+    user = User.find_by!(email: @email.from[:email].downcase)
 
     user.entries.create!(body: @email.body)
   end
