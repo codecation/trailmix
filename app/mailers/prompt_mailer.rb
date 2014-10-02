@@ -4,13 +4,24 @@ class PromptMailer < ActionMailer::Base
 
     mail(
       to: user.email,
-      subject: "It's #{today(user)}. How was your day?"
+      subject: Subject.new(user)
     )
   end
 
-  private
+  class Subject
+    def initialize(user, date = Time.zone.now)
+      @user = user
+      @date = date
+    end
 
-  def today(user)
-    I18n.l(Time.zone.now.in_time_zone(user.time_zone), format: :for_prompt)
+    def to_s
+      "It's #{today}. How was your day?"
+    end
+
+    private
+
+    def today
+      I18n.l(@date.in_time_zone(@user.time_zone), format: :for_prompt)
+    end
   end
 end
