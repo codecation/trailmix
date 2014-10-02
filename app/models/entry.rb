@@ -8,4 +8,8 @@ class Entry < ActiveRecord::Base
     created_at.in_time_zone(user.time_zone).beginning_of_day ==
     Time.zone.now.in_time_zone(user.time_zone).beginning_of_day
   end
+
+  def date
+    super || created_at
+  end
 end

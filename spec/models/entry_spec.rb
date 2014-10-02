@@ -36,4 +36,13 @@ RSpec.describe Entry, :type => :model do
       end
     end
   end
+
+  describe "#date" do
+    it "returns the created date when not set" do
+      yesterday = 1.day.ago
+      entry = create(:entry, created_at: yesterday, date: nil)
+
+      expect(entry.date).to eq(yesterday)
+    end
+  end
 end
