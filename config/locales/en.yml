@@ -3,6 +3,10 @@ en:
     formats:
       default:
         "%m/%d/%Y"
+      day_of_week:
+        "%A"
+      month_day_year:
+        "%B %d, %Y"
       with_weekday:
         "%a %m/%d/%y"
 
@@ -14,9 +18,5 @@ en:
         "%b %-d, %Y"
       short:
         "%B %d"
-      month_day_year:
-        "%B %d, %Y"
-      day_of_week:
-        "%A"
       for_prompt:
         "%A, %b %-d" # Thursday, Sept 17
