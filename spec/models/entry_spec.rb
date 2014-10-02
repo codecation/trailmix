@@ -43,7 +43,7 @@ RSpec.describe Entry, :type => :model do
       yesterday = 1.day.ago
       entry = create(:entry, created_at: yesterday, date: nil)
 
-      expect(entry.date).to eq(yesterday)
+      expect(entry.date).to eq(yesterday.to_date)
     end
   end
 end

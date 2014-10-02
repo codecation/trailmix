@@ -10,6 +10,6 @@ class Entry < ActiveRecord::Base
   end
 
   def date
-    super || created_at
+    super || created_at.to_date
   end
 end
