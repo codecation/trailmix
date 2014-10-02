@@ -22,6 +22,7 @@ RSpec.configure do |config|
   config.include Paperclip::Shoulda::Matchers
   config.include Features, type: :feature
   config.include Devise::TestHelpers, type: :controller
+  config.include Devise::TestHelpers, type: :view
   config.infer_base_class_for_anonymous_controllers = false
   config.infer_spec_type_from_file_location!
   config.order = "random"

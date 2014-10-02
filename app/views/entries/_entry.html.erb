@@ -1,0 +1,10 @@
+<h3>
+  <%= l(entry.date, format: :month_day_year) %>
+  <small>
+    <%= l(entry.date, format: :day_of_week) %>
+  </small>
+</h3>
+
+<%= highlight(simple_format(entry.body), @search.term) %>
+
+<hr />

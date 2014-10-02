@@ -1,0 +1,33 @@
+<% content_for :header do %>
+  <p></p>
+<% end %>
+
+<%= form_for @search,
+  url: search_path,
+  method: :get,
+  html: { class: "form-horizontal" } do |f|
+%>
+  <div class="form-group">
+    <div class="col-xs-8 col-sm-11">
+      <%= f.text_field :term,
+        class: "form-control input-lg",
+        autofocus: true,
+        placeholder: "What are you looking for?"
+      %>
+    </div>
+
+    <div class="col-xs-4 col-sm-1">
+      <%= f.submit "Search", class: "btn btn-default btn-lg" %>
+    </div>
+  </div>
+<% end %>
+
+<% if @search.entries.present? %>
+  <p>We found <%= @search.entries.count %> entries.</p>
+  <%= render @search.entries %>
+<% elsif @search.term.present? %>
+  <p>
+    Sorry, we couldn't find any entries that include
+    <mark><%= @search.term %></mark>.
+  </p>
+<% end %>

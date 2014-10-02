@@ -257,6 +257,10 @@ GEM
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    rspec-activemodel-mocks (1.0.1)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      rspec-mocks (>= 2.99, < 4.0)
     rspec-core (3.0.4)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.4)
@@ -379,6 +383,7 @@ DEPENDENCIES
   rails_12factor
   recipient_interceptor
   redis
+  rspec-activemodel-mocks
   rspec-rails (~> 3.0.0)
   sass-rails (~> 4.0.3)
   shoulda-matchers

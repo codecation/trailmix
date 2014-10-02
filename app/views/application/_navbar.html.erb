@@ -31,6 +31,13 @@
           <li>
           <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
           </li>
+          <li>
+            <%= link_to search_path,
+                        title: "Search",
+                        data: { toggle: "tooltip", placement: "bottom" } do %>
+              <span class="glyphicon glyphicon-search"></span>
+            <% end %>
+          </li>
         <% else %>
           <li>
             <%= link_to "Sign in", new_session_path(:user) %>
