@@ -8,6 +8,7 @@ RSpec.describe Entry, :type => :model do
       user = create(:user)
 
       entries = [
+        create(:entry, user: user, created_at: 1.days.ago, date: Time.zone.now),
         create(:entry, user: user, created_at: Time.zone.now),
         create(:entry, user: user, created_at: 1.days.ago),
         create(:entry, user: user, created_at: 2.day.ago)
