@@ -4,8 +4,8 @@ class Entry < ActiveRecord::Base
 
   scope :newest, -> { order("date, created_at DESC") }
 
-  def created_today?
-    created_at.in_time_zone(user.time_zone).beginning_of_day ==
+  def for_today?
+    date.in_time_zone(user.time_zone).beginning_of_day ==
     Time.zone.now.in_time_zone(user.time_zone).beginning_of_day
   end
 
