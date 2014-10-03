@@ -24,13 +24,13 @@ RSpec.describe Entry, :type => :model do
   describe "#for_today?" do
     context "when the entry is dated for today" do
       it "returns true" do
-        Timecop.freeze(Time.utc(2014, 1, 1, 8)) do
+        Timecop.freeze(Time.utc(2014, 1, 1, 20)) do
           user = create(:user, time_zone: "UTC")
-          entry = create(:entry, user: user, created_at: 1.hour.ago)
+          entry = create(:entry, user: user, date: Time.zone.now)
 
           expect(entry).to be_for_today
 
-          user.update_attribute(:time_zone, "Pacific Time (US & Canada)")
+          user.update_attribute(:time_zone, "Guam") # UTC+10
 
           expect(entry).to_not be_for_today
         end
