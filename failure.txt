@@ -1,0 +1,33 @@
+Failures:
+
+  1) Entry#date returns the created date when not set
+     Failure/Error: expect(entry.date).to eq(yesterday.to_date)
+
+       expected: Thu, 02 Oct 2014
+            got: Wed, 01 Oct 2014
+
+       (compared using ==)
+
+       Diff:
+       @@ -1,2 +1,2 @@
+       -Thu, 02 Oct 2014
+       +Wed, 01 Oct 2014
+
+     # ./spec/models/entry_spec.rb:46:in `block (3 levels) in <top (required)>'
+     # -e:1:in `<main>'
+
+
+
+In console:
+
+[10] pry(main)> Time.now
+=> 2014-10-02 20:44:04 -0400
+[11] pry(main)> Date.today
+=> Thu, 02 Oct 2014
+[12] pry(main)> 1.day.ago
+=> Thu, 02 Oct 2014 00:44:11 UTC +00:00
+[13] pry(main)> Time.zone.now
+=> Fri, 03 Oct 2014 00:44:17 UTC +00:00
+[14] pry(main)> Time.zone.now.yesterday
+=> Thu, 02 Oct 2014 00:44:22 UTC +00:00
+[15] pry(main)> 
