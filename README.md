@@ -11,7 +11,7 @@ to that email, and a journal entry is created.
 To encourage you to write, and to provide a delightful reminiscence, each
 prompt email contains a previous entry chosen at random.
 
-![homepage](https://cloud.githubusercontent.com/assets/65323/4453095/ccb7bb0c-4853-11e4-973f-5c54d0b18eda.png)
+![homepage](https://cloud.githubusercontent.com/assets/65323/4512764/26484d88-4b44-11e4-9a79-7ee06d6942e7.png)
 
 [Trailmix]: https://www.trailmix.life
 
