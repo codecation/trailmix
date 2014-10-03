@@ -1,3 +1,15 @@
+<% content_for :header do %>
+  <div class="jumbotron">
+    <p><h1>Trailmix</h1></p>
+    <p class="lead">A private place to write.</p>
+    <p>
+      <%= link_to "Get started",
+                  "#sign-up-form",
+                  class: "btn btn-default btn-lg sign-up-link" %>
+    </p>
+  </div>
+<% end %>
+
 <p>
   Hey there,
 </p>
@@ -81,3 +93,4 @@
 <p class="lead">Start journaling today.</p>
 
 <%= render "subscriptions/payment_form" %>
+<%= render "subscriptions/sign_up_link_javascript" %>
