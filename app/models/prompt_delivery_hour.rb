@@ -5,11 +5,11 @@ class PromptDeliveryHour
   end
 
   def in_time_zone
-    in_24_hours(hour + time_zone_offset)
+    in_24_hours(hour + offset)
   end
 
   def in_utc
-    in_24_hours(hour - time_zone_offset)
+    in_24_hours(hour - offset)
   end
 
   private
@@ -26,7 +26,15 @@ class PromptDeliveryHour
     end
   end
 
+  def offset
+    time_zone_offset + dst_offset
+  end
+
   def time_zone_offset
     ActiveSupport::TimeZone[time_zone].utc_offset / 1.hour
+  end
+
+  def dst_offset
+    Time.zone.now.in_time_zone(time_zone).dst? ? 1 : 0
   end
 end
