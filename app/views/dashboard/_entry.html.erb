@@ -1,19 +1,13 @@
 <% content_for :header do %>
   <h1>
-    <% if entry.created_today? %>
+    <% if entry.for_today? %>
       Today
     <% else %>
-      <%= l(
-        entry.created_at.in_time_zone(current_user.time_zone),
-        format: :day_of_week
-      )%>
+      <%= l(entry.date, format: :day_of_week) %>
     <% end %>
   </h1>
   <p class="lead">
-    <%= l(
-      entry.created_at.in_time_zone(current_user.time_zone),
-      format: :month_day_year
-    )%>
+    <%= l(entry.date, format: :month_day_year) %>
   </p>
 <% end %>
 
