@@ -1,8 +1,8 @@
 feature "User visits dashboard" do
   scenario "when signed in with entries" do
     user = create(:user)
-    create(:entry, user: user, body: "My first entry")
-    create(:entry, user: user, body: "My latest entry")
+    create(:entry, user: user, body: "My first entry", date: 2.days.ago)
+    create(:entry, user: user, body: "My latest entry", date: 1.day.ago)
 
     login_as(user)
     visit dashboard_path

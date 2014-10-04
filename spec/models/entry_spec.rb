@@ -4,14 +4,14 @@ RSpec.describe Entry, :type => :model do
   it { should belong_to(:import) }
 
   describe ".newest" do
-    it "sorts entries with the newest first" do
+    it "sorts entries, by date, with the newest first" do
       user = create(:user)
 
       entries = [
-        create(:entry, user: user, created_at: 1.days.ago, date: Time.zone.now),
-        create(:entry, user: user, created_at: Time.zone.now),
-        create(:entry, user: user, created_at: 1.days.ago),
-        create(:entry, user: user, created_at: 2.day.ago)
+        create(:entry, user: user, date: Time.zone.now, created_at: 1.day.ago),
+        create(:entry, user: user, date: 1.days.ago, created_at: 3.days.ago),
+        create(:entry, user: user, date: 2.days.ago, created_at: Time.zone.now),
+        create(:entry, user: user, date: 3.day.ago, created_at: 2.days.ago),
       ]
 
       newest_entries = user.entries.newest
