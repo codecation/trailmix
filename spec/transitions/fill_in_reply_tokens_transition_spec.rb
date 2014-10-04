@@ -5,7 +5,8 @@ describe FillInReplyTokensTransition do
 
     FillInReplyTokensTransition.new.perform
 
-    users.each { |user| expect(user.reload.reply_token).to_not be_nil }
+    users_without_tokens = User.where(reply_token: nil)
+    expect(users_without_tokens).to be_empty
   end
 
   it "does not mess with existing reply tokens" do
