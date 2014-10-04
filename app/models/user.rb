@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  include ReplyToken
+
   devise :database_authenticatable,
          :recoverable,
          :rememberable,
@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
 
   def self.promptable(time = Time.zone.now.utc)
     where(prompt_delivery_hour: time.hour)
+  end
+
+  def reply_email
+    "#{reply_token}@#{ENV.fetch('SMTP_DOMAIN')}"
   end
 
   def newest_entry

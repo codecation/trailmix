@@ -14,6 +14,33 @@ RSpec.describe User, :type => :model do
     end
   end
 
+  describe "#reply_token" do
+    it "is generated automatically before saving" do
+      user = build(:user, reply_token: nil)
+
+      user.save
+
+      expect(user.reload.reply_token).to_not be_nil
+    end
+
+    it "is unique" do
+      first_user = create(:user)
+      second_user = create(:user)
+
+      expect(first_user.reply_token).to_not eq second_user.reply_token
+    end
+  end
+
+  describe "#reply_email" do
+    it "returns the full reply-to email address" do
+      reply_token = "abc123"
+      user = create(:user, reply_token: reply_token)
+      reply_email = "#{reply_token}@#{ENV.fetch('SMTP_DOMAIN')}"
+
+      expect(user.reply_email).to eq reply_email
+    end
+  end
+
   describe "#newest_entry" do
     it "returns the newest entry" do
       user = create(:user)
