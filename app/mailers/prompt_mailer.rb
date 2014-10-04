@@ -3,6 +3,7 @@ class PromptMailer < ActionMailer::Base
     @entry = entry
 
     mail(
+      from: "Trailmix <#{user.reply_email}>",
       to: user.email,
       subject: Subject.new(user)
     )
