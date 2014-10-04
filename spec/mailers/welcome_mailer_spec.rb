@@ -1,7 +1,7 @@
 describe WelcomeMailer do
   describe ".welcome"  do
     it "welcomes the user" do
-      user = create(:user, reply_token: "abc123")
+      user = create(:user)
 
       mail = WelcomeMailer.welcome(user)
 
