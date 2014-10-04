@@ -1,22 +1,15 @@
-module ReplyToken
-  def self.included(klass)
-    klass.before_create :generate_reply_token
+class ReplyToken
+  def initialize(email)
+    @email = email
   end
 
-  def generate_reply_token
-    unless reply_token
-      self.reply_token = loop do
-        token = new_reply_token
-        break token unless token_exists?(token)
-      end
-    end
+  def generate
+    new_reply_token
   end
 
   private
 
-  def token_exists?(token)
-    self.class.exists?(reply_token: token)
-  end
+  attr_reader :email
 
   def new_reply_token
     "#{username}.#{random_suffix}".downcase

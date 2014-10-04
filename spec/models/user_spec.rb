@@ -20,14 +20,7 @@ RSpec.describe User, :type => :model do
 
       user.save
 
-      expect(user.reload.reply_token).to_not be_nil
-    end
-
-    it "is unique" do
-      first_user = create(:user)
-      second_user = create(:user)
-
-      expect(first_user.reply_token).to_not eq second_user.reply_token
+      expect(user.reply_token).to_not be_nil
     end
   end
 
