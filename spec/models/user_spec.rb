@@ -33,7 +33,7 @@ RSpec.describe User, :type => :model do
 
     it "ends with the email domain" do
       user = create(:user)
-      email_domain = ENV.fetch('SMTP_DOMAIN')
+      email_domain = ENV.fetch("SMTP_DOMAIN")
 
       expect(user.reply_email).to end_with("@#{email_domain}")
     end
