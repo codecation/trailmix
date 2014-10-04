@@ -31,7 +31,9 @@ module Trailmix
 
     config.eager_load_paths += ["#{config.root}/app/workers"]
 
-    ActionMailer::Base.default from: "Trailmix <today@#{ENV.fetch('SMTP_DOMAIN')}>"
+    ActionMailer::Base.default(
+      from: "Team Trailmix <team@#{ENV.fetch('SMTP_DOMAIN')}>"
+    )
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
