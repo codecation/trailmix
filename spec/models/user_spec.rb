@@ -25,12 +25,17 @@ RSpec.describe User, :type => :model do
   end
 
   describe "#reply_email" do
-    it "returns the full reply-to email address" do
-      reply_token = "abc123"
-      user = create(:user, reply_token: reply_token)
-      reply_email = "#{reply_token}@#{ENV.fetch('SMTP_DOMAIN')}"
+    it "starts with the reply token" do
+      user = create(:user)
 
-      expect(user.reply_email).to eq reply_email
+      expect(user.reply_email).to start_with(user.reply_token)
+    end
+
+    it "ends with the email domain" do
+      user = create(:user)
+      email_domain = ENV.fetch('SMTP_DOMAIN')
+
+      expect(user.reply_email).to end_with("@#{email_domain}")
     end
   end
 

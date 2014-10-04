@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :entries, dependent: :destroy
   has_many :imports, dependent: :destroy
 
-  before_create :generate_reply_token, unless: :reply_token
+  before_create :generate_reply_token
 
   def self.promptable(time = Time.zone.now.utc)
     where(prompt_delivery_hour: time.hour)

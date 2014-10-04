@@ -9,8 +9,8 @@ describe FillInReplyTokensTransition do
   end
 
   it "does not mess with existing reply tokens" do
-    existing_reply_token = "abc123"
-    user = create(:user, reply_token: existing_reply_token)
+    user = create(:user)
+    existing_reply_token = user.reply_token
 
     FillInReplyTokensTransition.new.perform
 
