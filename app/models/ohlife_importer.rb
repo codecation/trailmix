@@ -30,7 +30,7 @@ class OhlifeImporter
     end
 
     @entry = Entry.new(body: "", user: user, import: import)
-    @entry.created_at = line
+    @entry.date = line
   end
 
   def save_entry
