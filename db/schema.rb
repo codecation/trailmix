@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004031950) do
+ActiveRecord::Schema.define(version: 20141004062429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,10 +47,11 @@ ActiveRecord::Schema.define(version: 20141004031950) do
     t.datetime "updated_at",                                                    null: false
     t.string   "time_zone",              default: "Central Time (US & Canada)", null: false
     t.integer  "prompt_delivery_hour",   default: 2,                            null: false
-    t.string   "reply_token"
+    t.string   "reply_token",                                                   null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reply_token"], name: "index_users_on_reply_token", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
