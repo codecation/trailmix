@@ -3,6 +3,10 @@ class ReplyToken
     @email = email
   end
 
+  def self.generate(email)
+    new(email).generate
+  end
+
   def generate
     "#{username}.#{random_suffix}".downcase
   end

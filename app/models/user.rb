@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def generate_reply_token
-    self.reply_token = ReplyToken.new(email).generate
+    self.reply_token = ReplyToken.generate(email)
   end
 
   def newest_entry
