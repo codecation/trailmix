@@ -6,7 +6,7 @@ class FillInDateTransition
   private
 
   def set_date(entry)
-    entry.update_attribute(:date, entry.created_at.to_date)
+    entry.update_attributes!(date: entry.created_at.to_date)
   end
 
   def entries
