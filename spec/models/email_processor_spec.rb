@@ -1,20 +1,5 @@
 describe EmailProcessor do
   describe "#process" do
-    context "for an old email to today@trailmix.life" do
-      it "creates an entry based on the user's email" do
-        user = create(:user)
-        email = create(
-          :griddler_email,
-          from: { email: user.email },
-          body: "I am great"
-        )
-
-        EmailProcessor.new(email).process
-
-        expect(user.newest_entry.body).to eq("I am great")
-      end
-    end
-
     it "creates an entry based on the email token" do
       user = create(:user)
       email = create(
@@ -44,11 +29,7 @@ describe EmailProcessor do
     context "when a user can't be found" do
       it "raises an exception" do
         user = create(:user)
-        email = create(
-          :griddler_email,
-          from: { email: "nobody@example.com" },
-          to: [{ token: "not-a-token" }]
-        )
+        email = create(:griddler_email, to: [{ token: "not-a-token" }])
 
         expect do
           EmailProcessor.new(email).process
