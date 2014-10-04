@@ -1,10 +1,25 @@
 describe EmailProcessor do
   describe "#process" do
-    it "creates an entry based on the email" do
+    context "for an old email to today@trailmix.life" do
+      it "creates an entry based on the user's email" do
+        user = create(:user)
+        email = create(
+          :griddler_email,
+          from: { email: user.email },
+          body: "I am great"
+        )
+
+        EmailProcessor.new(email).process
+
+        expect(user.newest_entry.body).to eq("I am great")
+      end
+    end
+
+    it "creates an entry based on the email token" do
       user = create(:user)
       email = create(
         :griddler_email,
-        from: { email: user.email },
+        to: [{ token: user.reply_token }],
         body: "I am great"
       )
 
@@ -13,11 +28,11 @@ describe EmailProcessor do
       expect(user.newest_entry.body).to eq("I am great")
     end
 
-    it "creates an entry even if the email address is uppercase" do
+    it "creates an entry even if the email token is uppercase" do
       user = create(:user)
       email = create(
         :griddler_email,
-        from: { email: user.email.upcase },
+        to: [{ token: user.reply_token.upcase }],
         body: "I am great"
       )
 
@@ -29,7 +44,11 @@ describe EmailProcessor do
     context "when a user can't be found" do
       it "raises an exception" do
         user = create(:user)
-        email = create(:griddler_email, from: { email: "nobody@example.com" })
+        email = create(
+          :griddler_email,
+          from: { email: "nobody@example.com" },
+          to: [{ token: "not-a-token" }]
+        )
 
         expect do
           EmailProcessor.new(email).process
@@ -40,7 +59,11 @@ describe EmailProcessor do
     context "when the entry can't be created" do
       it "raises an exception" do
         user = create(:user)
-        email = create(:griddler_email, from: { email: user.email }, body: nil)
+        email = create(
+          :griddler_email,
+          to: [{ token: user.reply_token }],
+          body: nil
+        )
 
         expect do
           EmailProcessor.new(email).process
@@ -51,7 +74,7 @@ describe EmailProcessor do
     it "sets the entry date to today's date in the user's time zone" do
       Timecop.freeze(2014, 1, 1, 20) do # 8 PM UTC
         user = create(:user, time_zone: "Guam") # UTC+10
-        email = create(:griddler_email, from: { email: user.email })
+        email = create(:griddler_email, to: [{ token: user.reply_token }])
 
         EmailProcessor.new(email).process
 
@@ -65,7 +88,7 @@ describe EmailProcessor do
         user = create(:user, time_zone: "Guam") # UTC+10
         email = create(
           :griddler_email,
-          from: { email: user.email },
+          to: [{ token: user.reply_token }],
           subject: "Re: #{PromptMailer::Subject.new(user, yesterday)}"
         )
 

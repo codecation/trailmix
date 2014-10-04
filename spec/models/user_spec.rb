@@ -60,23 +60,27 @@ RSpec.describe User, :type => :model do
 
   describe "#prompt_delivery_hour" do
     it "returns the prompt delivery hour in the user's time zone" do
-      user = create(:user, time_zone: "Melbourne") # Melbourne is UTC+10
-      user.update_column :prompt_delivery_hour, 5
+      Timecop.freeze(Time.utc(2014, 10, 1)) do
+        user = create(:user, time_zone: "Melbourne") # Melbourne is UTC+10
+        user.update_column :prompt_delivery_hour, 5
 
-      prompt_delivery_hour = user.prompt_delivery_hour
+        prompt_delivery_hour = user.prompt_delivery_hour
 
-      expect(prompt_delivery_hour).to eq(15)
+        expect(prompt_delivery_hour).to eq(15)
+      end
     end
   end
 
   describe "#prompt_delivery_hour=" do
     it "writes the prompt delivery hour in utc" do
-      user = create(:user, time_zone: "Melbourne") # Melbourne is UTC+10
+      Timecop.freeze(Time.utc(2014, 10, 1)) do
+        user = create(:user, time_zone: "Melbourne") # Melbourne is UTC+10
 
-      user.prompt_delivery_hour = 5
-      prompt_delivery_hour = user.read_attribute(:prompt_delivery_hour)
+        user.prompt_delivery_hour = 5
+        prompt_delivery_hour = user.read_attribute(:prompt_delivery_hour)
 
-      expect(prompt_delivery_hour).to eq(19)
+        expect(prompt_delivery_hour).to eq(19)
+      end
     end
   end
 end

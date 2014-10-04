@@ -27,6 +27,6 @@ class PromptDeliveryHour
   end
 
   def time_zone_offset
-    ActiveSupport::TimeZone[time_zone].utc_offset / 1.hour
+    Time.zone.now.in_time_zone(time_zone).utc_offset / 1.hour
   end
 end

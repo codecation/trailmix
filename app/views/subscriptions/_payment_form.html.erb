@@ -17,10 +17,7 @@
 
   <input type="hidden" id="stripe_card_id" name="stripe_card_id">
 
-  <div
-    id="sign-up-button-tooltip"
-    data-toggle="tooltip"
-    data-placement="right">
+  <div data-placement="right">
     <button
       type="button"
       id="sign-up-button"
@@ -29,5 +26,4 @@
   </div>
 <% end %>
 
-<%= render "subscriptions/validation_javascript" %>
 <%= render "subscriptions/stripe_javascript" %>
