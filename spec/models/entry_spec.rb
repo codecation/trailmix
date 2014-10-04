@@ -37,18 +37,4 @@ RSpec.describe Entry, :type => :model do
       end
     end
   end
-
-  describe "#date" do
-    it "returns the created date in the user's time zone when not set" do
-      user = create(:user, time_zone: "Guam") # UTC+10
-      entry = create(
-        :entry,
-        user: user,
-        created_at: Time.utc(2014, 1, 1, 20),
-        date: nil
-      )
-
-      expect(entry.date).to eq(Time.utc(2014, 1, 2))
-    end
-  end
 end
