@@ -10,7 +10,11 @@ class EmailProcessor
   private
 
   def user
-    @user ||= User.find_by!(email: @email.from[:email].downcase)
+    @user ||= User.find_by!(reply_token: reply_token)
+  end
+
+  def reply_token
+    @email.to.first[:token].downcase
   end
 
   def date

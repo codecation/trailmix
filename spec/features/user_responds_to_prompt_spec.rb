@@ -1,6 +1,3 @@
-require 'rails_helper'
-require 'rack/test'
-
 feature "User responds to a prompt" do
   include Rack::Test::Methods
 
@@ -13,18 +10,18 @@ feature "User responds to a prompt" do
   end
 
   def simulate_email_from(user)
-    post("/email_processor", email_params.merge(from: user.email))
+    post("/email_processor", email_params(user))
   end
 
-  def email_params
+  def email_params(user)
     {
-      headers: 'Received: by 127.0.0.1 with SMTP...',
-      to: 'thoughtbot <tb@example.com>',
-      cc: 'CC <cc@example.com>',
-      from: 'John Doe <someone@example.com>',
-      subject: 'hello there',
-      text: 'this is an email message',
-      html: '<p>this is an email message</p>',
+      headers: "Received: by 127.0.0.1 with SMTP...",
+      to: user.reply_email,
+      cc: "CC <cc@example.com>",
+      from: "whocares@example.com",
+      subject: "hello there",
+      text: "this is an email message",
+      html: "<p>this is an email message</p>",
       SPF: "pass"
     }
   end
