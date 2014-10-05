@@ -1,0 +1,29 @@
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
+<h1 class="text-center">Sign ups</h1>
+<p class="lead text-center">Are we still growing?</p>
+<%= line_chart @dashboard.users_by_day_since(30.days.ago) %><br />
+
+<h1 class="text-center">New entries</h1>
+<p class="lead text-center">Are customers using the service?</p>
+<%= line_chart @dashboard.entries_by_day_since(30.days.ago) %><br />
+
+<h1 class="text-center">Active trials</h1>
+<p class="lead text-center">Does anyone need help?</p>
+<p><table class="table table-striped table-hover">
+  <tr>
+    <th>Email</th>
+    <th>Signed up</th>
+    <th>Entries</th>
+    <th>Per day</th>
+  </tr>
+
+  <% @dashboard.users_created_since(14.days.ago).order(:created_at).each do |user| %>
+    <tr class="<%= @dashboard.trial_status_for(user) %>">
+      <td><%= link_to user.email, "mailto:#{user.email}" %></td>
+      <td><%= l(user.created_at.to_date, format: :month_day) %></td>
+      <td><%= user.entries.count %></td>
+      <td><%= @dashboard.entries_per_day_for(user) %></td>
+    </tr>
+  <% end %>
+</table></p>

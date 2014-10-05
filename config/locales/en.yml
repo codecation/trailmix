@@ -7,6 +7,8 @@ en:
         "%A"
       month_day_year:
         "%B %-d, %Y"
+      month_day:
+        "%b %-d"
       with_weekday:
         "%a %m/%d/%y"
 
