@@ -1,22 +1,6 @@
 feature "User responds to a prompt" do
   include Rack::Test::Methods
 
-  scenario "and an entry is created" do
-    user = create(:user, entries: [])
-
-    simulate_email_from(user)
-
-    expect(user.reload.entries).not_to be_empty
-  end
-
-  scenario "and it was sent to today@trailmix.life" do
-    user = create(:user, entries: [])
-
-    simulate_email_from(user, to: "today@trailmix.life")
-
-    expect(user.reload.entries).not_to be_empty
-  end
-
   scenario "and it does not include the original prompt email text" do
     user = create(:user, entries: [])
     text = "User response.\n\n#{PromptMailer::PROMPT_TEXT}\n\nOld entry."
