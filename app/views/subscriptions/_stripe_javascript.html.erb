@@ -10,6 +10,7 @@
       panelLabel: "{{amount}} after 14-day trial",
       allowRememberMe: false,
       token: function(token) {
+        $("#sign-up-button").button("loading");
         $("#stripe_card_id").val(token.id);
         $("#sign-up-form").submit();
       }
