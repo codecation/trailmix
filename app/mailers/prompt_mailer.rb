@@ -1,4 +1,6 @@
 class PromptMailer < ActionMailer::Base
+  PROMPT_TEXT = "How was your day?"
+
   def prompt(user, entry)
     @entry = entry
 

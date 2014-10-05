@@ -17,6 +17,16 @@ feature "User responds to a prompt" do
     expect(user.reload.entries).not_to be_empty
   end
 
+  scenario "and it does not include the original prompt email text" do
+    user = create(:user, entries: [])
+    text = "User response.\n\n#{PromptMailer::PROMPT_TEXT}\n\nOld entry."
+
+    simulate_email_from(user, text: text)
+    result = user.reload.entries.last.body
+
+    expect(result).to eq("User response.")
+  end
+
   def simulate_email_from(user, options = {})
     post("/email_processor", email_params(user).merge(options))
   end
