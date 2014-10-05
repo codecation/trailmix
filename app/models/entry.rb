@@ -7,8 +7,4 @@ class Entry < ActiveRecord::Base
   def for_today?
     date == Time.zone.now.in_time_zone(user.time_zone).to_date
   end
-
-  def date
-    super || created_at.in_time_zone(user.time_zone).to_date
-  end
 end

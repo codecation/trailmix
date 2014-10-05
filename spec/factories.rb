@@ -8,6 +8,7 @@ FactoryGirl.define do
 
   factory :entry do
     user
+    date Time.zone.now
     body 'Entry body'
   end
 
