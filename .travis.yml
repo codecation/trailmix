@@ -19,6 +19,6 @@ notifications:
   email:
     - false
 rvm:
-  - 2.1.2
+  - 2.1.3
 addons:
   postgresql: "9.3"
