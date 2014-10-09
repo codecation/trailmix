@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get "/landing", to: "landing#show", as: :new_registration
   get "/search", to: "searches#show"
 
+  get "/pages/ohlife_refugees", to: redirect("/pages/ohlife-alternative")
+
   resource :export, only: [:new]
   resources :imports, only: [:new, :create]
   resource :settings, only: [:edit, :update]
