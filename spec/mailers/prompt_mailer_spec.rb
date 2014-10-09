@@ -50,7 +50,7 @@ describe PromptMailer do
 
       it "says how long ago the past entry was" do
         user = create(:user)
-        entry = create(:entry, user: user, created_at: 1.year.ago)
+        entry = create(:entry, user: user, date: 1.year.ago)
 
         mail = PromptMailer.prompt(user, entry)
 
