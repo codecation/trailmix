@@ -1,6 +1,7 @@
 RSpec.describe User, :type => :model do
   it { should have_many(:entries).dependent(:destroy) }
   it { should have_many(:imports).dependent(:destroy) }
+  it { should have_one(:subscription).dependent(:destroy) }
 
   describe ".promptable" do
     it "returns promptable users for the current hour" do
