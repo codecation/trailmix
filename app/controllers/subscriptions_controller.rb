@@ -3,8 +3,7 @@ class SubscriptionsController < ApplicationController
     user = build_user
 
     if user.valid?
-      create_stripe_customer
-      user.save!
+      create_subscription(user)
       send_welcome_email(user)
       sign_in(user)
       redirect_to dashboard_path
@@ -23,6 +22,12 @@ class SubscriptionsController < ApplicationController
   def build_user
     User.new(email: params[:email],
              password: params[:password])
+  end
+
+  def create_subscription(user)
+    stripe_customer_id = create_stripe_customer.id
+    user.save!
+    user.create_subscription!(stripe_customer_id: stripe_customer_id)
   end
 
   def create_stripe_customer
