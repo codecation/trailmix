@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def newest_entry
-    entries.last
+    entries.newest
   end
 
   def random_entry

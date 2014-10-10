@@ -40,10 +40,10 @@ RSpec.describe User, :type => :model do
   end
 
   describe "#newest_entry" do
-    it "returns the newest entry" do
+    it "returns the newest entry by date" do
       user = create(:user)
-      first_entry = create(:entry, user: user, created_at: 1.day.ago)
-      newest_entry = create(:entry, user: user, created_at: Time.zone.now)
+      newest_entry = create(:entry, user: user, date: 1.day.ago)
+      oldest_entry = create(:entry, user: user, date: 2.days.ago)
 
       expect(user.newest_entry).to eq(newest_entry)
     end
