@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010010843) do
+ActiveRecord::Schema.define(version: 20141010201317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20141010010843) do
     t.string   "ohlife_export", null: false
   end
 
+  create_table "subscriptions", force: true do |t|
+    t.integer  "user_id",            null: false
+    t.string   "stripe_customer_id", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "subscriptions", ["stripe_customer_id"], name: "index_subscriptions_on_stripe_customer_id", unique: true, using: :btree
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", unique: true, using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",                           null: false
     t.string   "encrypted_password",     default: "",                           null: false
@@ -48,7 +58,6 @@ ActiveRecord::Schema.define(version: 20141010010843) do
     t.string   "time_zone",              default: "Central Time (US & Canada)", null: false
     t.integer  "prompt_delivery_hour",   default: 2,                            null: false
     t.string   "reply_token",                                                   null: false
-    t.string   "stripe_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
