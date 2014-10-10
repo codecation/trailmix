@@ -3,7 +3,7 @@ class SubscriptionsController < ApplicationController
     user = build_user
 
     if user.valid?
-      create_stripe_customer
+      user.stripe_id = create_stripe_customer.id
       user.save!
       send_welcome_email(user)
       sign_in(user)

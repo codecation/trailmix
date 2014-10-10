@@ -4,11 +4,12 @@ describe SubscriptionsController, sidekiq: :inline do
   describe "#create" do
     before do
       stub_sign_in
-      stub_stripe_customer_create
     end
 
     context "with valid params" do
       it "creates a user, stripe customer, and email" do
+        stub_stripe_customer_create
+
         post :create, default_params
 
         expect(User.count).to eq(1)
@@ -18,6 +19,16 @@ describe SubscriptionsController, sidekiq: :inline do
             card: default_params[:stripe_card_id],
             plan: Rails.configuration.stripe[:plan_name]))
         expect(ActionMailer::Base.deliveries).not_to be_empty
+      end
+
+      it "persists the Stripe customer id" do
+        stripe_id = "cus_123"
+        stub_stripe_customer_create(stripe_id)
+
+        post :create, default_params
+        user = User.last
+
+        expect(user.stripe_id).to eq(stripe_id)
       end
     end
 
@@ -59,8 +70,10 @@ describe SubscriptionsController, sidekiq: :inline do
       allow(Stripe::Customer).to(receive(:create).and_raise(error))
     end
 
-    def stub_stripe_customer_create
-      allow(Stripe::Customer).to(receive(:create))
+    def stub_stripe_customer_create(stripe_id = "stripe id")
+      allow(Stripe::Customer).to(
+        receive(:create).and_return(
+          double("Stripe::Customer", id: stripe_id)))
     end
 
     def stub_sign_in
