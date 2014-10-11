@@ -34,6 +34,14 @@ RSpec.describe Entry, :type => :model do
     end
   end
 
+  describe ".random" do
+    it "returns a random entry" do
+      entry = create(:entry)
+
+      expect(Entry.random).to eq(entry)
+    end
+  end
+
   describe "#for_today?" do
     context "when the entry is dated for today" do
       it "returns true" do

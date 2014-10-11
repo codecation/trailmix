@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def random_entry
-    entries.sample
+    entries.random
   end
 
   def prompt_delivery_hour

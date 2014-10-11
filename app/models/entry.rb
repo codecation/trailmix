@@ -8,6 +8,10 @@ class Entry < ActiveRecord::Base
     by_date.first
   end
 
+  def self.random
+    order("RANDOM()").first
+  end
+
   def for_today?
     date == Time.zone.now.in_time_zone(user.time_zone).to_date
   end
