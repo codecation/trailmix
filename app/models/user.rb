@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   before_create :generate_reply_token
 
+  delegate :stripe_customer_id, to: :subscription
+
   def self.promptable(time = Time.zone.now.utc)
     where(prompt_delivery_hour: time.hour)
   end

@@ -7,6 +7,11 @@ FactoryGirl.define do
     password 'abc123'
   end
 
+  factory :subscription do
+    user
+    stripe_customer_id
+  end
+
   factory :entry do
     user
     date Time.zone.now

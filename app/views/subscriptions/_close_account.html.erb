@@ -1,0 +1,66 @@
+<p>
+  <small>
+    <%= link_to "Close my account",
+      "#",
+      data: { toggle: "modal", target: "#closeAccount" }
+    %>.
+  </small>
+
+  <div class="modal fade"
+       id="closeAccount"
+       tabindex="-1"
+       role="dialog"
+       aria-labelledby="myModalLabel"
+       aria-hidden="true">
+  <%= form_for Cancellation.new do |f| %>
+    <div class="modal-dialog"><div class="modal-content">
+      <div class="modal-header">
+        <button type="button"
+                class="close"
+                data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <h3 class="modal-title" id="myModalLabel">Close my account :(</h3>
+      </div>
+      <div class="modal-body">
+        <p>
+          When your account is closed, all your information and entries will be
+          permanently removed from Trailmix.
+        </p>
+
+        <p>
+          <strong>This action cannot be undone.</strong>
+        </p>
+
+        <p>
+          Please <strong><%= link_to "export", new_export_path %></strong> your
+          entries now before closing your account.
+        </p>
+
+        <p>
+          If you can provide any feedback to help improve Trailmix for other
+          journalers, we would be very grateful.
+        </p>
+
+        <input type="text"
+              class="form-control input-lg"
+              id="reason"
+              name="reason"
+              placeholder="Any feedback for us?">
+      </div>
+      <div class="modal-footer">
+        <button type="button"
+                class="btn btn-default btn-lg"
+                data-dismiss="modal">
+                Cancel
+        </button>
+        <button type="submit"
+                class="btn btn-primary btn-lg">
+                Close my account
+        </button>
+      </div>
+    </div></div>
+  <% end %>
+  </div>
+</p>

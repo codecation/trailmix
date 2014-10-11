@@ -3,6 +3,7 @@
   <p class="lead">When would you like your daily email?</p>
 <% end %>
 
+<p>
 <%= form_tag settings_path, method: :put do %>
   <div class="form-group">
     <%= time_zone_select :user,
@@ -22,3 +23,8 @@
 
   <button type="submit" class="btn btn-default btn-lg">Save</button>
 <% end %>
+</p>
+
+<hr />
+
+<%= render "subscriptions/close_account" %>
