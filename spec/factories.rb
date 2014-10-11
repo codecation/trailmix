@@ -1,5 +1,6 @@
 FactoryGirl.define do
   sequence(:email) { |n| "user-#{n}@example.com" }
+  sequence(:stripe_customer_id) { |n| "cus_#{n}" }
 
   factory :user do
     email
@@ -10,6 +11,11 @@ FactoryGirl.define do
     user
     date Time.zone.now
     body 'Entry body'
+  end
+
+  factory :subscription do
+    user
+    stripe_customer_id
   end
 
   factory :import do
