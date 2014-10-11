@@ -84,4 +84,13 @@ RSpec.describe User, :type => :model do
       end
     end
   end
+
+  describe "#stripe_customer_id" do
+    it "delegates to the subscription" do
+      subscription = create(:subscription)
+      user = subscription.user
+
+      expect(user.stripe_customer_id).to eq(subscription.stripe_customer_id)
+    end
+  end
 end

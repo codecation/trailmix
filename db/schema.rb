@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010201317) do
+ActiveRecord::Schema.define(version: 20141011191307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cancellations", force: true do |t|
+    t.string   "email",              null: false
+    t.string   "stripe_customer_id", null: false
+    t.text     "reason"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   create_table "entries", force: true do |t|
     t.integer  "user_id",    null: false

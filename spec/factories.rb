@@ -1,9 +1,15 @@
 FactoryGirl.define do
   sequence(:email) { |n| "user-#{n}@example.com" }
+  sequence(:stripe_customer_id) { |n| "cus_#{n}" }
 
   factory :user do
     email
     password 'abc123'
+  end
+
+  factory :subscription do
+    user
+    stripe_customer_id
   end
 
   factory :entry do
