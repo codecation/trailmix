@@ -50,12 +50,16 @@ RSpec.describe User, :type => :model do
     end
   end
 
-  describe "#random_entry" do
-    it "returns a random entry" do
+  describe "#prompt_entry" do
+    it "delegates to PromptEntry" do
       user = create(:user)
-      entry = create(:entry, user: user)
+      allow(PromptEntry).to(
+        receive(:best).with(user.entries, user.time_zone).
+        and_return("best entry"))
 
-      expect(user.random_entry).to eq(entry)
+      entry = user.prompt_entry
+
+      expect(entry).to eq("best entry")
     end
   end
 

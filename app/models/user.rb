@@ -29,8 +29,8 @@ class User < ActiveRecord::Base
     entries.newest
   end
 
-  def random_entry
-    entries.random
+  def prompt_entry
+    PromptEntry.best(entries, time_zone)
   end
 
   def prompt_delivery_hour
