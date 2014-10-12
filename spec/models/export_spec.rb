@@ -1,12 +1,13 @@
 describe Export do
   describe "#filename" do
     it "includes today's date" do
-      today = Date.new(2014, 1, 2)
-      user = double(:user)
+      Timecop.freeze(Time.utc(2014, 1, 2)) do
+        export = Export.new(double(:user))
 
-      export = Export.new(user, today)
+        filename = export.filename
 
-      expect(export.filename).to eq("trailmix-2014-01-02.json")
+        expect(filename).to eq("trailmix-2014-01-02.json")
+      end
     end
   end
 

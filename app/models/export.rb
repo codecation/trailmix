@@ -1,11 +1,10 @@
 class Export
-  def initialize(user, today = Time.current.to_date)
+  def initialize(user)
     @user = user
-    @today = today
   end
 
   def filename
-    "trailmix-#{today}.json"
+    "trailmix-#{Date.current}.json"
   end
 
   def to_json
@@ -14,5 +13,5 @@ class Export
 
   private
 
-  attr_reader :user, :today
+  attr_reader :user
 end
