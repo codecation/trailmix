@@ -24,7 +24,7 @@
 
 <% if @search.entries.present? %>
   <p>We found <%= @search.entries.count %> entries.</p>
-  <%= render @search.entries %>
+  <%= render partial: "entry", collection: @search.entries %>
 <% elsif @search.term.present? %>
   <p>
     Sorry, we couldn't find any entries that include
