@@ -41,6 +41,16 @@ describe EmailProcessor do
       expect(user.newest_entry.body).to eq("I am great")
     end
 
+    it "parses the email body with an email reply parser" do
+      user = create(:user)
+      email = create(:griddler_email, to: [{ token: user.reply_token }])
+
+      expect(EmailReplyParser).to(
+        receive(:parse_reply).with(email.body).and_return(""))
+
+      EmailProcessor.new(email).process
+    end
+
     context "when a user can't be found" do
       it "raises an exception" do
         user = create(:user)
@@ -59,11 +69,9 @@ describe EmailProcessor do
     context "when the entry can't be created" do
       it "raises an exception" do
         user = create(:user)
-        email = create(
-          :griddler_email,
-          to: [{ token: user.reply_token }],
-          body: nil
-        )
+        email = create(:griddler_email)
+
+        allow(user.entries).to receive(:create!).and_raise
 
         expect do
           EmailProcessor.new(email).process
