@@ -51,10 +51,6 @@ with the necessary dependencies to run and test this app:
 
     % ./bin/setup
 
-
-(Note: the final steps of this script will fail, because you don't have access
-to our heroku application.)
-
 The script also assumes you have a machine equipped with Ruby, Postgres, etc.
 If not, set up your machine with [this script].
 
