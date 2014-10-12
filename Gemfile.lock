@@ -121,6 +121,7 @@ GEM
       json
       thread
       thread_safe
+    email_reply_parser (0.5.8)
     email_validator (1.4.0)
       activemodel
     erubis (2.7.0)
@@ -364,6 +365,7 @@ DEPENDENCIES
   database_cleaner
   devise
   dotenv-rails
+  email_reply_parser
   email_validator
   factory_girl_rails
   fake_stripe

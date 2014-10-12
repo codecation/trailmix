@@ -30,7 +30,7 @@ FactoryGirl.define do
       host: "example.com",
       name: nil
     }]
-    from [{ email: "from_user@example.com" }]
+    from ({ email: "from_user@example.com" })
     subject "Hello Trailmix"
     body "Today was great"
   end

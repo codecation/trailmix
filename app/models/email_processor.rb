@@ -4,10 +4,16 @@ class EmailProcessor
   end
 
   def process
-    user.entries.create!(date: date, body: @email.body)
+    user.entries.create!(date: date, body: body)
   end
 
   private
+
+  attr_reader :email
+
+  def body
+    EmailReplyParser.parse_reply(email.body)
+  end
 
   def user
     @user ||= begin
@@ -17,15 +23,15 @@ class EmailProcessor
   end
 
   def reply_token
-    @email.to.first[:token].downcase
+    email.to.first[:token].downcase
   end
 
   def from
-    @email.from[:email].downcase
+    email.from[:email].downcase
   end
 
   def date
-    Date.parse(@email.subject) rescue today
+    Date.parse(email.subject) rescue today
   end
 
   def today
