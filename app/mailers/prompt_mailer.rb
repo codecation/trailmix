@@ -3,28 +3,29 @@ class PromptMailer < ActionMailer::Base
 
   def prompt(user, entry)
     @entry = entry
+    @date = Time.current.in_time_zone(user.time_zone).to_date
 
     mail(
       from: "Trailmix <#{user.reply_email}>",
       to: user.email,
-      subject: Subject.new(user)
+      subject: Subject.new(user, @date)
     )
   end
 
   class Subject
-    def initialize(user, date = Time.zone.now)
+    def initialize(user, date)
       @user = user
       @date = date
     end
 
     def to_s
-      "It's #{today}. How was your day?"
+      "It's #{date}. How was your day?"
     end
 
     private
 
-    def today
-      I18n.l(@date.in_time_zone(@user.time_zone), format: :for_prompt)
+    def date
+      I18n.l(@date, format: :for_prompt)
     end
   end
 end

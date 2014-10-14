@@ -21,19 +21,13 @@ describe PromptMailer do
 
     context "when the user has set their timezone" do
       it "shows today's date in their timezone" do
-        Timecop.freeze(Time.utc(2014, 1, 1)) do
-          user = create(:user)
+        Timecop.freeze(Time.utc(2014, 1, 1, 20)) do
+          user = create(:user, time_zone: "Guam") # UTC+10
           entry = build_stubbed(:entry)
 
-          user.time_zone = "Pacific Time (US & Canada)"
           mail = PromptMailer.prompt(user, entry)
 
-          expect(mail.subject).to include("Tuesday")
-
-          user.time_zone = "Melbourne"
-          mail = PromptMailer.prompt(user, entry)
-
-          expect(mail.subject).to include("Wednesday")
+          expect(mail.subject).to include("Jan 2")
         end
       end
     end
@@ -48,13 +42,15 @@ describe PromptMailer do
         expect(mail.body.encoded).to include(entry.body)
       end
 
-      it "says how long ago the past entry was" do
-        user = create(:user)
-        entry = create(:entry, user: user, date: 1.year.ago)
+      it "says how long ago the past entry was in the user's time zone" do
+        Timecop.freeze(Time.utc(2014, 1, 3, 14)) do
+          user = create(:user, time_zone: "Guam") # UTC+10
+          entry = create(:entry, user: user, date: Date.new(2014, 1, 1))
 
-        mail = PromptMailer.prompt(user, entry)
+          mail = PromptMailer.prompt(user, entry)
 
-        expect(mail.body.encoded).to include("About 1 year ago")
+          expect(mail.body.encoded).to include("3 days ago")
+        end
       end
     end
   end
