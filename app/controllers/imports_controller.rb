@@ -13,7 +13,7 @@ class ImportsController < ApplicationController
 
       flash[:notice] = "We're importing your entries. Try refreshing the page "\
                        "in a few seconds."
-      redirect_to dashboard_path
+      redirect_to entries_path
     else
       flash[:error] = "Sorry, we had trouble importing that. :( Need help? "\
                       "Contact us at team@trailmix.life"

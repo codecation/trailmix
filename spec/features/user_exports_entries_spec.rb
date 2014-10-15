@@ -8,7 +8,7 @@ feature "User exports their entries" do
     ]
 
     login_as(user)
-    visit dashboard_path
+    visit entries_path
     click_link "FAQ"
     click_link "export"
 

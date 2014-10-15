@@ -7,7 +7,7 @@ feature "User searches entries" do
     create(:entry, user: user, body: "I like large dogs")
 
     login_as(user)
-    visit dashboard_path
+    visit entries_path
     click_link "Search"
     fill_in :search_term, with: "kittens"
     click_button "Search"

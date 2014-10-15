@@ -1,4 +1,4 @@
-class DashboardController < ApplicationController
+class EntriesController < ApplicationController
   def index
     if user_signed_in?
       @entries = current_user.entries.by_date.page(params[:page])

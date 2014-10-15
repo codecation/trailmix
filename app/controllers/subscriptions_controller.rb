@@ -6,7 +6,7 @@ class SubscriptionsController < ApplicationController
       create_subscription(user)
       send_welcome_email(user)
       sign_in(user)
-      redirect_to dashboard_path
+      redirect_to entries_path
     else
       flash[:error] = user.errors.full_messages.to_sentence
       redirect_to new_registration_path
