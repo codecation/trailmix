@@ -91,9 +91,9 @@ describe EmailProcessor do
     end
 
     context "when the entry is a response to yesterday's email" do
-      it "sets the entry date to yesterday's date in the user's time zone" do
-        yesterday = Time.utc(2014, 1, 1, 20) # 8 PM UTC
-        user = create(:user, time_zone: "Guam") # UTC+10
+      it "sets the entry date to yesterday's date" do
+        yesterday = Date.new(2014, 1, 2)
+        user = create(:user)
         email = create(
           :griddler_email,
           to: [{ token: user.reply_token }],
