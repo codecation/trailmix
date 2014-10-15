@@ -7,7 +7,7 @@ class Search
     if term.blank?
       []
     else
-      user.entries.where("LOWER(body) LIKE ?", "%#{term.downcase}%")
+      user.entries.by_date.where("LOWER(body) LIKE ?", "%#{term.downcase}%")
     end
   end
 end
