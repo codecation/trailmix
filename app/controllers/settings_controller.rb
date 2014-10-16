@@ -11,7 +11,7 @@ class SettingsController < ApplicationController
 
     flash[:notice] = "Your settings have been saved."
 
-    redirect_to dashboard_path
+    redirect_to entries_path
   end
 
   private

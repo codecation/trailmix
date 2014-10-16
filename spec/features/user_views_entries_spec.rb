@@ -1,11 +1,11 @@
-feature "User visits dashboard" do
+feature "User views entries" do
   scenario "when signed in with entries" do
     user = create(:user)
     create(:entry, user: user, body: "My first entry", date: 2.days.ago)
     create(:entry, user: user, body: "My latest entry", date: 1.day.ago)
 
     login_as(user)
-    visit dashboard_path
+    visit entries_path
 
     expect(page).to have_content("My latest entry")
     expect(page).to_not have_content("My first entry")
@@ -20,14 +20,14 @@ feature "User visits dashboard" do
     user = create(:user)
 
     login_as(user)
-    visit dashboard_path
+    visit entries_path
 
-    expect(current_path).to eq dashboard_path
+    expect(current_path).to eq entries_path
     expect(page).to have_content("Welcome to Trailmix")
   end
 
   scenario "when signed out" do
-    visit dashboard_path
+    visit entries_path
 
     expect(current_path).to eq new_registration_path
   end

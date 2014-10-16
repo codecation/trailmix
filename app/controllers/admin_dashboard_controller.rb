@@ -9,7 +9,7 @@ class AdminDashboardController < ApplicationController
 
   def restrict_to_admins
     unless admin_emails.include?(current_user.email)
-      redirect_to dashboard_path
+      redirect_to entries_path
     end
   end
 

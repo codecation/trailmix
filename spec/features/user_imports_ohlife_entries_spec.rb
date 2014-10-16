@@ -5,7 +5,7 @@ feature "User imports their OhLife entries" do
     user = create(:user)
 
     login_as(user)
-    visit dashboard_path
+    visit entries_path
     click_link "import your OhLife entries"
     file_path = Rails.root + "spec/fixtures/ohlife_export.txt"
     attach_file('import_ohlife_export', file_path)

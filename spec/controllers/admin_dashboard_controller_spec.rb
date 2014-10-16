@@ -17,7 +17,7 @@ describe AdminDashboardController do
 
         get :show
 
-        expect(response).to redirect_to(dashboard_path)
+        expect(response).to redirect_to(entries_path)
       end
     end
 

@@ -13,10 +13,11 @@ Rails.application.routes.draw do
   get "/pages/ohlife_refugees", to: redirect("/pages/ohlife-alternative")
 
   resources :cancellations, only: [:create]
+  resources :entries, only: [:index]
   resource :export, only: [:new]
   resources :imports, only: [:new, :create]
   resource :settings, only: [:edit, :update]
   resources :subscriptions, only: [:create]
 
-  root to: "dashboard#index", as: "dashboard"
+  root to: "entries#index"
 end
