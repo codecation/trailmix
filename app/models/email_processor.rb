@@ -4,7 +4,7 @@ class EmailProcessor
   end
 
   def process
-    user.entries.create!(date: date, body: body)
+    AmendableEntry.create!(user: user, date: date, body: body)
   end
 
   private

@@ -51,6 +51,27 @@ describe EmailProcessor do
       EmailProcessor.new(email).process
     end
 
+    it "amends existing entries" do
+      Timecop.freeze(2014, 1, 1) do
+        today = Date.current
+        user = create(:user)
+        email = create(
+          :griddler_email,
+          to: [{ token: user.reply_token }],
+          body: "I am great"
+        )
+        allow(AmendableEntry).to(receive(:create!))
+
+        EmailProcessor.new(email).process
+
+        expect(AmendableEntry).to(have_received(:create!).with(
+          user: user,
+          date: today,
+          body: email.body
+        ))
+      end
+    end
+
     context "when a user can't be found" do
       it "raises an exception" do
         user = create(:user)
