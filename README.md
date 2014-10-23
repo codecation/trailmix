@@ -13,7 +13,7 @@ prompt email contains a previous entry chosen at random.
 
 ![homepage](https://cloud.githubusercontent.com/assets/65323/4512764/26484d88-4b44-11e4-9a79-7ee06d6942e7.png)
 
-[Trailmix]: https://www.trailmix.life
+[Trailmix]: https://www.trailmix.life/pages/github
 
 Caveat emptor
 -------------
