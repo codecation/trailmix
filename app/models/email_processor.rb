@@ -16,18 +16,11 @@ class EmailProcessor
   end
 
   def user
-    @user ||= begin
-      User.find_by(reply_token: reply_token) ||
-      User.find_by!(email: from)
-    end
+    @user ||= User.find_by!(reply_token: reply_token)
   end
 
   def reply_token
     email.to.first[:token].downcase
-  end
-
-  def from
-    email.from[:email].downcase
   end
 
   def date
