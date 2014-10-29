@@ -20,7 +20,7 @@ feature "User responds to a prompt" do
       headers: "Received: by 127.0.0.1 with SMTP...",
       to: user.reply_email,
       cc: "CC <cc@example.com>",
-      from: user.email,
+      from: "whocares@example.com",
       subject: "hello there",
       text: "this is an email message",
       html: "<p>this is an email message</p>",
