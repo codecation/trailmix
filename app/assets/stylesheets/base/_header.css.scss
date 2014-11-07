@@ -21,8 +21,12 @@
   .navbar-right {
     text-align: center;
 
-    li a {
+    li a, li input[type=submit] {
+      background: none;
+      border: none;
       color: $brown;
+      line-height: 18px;
+      padding: 10px 15px;
 
       &:hover {
         color: $brown;
