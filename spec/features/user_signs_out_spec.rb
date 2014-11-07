@@ -6,7 +6,7 @@ feature "User signs out" do
     fill_in "user_password", with: user.password
     click_button "Sign in"
 
-    click_link "Sign out"
+    click_button "Sign out"
 
     expect(current_path).to eq new_registration_path
   end
