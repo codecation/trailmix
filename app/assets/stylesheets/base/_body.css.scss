@@ -50,7 +50,7 @@ mark {
   background: $brown;
   border-color: $brown;
 
-  &:hover, &:focus {
+  &:hover, &:focus, &:disabled {
     color: white;
     background: $brown;
     border-color: $brown;

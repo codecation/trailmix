@@ -1,0 +1,50 @@
+<% content_for :javascript do %>
+  <%= render "stripe_javascript" %>
+<% end %>
+
+<% content_for :header do %>
+  <p><h1>Update credit card</h1></p>
+<% end %>
+
+<p>
+<%= form_tag credit_card_path, method: :put, id: "credit-card-update" do %>
+  <p class="js-payment-errors alert alert-danger hidden"></p>
+
+  <div class="form-group">
+    <%= text_field_tag :number, nil,
+      class: "form-control input-lg",
+      placeholder: "Number (1234-1234-1234-1234)",
+      data: { stripe: "number" }
+    %>
+  </div>
+
+  <div class="form-group">
+    <%= text_field_tag :exp_month, nil,
+      class: "form-control input-lg",
+      placeholder: "Month (MM)",
+      data: { stripe: "exp-month" }
+    %>
+  </div>
+
+  <div class="form-group">
+    <%= text_field_tag :exp_year, nil,
+      class: "form-control input-lg",
+      placeholder: "Year (YY)",
+      data: { stripe: "exp-year" }
+    %>
+  </div>
+
+  <div class="form-group">
+    <%= text_field_tag :cvc, nil,
+      class: "form-control input-lg",
+      placeholder: "CVC (1234)",
+      data: { stripe: "cvc" }
+    %>
+  </div>
+
+  <%= button_tag "Update credit card",
+    class: "btn btn-default btn-lg",
+    data: { loading_text: "Updating..." }
+  %>
+<% end %>
+<p>

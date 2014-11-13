@@ -1,0 +1,42 @@
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+<script type="text/javascript">
+  Stripe.setPublishableKey("<%= ENV.fetch('STRIPE_PUBLISHABLE_KEY') %>");
+
+  var stripeResponseHandler = function(status, response) {
+    var $form = $('#credit-card-update');
+
+    if (response.error) {
+      // Show the errors on the form
+      var paymentErrors = $form.find('.js-payment-errors');
+      paymentErrors.text(response.error.message).removeClass('hidden');
+
+      $form.find('button').button('reset');
+    } else {
+      // token contains id, last4, and card type
+      var token = response.id;
+
+      // Disable all credit card fields so they aren't submitted to our server
+      $form.find(':text').prop('disabled', true);
+
+      // Insert the token into the form so it gets submitted to the server
+      $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+      // and re-submit
+      $form.get(0).submit();
+    }
+  };
+
+  jQuery(function($) {
+    $('#credit-card-update').submit(function(e) {
+      var $form = $(this);
+
+      // Disable the submit button to prevent repeated clicks
+      $form.find('button').button('loading');
+
+      Stripe.card.createToken($form, stripeResponseHandler);
+
+      // Prevent the form from submitting with the default action
+      return false;
+    });
+  });
+</script>
