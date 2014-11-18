@@ -1,0 +1,11 @@
+<p><%= PromptMailer::PROMPT_TEXT %></p>
+
+<p>Simply reply to this email with your entry.</p>
+
+<% if @entry %>
+  <p>Remember this? <%= (distance_of_time_in_words(@date, @entry.date)).capitalize %> ago you wrote the following:</p>
+
+  <p>----------------------</p>
+
+  <%= simple_format @entry.body %>
+<% end %>
