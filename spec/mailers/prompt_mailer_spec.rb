@@ -52,6 +52,17 @@ describe PromptMailer do
           expect(mail.body.encoded).to include("3 days ago")
         end
       end
+
+      it "formats the previous entry with html" do
+        user = create(:user)
+        entry = create(:entry, user: user, body: "Line 1\n\nLine 2")
+
+        mail = PromptMailer.prompt(user, entry)
+
+        expect(mail.body.encoded).to(
+          include("<p>Line 1</p>\r\n\r\n<p>Line 2</p>")
+        )
+      end
     end
   end
 
