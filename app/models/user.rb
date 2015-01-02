@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
          :recoverable,
          :rememberable,
          :trackable,
+         :registerable,
          :validatable
 
   has_many :entries, dependent: :destroy
