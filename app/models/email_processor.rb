@@ -24,7 +24,10 @@ class EmailProcessor
   end
 
   def date
-    Date.parse(email.subject) rescue today
+    date = Date.parse(email.subject)
+    date.future? ? (date - 1.year) : date
+  rescue
+    today
   end
 
   def today
