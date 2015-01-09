@@ -92,19 +92,39 @@ describe EmailProcessor do
       end
     end
 
-    context "when the entry is a response to yesterday's email" do
-      it "sets the entry date to yesterday's date" do
-        yesterday = Date.new(2014, 1, 2)
-        user = create(:user)
-        email = create(
-          :griddler_email,
-          to: [{ token: user.reply_token }],
-          subject: "Re: #{PromptMailer::Subject.new(user, yesterday)}"
-        )
+    context "when the entry is a response to a past day's email" do
+      it "sets the entry date to the email's date" do
+        past_day = Date.new(2014, 1, 2)
+        Timecop.freeze(2014, 5, 10) do
+          user = create(:user)
+          email = create(
+            :griddler_email,
+            to: [{ token: user.reply_token }],
+            subject: "Re: #{PromptMailer::Subject.new(user, past_day)}"
+          )
 
-        EmailProcessor.new(email).process
+          EmailProcessor.new(email).process
 
-        expect(user.newest_entry.date).to eq(Date.new(2014, 1, 2))
+          expect(user.newest_entry.date).to eq(past_day)
+        end
+      end
+    end
+
+    context "when the entry is a response to an email from last year" do
+      it "sets the entry date to last year" do
+        last_year = Date.new(2014, 12, 31)
+        Timecop.freeze(2015, 1, 1) do
+          user = create(:user)
+          email = create(
+            :griddler_email,
+            to: [{ token: user.reply_token }],
+            subject: "Re: #{PromptMailer::Subject.new(user, last_year)}"
+          )
+
+          EmailProcessor.new(email).process
+
+          expect(user.newest_entry.date).to eq(last_year)
+        end
       end
     end
   end
