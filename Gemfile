@@ -52,7 +52,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "pry-rails"
   gem "rspec-activemodel-mocks"
-  gem "rspec-rails", "~> 3.0.0"
+  gem "rspec-rails", "~> 3.2.0"
   gem "web-console", "~> 2.0"
 end
 
