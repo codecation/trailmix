@@ -27,6 +27,7 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem "pg"
 gem "rack-ssl-enforcer"
 gem "rack-timeout"
+gem "rails", "4.2.0"
 gem "recipient_interceptor"
 gem "redis"
 gem "sass-rails", "~> 4.0.3"
@@ -52,6 +53,7 @@ group :development, :test do
   gem "pry-rails"
   gem "rspec-activemodel-mocks"
   gem "rspec-rails", "~> 3.0.0"
+  gem "web-console", "~> 2.0"
 end
 
 group :test do
