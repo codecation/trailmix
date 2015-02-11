@@ -4,6 +4,6 @@ class WelcomeMailerWorker
   def perform(user_id)
     user = User.find(user_id)
 
-    WelcomeMailer.welcome(user).deliver
+    WelcomeMailer.welcome(user).deliver_now
   end
 end
