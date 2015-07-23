@@ -2,7 +2,9 @@ class Entry < ActiveRecord::Base
   belongs_to :import
   belongs_to :user
 
-  scope :by_date, -> { order("date DESC") }
+  def self.by_date
+    order("date DESC")
+  end
 
   def self.newest
     by_date.first
