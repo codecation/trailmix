@@ -1,12 +1,10 @@
 feature "User changes password" do
-  before :each do
+
+  scenario "with bad info" do
     user = create(:user)
     login_as(user)
     visit edit_settings_path
     click_link "Change password"
-  end
-
-  scenario "with bad info" do
 
     fill_in :user_password, with: "asdgs"
     fill_in :user_password_confirmation, with: "BananaM0nkey123"
@@ -19,6 +17,10 @@ feature "User changes password" do
   end
 
   scenario "with correct info" do
+    user = create(:user)
+    login_as(user)
+    visit edit_settings_path
+    click_link "Change password"
 
     fill_in :user_password, with: "BananaM0nkey123"
     fill_in :user_password_confirmation, with: "BananaM0nkey123"
