@@ -11,3 +11,9 @@ input[type]:focus {
 .hint {
   font-size: 80%;
 }
+
+.edit_user {
+  .hint + .error {
+    padding-left: 7px;
+  }
+}
