@@ -9,7 +9,7 @@ gem "bourbon", "~> 3.2.1"
 gem "carrierwave"
 gem "chartkick"
 gem "coffee-rails"
-gem "devise"
+gem "devise", "~> 3.4.0"
 gem "email_reply_parser"
 gem "email_validator"
 gem "flutie"
@@ -27,11 +27,12 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem "pg"
 gem "rack-ssl-enforcer"
 gem "rack-timeout"
+gem "rails", "4.2.2"
 gem "recipient_interceptor"
 gem "redis"
 gem "sass-rails", "~> 4.0.3"
 gem "sidekiq"
-gem "simple_form"
+gem "simple_form", "~> 3.1.0"
 gem "sinatra", ">= 1.3.0", require: false
 gem "stripe", :git => "https://github.com/stripe/stripe-ruby"
 gem "title"
@@ -51,7 +52,8 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "pry-rails"
   gem "rspec-activemodel-mocks"
-  gem "rspec-rails", "~> 3.0.0"
+  gem "rspec-rails", "~> 3.3.0"
+  gem "web-console", "~> 2.0"
 end
 
 group :test do
@@ -66,7 +68,8 @@ group :test do
 end
 
 group :staging, :production do
-  gem 'rails_12factor'
+  gem "rails_12factor", "~> 0.0.3"
+  gem "rails_serve_static_assets", "~> 0.0.4"
 end
 
 group :production do
