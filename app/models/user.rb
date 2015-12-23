@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   end
 
   def prompt_entry
-    PromptEntry.best(entries, time_zone)
+    PromptEntry.best(entries)
   end
 
   def prompt_delivery_hour

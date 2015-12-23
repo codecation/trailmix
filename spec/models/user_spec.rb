@@ -54,7 +54,7 @@ RSpec.describe User, :type => :model do
     it "delegates to PromptEntry" do
       user = create(:user)
       allow(PromptEntry).to(
-        receive(:best).with(user.entries, user.time_zone).
+        receive(:best).with(user.entries).
         and_return("best entry"))
 
       entry = user.prompt_entry
