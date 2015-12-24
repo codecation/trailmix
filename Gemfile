@@ -34,7 +34,7 @@ gem "sass-rails", "~> 4.0.3"
 gem "sidekiq"
 gem "simple_form", "~> 3.1.0"
 gem "sinatra", ">= 1.3.0", require: false
-gem "stripe", :git => "https://github.com/stripe/stripe-ruby"
+gem "stripe"
 gem "title"
 gem "uglifier"
 gem "unicorn"
