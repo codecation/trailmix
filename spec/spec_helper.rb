@@ -3,7 +3,6 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path("../../config/environment", __FILE__)
 
 require "rspec/rails"
-require "paperclip/matchers"
 require "shoulda/matchers"
 require "webmock/rspec"
 
@@ -19,7 +18,6 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  config.include Paperclip::Shoulda::Matchers
   config.include Features, type: :feature
   config.include Devise::TestHelpers, type: :controller
   config.include Devise::TestHelpers, type: :view
