@@ -25,7 +25,7 @@ class PromptMailer < ActionMailer::Base
     private
 
     def date
-      I18n.l(@date, format: :for_prompt)
+      I18n.l(@date, format: :prompt_subject_line)
     end
   end
 end
