@@ -4,7 +4,8 @@ class EmailProcessor
   end
 
   def process
-    AmendableEntry.create!(user: user, date: date, body: body)
+    entry = Entry.find_or_initialize_by(user: user, date: date)
+    entry.update!(body: body)
   end
 
   private

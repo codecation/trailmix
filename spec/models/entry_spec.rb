@@ -58,4 +58,25 @@ RSpec.describe Entry, :type => :model do
       end
     end
   end
+
+  context "when the entry already has a body" do
+    it "amends that body" do
+      today = Date.current
+      entry = create(:entry, date: today, body: "First line")
+
+      entry.body = "Second line"
+
+      expect(entry.body).to eq("First line\n\nSecond line")
+    end
+  end
+
+  context "when the entry does not have a body already" do
+    it "sets the body as usual" do
+      entry = Entry.new
+
+      entry.body = "My body"
+
+      expect(entry.body).to eq("My body")
+    end
+  end
 end
