@@ -1,10 +1,8 @@
 class EntriesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    if user_signed_in?
-      @entries = current_user.entries.by_date.page(params[:page])
-    else
-      redirect_to new_registration_path
-    end
+    @entries = current_user.entries.by_date.page(params[:page])
   end
 
   def edit

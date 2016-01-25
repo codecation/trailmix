@@ -39,6 +39,6 @@ feature "User views entries" do
   scenario "when signed out" do
     visit entries_path
 
-    expect(current_path).to eq new_registration_path
+    expect(current_path).to eq new_user_session_path
   end
 end
