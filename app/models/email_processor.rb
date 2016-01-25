@@ -5,7 +5,7 @@ class EmailProcessor
 
   def process
     entry = Entry.find_or_initialize_by(user: user, date: date)
-    entry.update!(body: body)
+    entry.update!(body: body, photo: attachment)
   end
 
   private
@@ -18,6 +18,12 @@ class EmailProcessor
 
   def user
     @user ||= User.find_by!(reply_token: reply_token)
+  end
+
+  def attachment
+    if email.attachments
+      email.attachments.first
+    end
   end
 
   def reply_token

@@ -14,3 +14,7 @@
 <%= paginate @entries %>
 
 <%= simple_format(entry.body) %>
+
+<% if entry.photo.url %>
+  <%= image_tag entry.photo.url, width: 400 %>
+<% end %>

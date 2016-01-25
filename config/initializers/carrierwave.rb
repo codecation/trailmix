@@ -10,3 +10,21 @@ CarrierWave.configure do |config|
   config.fog_directory = "trailmix"
   config.fog_public    = false
 end
+
+module CarrierWave
+  module MiniMagick
+    def quality(percentage)
+      manipulate! do |image|
+        image.quality(percentage)
+        image
+      end
+    end
+
+    def auto_orient
+      manipulate! do |image|
+        image.auto_orient
+        image
+      end
+    end
+  end
+end

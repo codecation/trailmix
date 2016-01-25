@@ -2,6 +2,8 @@ class Entry < ActiveRecord::Base
   belongs_to :import
   belongs_to :user
 
+  mount_uploader :photo, PhotoUploader
+
   def self.by_date
     order("date DESC")
   end

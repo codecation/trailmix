@@ -203,6 +203,7 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.99)
+    mini_magick (4.3.6)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
@@ -398,6 +399,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   launchy
+  mini_magick
   neat (~> 1.5.1)
   normalize-rails (~> 3.0.0)
   pg

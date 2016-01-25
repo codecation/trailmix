@@ -16,6 +16,16 @@ feature "User views entries" do
     expect(page).to_not have_content("My latest entry")
   end
 
+  scenario "when an entry includes a photo" do
+    user = create(:user)
+    entry = create(:entry, :with_photo, user: user)
+
+    login_as(user)
+    visit entries_path
+
+    expect(page).to have_css("img[src='#{entry.photo.url}']")
+  end
+
   scenario "when signed in without entries" do
     user = create(:user)
 

@@ -11,6 +11,14 @@ FactoryGirl.define do
     user
     date Time.zone.now
     body 'Entry body'
+
+    trait :with_photo do
+      photo do
+        Rack::Test::UploadedFile.new(
+          Rails.root.join("spec", "fixtures", "photo.jpg")
+        )
+      end
+    end
   end
 
   factory :subscription do

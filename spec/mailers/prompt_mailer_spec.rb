@@ -63,6 +63,19 @@ describe PromptMailer do
           include("<p>Line 1</p>\r\n\r\n<p>Line 2</p>")
         )
       end
+
+      context "and it has a photo" do
+        it "includes it" do
+          user = create(:user)
+          entry = create(:entry, :with_photo, user: user)
+
+          mail = PromptMailer.prompt(user, entry)
+
+          expect(mail.body.encoded).to(
+            include(entry.photo.url)
+          )
+        end
+      end
     end
   end
 

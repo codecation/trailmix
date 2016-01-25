@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141011191307) do
+ActiveRecord::Schema.define(version: 20160125013209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cancellations", force: true do |t|
+  create_table "cancellations", force: :cascade do |t|
     t.string   "email",              null: false
     t.string   "stripe_customer_id", null: false
     t.text     "reason"
@@ -24,23 +24,24 @@ ActiveRecord::Schema.define(version: 20141011191307) do
     t.datetime "updated_at",         null: false
   end
 
-  create_table "entries", force: true do |t|
+  create_table "entries", force: :cascade do |t|
     t.integer  "user_id",    null: false
     t.text     "body",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "import_id"
     t.date     "date",       null: false
+    t.string   "photo"
   end
 
-  create_table "imports", force: true do |t|
+  create_table "imports", force: :cascade do |t|
     t.integer  "user_id",       null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "ohlife_export", null: false
   end
 
-  create_table "subscriptions", force: true do |t|
+  create_table "subscriptions", force: :cascade do |t|
     t.integer  "user_id",            null: false
     t.string   "stripe_customer_id", null: false
     t.datetime "created_at",         null: false
@@ -50,7 +51,7 @@ ActiveRecord::Schema.define(version: 20141011191307) do
   add_index "subscriptions", ["stripe_customer_id"], name: "index_subscriptions_on_stripe_customer_id", unique: true, using: :btree
   add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", unique: true, using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",                           null: false
     t.string   "encrypted_password",     default: "",                           null: false
     t.string   "reset_password_token"
