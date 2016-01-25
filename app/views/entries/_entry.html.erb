@@ -1,19 +1,15 @@
 <% content_for :header do %>
-  <h1>
-    <% if entry.for_today? %>
-      Today
-    <% else %>
-      <%= l(entry.date, format: :day_of_week) %>
-    <% end %>
-  </h1>
-  <p class="lead">
-    <%= l(entry.date, format: :month_day_year) %>
-  </p>
+  <%= render partial: "date",
+    object: entry.date,
+    locals: { today: entry.for_today? }
+  %>
 <% end %>
 
 <%= paginate @entries %>
 
-<%= link_to "Edit", edit_entry_path(entry) %>
+<p>
+  <%= link_to "Edit", edit_entry_path(entry) %>
+</p>
 
 <%= simple_format(entry.body) %>
 

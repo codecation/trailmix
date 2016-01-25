@@ -1,7 +1,19 @@
-<%= form_for @entry do |form| %>
-  <div class="form-group">
-    <%= form.text_area :body %>
-  </div>
-
-  <%= form.submit "Save Entry", class: "btn btn-default btn-lg" %>
+<% content_for :header do %>
+  <%= render partial: "date",
+    object: @entry.date,
+    locals: { today: @entry.for_today? }
+  %>
 <% end %>
+
+<p>
+  <%= form_for @entry do |f| %>
+    <div class="form-group">
+      <%= f.text_area :body,
+        class: "form-control input-lg",
+        autofocus: true
+      %>
+    </div>
+
+    <%= f.submit "Save Entry", class: "btn btn-default btn-lg" %>
+  <% end %>
+</p>
