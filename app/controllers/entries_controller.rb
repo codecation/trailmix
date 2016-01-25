@@ -6,17 +6,20 @@ class EntriesController < ApplicationController
   end
 
   def edit
-    @entry = Entry.find(params[:id])
+    @entry = entry
   end
 
   def update
-    entry = Entry.find(params[:id])
     entry.update_attributes!(entry_params)
 
     redirect_to entries_path
   end
 
   private
+
+  def entry
+    current_user.entries.find_by!(id: params[:id])
+  end
 
   def entry_params
     params.require(:entry).permit(:body)
