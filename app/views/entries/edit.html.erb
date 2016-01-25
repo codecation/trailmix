@@ -1,0 +1,7 @@
+<%= form_for @entry do |form| %>
+  <div class="form-group">
+    <%= form.text_area :body %>
+  </div>
+
+  <%= form.submit "Save Entry", class: "btn btn-default btn-lg" %>
+<% end %>

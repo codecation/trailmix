@@ -13,6 +13,8 @@
 
 <%= paginate @entries %>
 
+<%= link_to "Edit", edit_entry_path(entry) %>
+
 <%= simple_format(entry.body) %>
 
 <% if entry.photo.url %>
