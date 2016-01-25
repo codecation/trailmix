@@ -5,7 +5,7 @@ en:
         "%m/%d/%Y"
       day_of_week:
         "%A"
-      for_prompt:
+      prompt_subject_line:
         "%A, %b %-d" # Thursday, Sept 17
       month_day_year:
         "%B %-d, %Y"

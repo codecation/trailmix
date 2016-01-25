@@ -53,6 +53,19 @@ describe PromptMailer do
         end
       end
 
+      it "describes when the user created their entry" do
+        Timecop.freeze(Date.new(2014, 1, 10)) do
+          user = create(:user)
+          entry = create(:entry, user: user, date: Date.new(2014, 1, 1))
+
+          mail = PromptMailer.prompt(user, entry)
+
+          expect(mail.body.encoded).to(
+            include("On January 1, 2014 (8 days ago)")
+          )
+        end
+      end
+
       it "formats the previous entry with html" do
         user = create(:user)
         entry = create(:entry, user: user, body: "Line 1\n\nLine 2")

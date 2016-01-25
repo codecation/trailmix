@@ -3,7 +3,7 @@
 <p>Simply reply to this email with your entry.</p>
 
 <% if @entry %>
-  <p>Remember this? <%= (distance_of_time_in_words(@date, @entry.date)).capitalize %> ago you wrote the following:</p>
+  <p>Remember this? On <%= I18n.l(@entry.date, format: :month_day_year) %> (<%= (distance_of_time_in_words(@date, @entry.date)) %> ago), you wrote the following:</p>
 
   <p>----------------------</p>
 
