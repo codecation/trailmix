@@ -5,7 +5,7 @@ feature "User edits entry" do
 
     login_as(user)
     visit entries_path
-    click_link "Edit"
+    click_link "Edit this entry"
     fill_in :entry_body, with: "New body"
     click_button "Save Entry"
 

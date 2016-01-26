@@ -5,11 +5,11 @@
   %>
 <% end %>
 
-<%= paginate @entries %>
-
 <p>
-  <%= link_to "Edit", edit_entry_path(entry) %>
+  <%= link_to "Edit this entry", edit_entry_path(entry) %>
 </p>
+
+<%= paginate @entries %>
 
 <%= simple_format(entry.body) %>
 
