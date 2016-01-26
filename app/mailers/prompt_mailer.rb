@@ -4,6 +4,7 @@ class PromptMailer < ActionMailer::Base
   def prompt(user, entry)
     @entry = entry
     @date = Time.current.in_time_zone(user.time_zone).to_date
+    @announcement = ENV["ANNOUNCEMENT"]
 
     mail(
       from: "Trailmix <#{user.reply_email}>",
