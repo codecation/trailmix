@@ -101,4 +101,23 @@ describe PromptMailer do
       expect(mail.body.encoded).to_not include("Remember this?")
     end
   end
+
+  context "when there is an announcement" do
+    it "shows the announcement in the prompt" do
+      user = create(:user)
+      announcement = "<p>check out this new feature</p>"
+
+      with_announcement(announcement) do
+        mail = PromptMailer.prompt(user, nil)
+
+        expect(mail.body.encoded).to include(announcement)
+      end
+    end
+  end
+
+  def with_announcement(announcement)
+    ENV["ANNOUNCEMENT"] = announcement
+    yield
+    ENV["ANNOUNCEMENT"] = nil
+  end
 end
