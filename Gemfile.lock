@@ -1,12 +1,3 @@
-GIT
-  remote: https://github.com/stripe/stripe-ruby
-  revision: 2c6f4caa99916c33d3f9af57f66422ff5ea913cf
-  specs:
-    stripe (1.15.0)
-      json (~> 1.8.1)
-      mime-types (>= 1.25, < 3.0)
-      rest-client (~> 1.4)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -108,6 +99,8 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    domain_name (0.5.25)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
@@ -174,6 +167,8 @@ GEM
     highline (1.6.21)
     hike (1.2.3)
     htmlentities (4.3.2)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     i18n (0.7.0)
     i18n-tasks (0.7.6)
       activesupport
@@ -213,7 +208,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
-    netrc (0.7.7)
+    netrc (0.11.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     normalize-rails (3.0.1)
@@ -270,7 +265,8 @@ GEM
       redis (~> 3.0, >= 3.0.4)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rest-client (1.7.2)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
     rspec-activemodel-mocks (1.0.1)
@@ -331,6 +327,9 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    stripe (1.34.0)
+      json (~> 1.8.1)
+      rest-client (~> 1.4)
     term-ansicolor (1.3.0)
       tins (~> 1.0)
     terminal-table (1.4.5)
@@ -349,6 +348,9 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.1)
     unicorn (4.8.3)
       kgio (~> 2.6)
       rack
@@ -421,7 +423,7 @@ DEPENDENCIES
   skylight
   spring
   spring-commands-rspec
-  stripe!
+  stripe (= 1.34.0)
   timecop
   title
   uglifier
