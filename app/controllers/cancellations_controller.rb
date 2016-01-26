@@ -7,7 +7,7 @@ class CancellationsController < ApplicationController
     flash[:notice] = "Your account has been removed and " +
       "your subscription has been canceled."
 
-    redirect_to entries_path
+    redirect_to new_registration_path
   end
 
   private

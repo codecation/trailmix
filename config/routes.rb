@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :cancellations, only: [:create]
   resource :credit_card, only: [:edit, :update]
-  resources :entries, only: [:index]
+  resources :entries, only: [:index, :edit, :update]
   resource :export, only: [:new]
   resources :imports, only: [:new, :create]
   resource :settings, only: [:edit, :update]

@@ -1,0 +1,10 @@
+<h1>
+  <% if today %>
+    Today
+  <% else %>
+    <%= l(date, format: :day_of_week) %>
+  <% end %>
+</h1>
+<p class="lead">
+  <%= l(date, format: :month_day_year) %>
+</p>
