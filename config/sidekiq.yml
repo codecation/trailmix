@@ -1,0 +1,7 @@
+# Recommended here:
+# https://github.com/mperham/sidekiq/wiki/Problems-and-Troubleshooting#heroku-err-max-number-of-clients-reached
+:concurrency 3
+
+# Recommended here:
+# https://github.com/mperham/sidekiq/blob/e3f1c6fbb72d2ab938c3a3b5c15ba16aef2508e6/examples/config.yml#L9
+:timeout 8
