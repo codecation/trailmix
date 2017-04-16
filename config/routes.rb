@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, skip: [:registrations]
+  as :user do
+    get "users/edit", to: "devise/registrations#edit", as: "edit_user_registration"
+    patch "users/:id", to: "devise/registrations#update", as: "user_registration"
+  end
 
   mount_griddler
 
