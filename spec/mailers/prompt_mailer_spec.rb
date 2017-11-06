@@ -115,6 +115,17 @@ describe PromptMailer do
     end
   end
 
+  context "when a date is provided" do
+    it "sends a prompt for the provided date" do
+      user = create(:user)
+      date = Date.parse("2017-10-31")
+
+      mail = PromptMailer.prompt(user, nil, date)
+
+      expect(mail.subject).to eq("It's Tuesday, Oct 31. How was your day?")
+    end
+  end
+
   def with_announcement(announcement)
     ENV["ANNOUNCEMENT"] = announcement
     yield

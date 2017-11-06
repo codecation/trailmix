@@ -1,9 +1,9 @@
 class PromptMailer < ActionMailer::Base
   PROMPT_TEXT = "How was your day?"
 
-  def prompt(user, entry)
+  def prompt(user, entry, date = nil)
     @entry = entry
-    @date = Time.current.in_time_zone(user.time_zone).to_date
+    @date = date || Time.current.in_time_zone(user.time_zone).to_date
     @announcement = ENV["ANNOUNCEMENT"]
 
     mail(
