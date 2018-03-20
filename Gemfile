@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.1.3"
+ruby "2.4.1"
 
 gem "airbrake"
 gem "autoprefixer-rails"
@@ -14,6 +14,7 @@ gem "email_reply_parser"
 gem "email_validator"
 gem "flutie"
 gem "fog"
+gem "xmlrpc"
 gem "griddler"
 gem "griddler-sendgrid"
 gem "groupdate"
