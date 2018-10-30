@@ -321,7 +321,7 @@ GEM
     kgio (2.9.2)
     launchy (2.4.2)
       addressable (~> 2.3)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -337,7 +337,7 @@ GEM
       bourbon (>= 3.1)
       sass (~> 3.2.19)
     netrc (0.11.0)
-    nokogiri (1.8.2)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     normalize-rails (3.0.1)
     orm_adapter (0.5.0)
@@ -574,4 +574,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.16.0.pre.2
+   1.16.2
