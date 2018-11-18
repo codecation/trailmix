@@ -51,16 +51,17 @@ group :development, :test do
   gem "byebug"
   gem "dotenv-rails"
   gem "factory_girl_rails"
+  gem "fake_stripe"
   gem "pry-rails"
   gem "rspec-activemodel-mocks"
   gem "rspec-rails", "~> 3.7.0"
   gem "web-console", "~> 2.0"
+  gem "letter_opener_web"
 end
 
 group :test do
   gem "capybara-webkit"
   gem "database_cleaner"
-  gem "fake_stripe"
   gem "formulaic"
   gem "launchy"
   gem "shoulda-matchers", require: false
@@ -76,3 +77,7 @@ end
 group :production do
   gem "skylight"
 end
+
+#add yoshida
+gem "paperclip"
+

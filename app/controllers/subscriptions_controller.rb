@@ -25,9 +25,9 @@ class SubscriptionsController < ApplicationController
   end
 
   def create_subscription(user)
-    stripe_customer_id = create_stripe_customer.id
+    # stripe_customer_id = create_stripe_customer.id
     user.save!
-    user.create_subscription!(stripe_customer_id: stripe_customer_id)
+    # user.create_subscription!(stripe_customer_id: stripe_customer_id)
   end
 
   def create_stripe_customer
