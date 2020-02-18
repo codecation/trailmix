@@ -351,7 +351,7 @@ GEM
     pry-rails (0.3.2)
       pry (>= 0.9.10)
     public_suffix (3.0.2)
-    rack (1.6.11)
+    rack (1.6.13)
     rack-protection (1.5.5)
       rack
     rack-ssl-enforcer (0.2.4)
