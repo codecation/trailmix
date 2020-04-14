@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.4.1"
+ruby "2.5.7"
 
 gem "airbrake"
 gem "autoprefixer-rails"
@@ -32,6 +32,7 @@ gem "recipient_interceptor"
 gem "redis"
 gem "sass-rails", "~> 4.0.3"
 gem "sidekiq"
+gem "sprockets", ">= 2.12.5"
 gem "simple_form", "~> 3.1.0"
 gem "sinatra", ">= 1.3.0", require: false
 gem "stripe", "~> 1.57.1"
@@ -58,7 +59,7 @@ group :development, :test do
 end
 
 group :test do
-  gem "capybara-webkit"
+  gem "selenium-webdriver"
   gem "database_cleaner"
   gem "fake_stripe"
   gem "formulaic"

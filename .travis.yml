@@ -1,13 +1,18 @@
 before_install:
   - "echo '--colour' > ~/.rspec"
   - "echo 'gem: --no-document' > ~/.gemrc"
+  - "gem install bundler --version '1.17.3'"
   - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
 before_script:
   - cp .sample.env .env
-  
   - psql -c 'create database "trailmix_test";' -U postgres
-  
+  - bundle exec rake db:setup
+addons:
+  postgresql: 9.6
+services:
+  - xvfb
+  - postgresql
+dist: trusty
 branches:
   only:
     - master
@@ -19,6 +24,6 @@ notifications:
   email:
     - false
 rvm:
-  - 2.4.1
+  - 2.5.7
 addons:
   postgresql: "9.3"
