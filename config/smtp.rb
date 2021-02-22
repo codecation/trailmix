@@ -3,7 +3,7 @@ SMTP_SETTINGS = {
   authentication: :plain,
   domain: ENV.fetch("SMTP_DOMAIN"), # example: "this-app.com"
   enable_starttls_auto: true,
-  password: ENV.fetch("SENDGRID_PASSWORD"),
+  password: ENV.fetch("SENDGRID_API_KEY"),
   port: "587",
-  user_name: ENV.fetch("SENDGRID_USERNAME")
+  user_name: "apikey"
 }
