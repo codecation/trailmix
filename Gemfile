@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.7.4"
+ruby "2.7.8"
 
 gem "airbrake"
 gem "autoprefixer-rails"
@@ -24,7 +24,8 @@ gem "kaminari"
 gem "mini_magick"
 gem "neat", "~> 1.5.1"
 gem "normalize-rails", "~> 3.0.0"
-gem "pg"
+gem "pg", "~> 0.15"
+gem "bigdecimal", "~> 1"
 gem "rack-ssl-enforcer"
 gem "rack-timeout"
 gem "rails", "~> 4.2.0"
@@ -49,7 +50,6 @@ end
 
 group :development, :test do
   gem "awesome_print"
-  gem "byebug"
   gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "pry-rails"
