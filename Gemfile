@@ -4,6 +4,7 @@ ruby "2.7.4"
 
 gem "airbrake"
 gem "autoprefixer-rails"
+gem "bigdecimal", "~> 1.4.0"
 gem "binding_of_caller"
 gem "bourbon", "~> 3.2.1"
 gem "carrierwave"
@@ -24,7 +25,7 @@ gem "kaminari"
 gem "mini_magick"
 gem "neat", "~> 1.5.1"
 gem "normalize-rails", "~> 3.0.0"
-gem "pg"
+gem "pg", "~> 0.0"
 gem "rack-ssl-enforcer"
 gem "rack-timeout"
 gem "rails", "~> 4.2.0"
@@ -49,7 +50,6 @@ end
 
 group :development, :test do
   gem "awesome_print"
-  gem "byebug"
   gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "pry-rails"
@@ -61,7 +61,7 @@ end
 group :test do
   gem "selenium-webdriver"
   gem "database_cleaner"
-  gem "fake_stripe"
+  gem "fake_stripe", "~> 0.3.0"
   gem "formulaic"
   gem "launchy"
   gem "shoulda-matchers", require: false
