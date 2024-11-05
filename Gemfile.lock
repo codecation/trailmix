@@ -36,8 +36,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.8.0)
-      public_suffix (>= 2.0.2, < 5.0)
+    addressable (2.8.7)
+      public_suffix (>= 2.0.2, < 7.0)
     airbrake (4.1.0)
       builder
       multi_json
@@ -57,12 +57,15 @@ GEM
       sass (~> 3.2)
       thor
     builder (3.2.4)
-    capybara (2.4.4)
-      mime-types (>= 1.16)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      xpath (~> 2.0)
+    capybara (3.39.2)
+      addressable
+      matrix
+      mini_mime (>= 0.1.3)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      regexp_parser (>= 1.5, < 3.0)
+      xpath (~> 3.2)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -82,9 +85,11 @@ GEM
     coffee-script-source (1.8.0)
     concurrent-ruby (1.1.9)
     connection_pool (2.0.0)
-    crack (0.4.3)
-      safe_yaml (~> 1.0.0)
+    crack (1.0.0)
+      bigdecimal
+      rexml
     crass (1.0.6)
+    dante (0.2.0)
     database_cleaner (1.3.0)
     debug_inspector (0.0.2)
     devise (4.7.1)
@@ -117,10 +122,6 @@ GEM
     factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
-    fake_stripe (0.3.0)
-      capybara
-      sinatra
-      webmock
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     flutie (2.0.0)
@@ -283,7 +284,7 @@ GEM
       griddler
     groupdate (2.3.0)
       activesupport (>= 3)
-    hashdiff (0.3.7)
+    hashdiff (1.1.1)
     high_voltage (2.2.1)
     highline (1.6.21)
     hike (1.2.3)
@@ -323,26 +324,30 @@ GEM
     kgio (2.9.2)
     launchy (2.4.2)
       addressable (~> 2.3)
+    logger (1.6.1)
     loofah (2.12.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    matrix (0.4.2)
     method_source (0.8.2)
-    mime-types (3.2.2)
+    mime-types (3.6.0)
+      logger
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2019.0331)
+    mime-types-data (3.2024.1001)
     mini_magick (4.9.4)
     mini_mime (1.1.1)
-    mini_portile2 (2.6.1)
+    mini_portile2 (2.8.7)
     minitest (5.14.4)
     multi_json (1.15.0)
     neat (1.5.1)
       bourbon (>= 3.1)
       sass (~> 3.2.19)
     netrc (0.11.0)
-    nokogiri (1.12.5)
-      mini_portile2 (~> 2.6.1)
+    nio4r (2.7.4)
+    nokogiri (1.15.6)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     normalize-rails (3.0.1)
     orm_adapter (0.5.0)
@@ -353,8 +358,10 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
-    public_suffix (4.0.6)
-    racc (1.5.2)
+    public_suffix (5.1.1)
+    puma (6.4.3)
+      nio4r (~> 2.0)
+    racc (1.8.1)
     rack (1.6.13)
     rack-protection (1.5.5)
       rack
@@ -403,6 +410,7 @@ GEM
     redis (3.1.0)
     redis-namespace (1.5.1)
       redis (~> 3.0, >= 3.0.4)
+    regexp_parser (2.9.2)
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
@@ -410,6 +418,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rexml (3.3.9)
     rspec-activemodel-mocks (1.0.1)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
@@ -432,7 +441,6 @@ GEM
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
     rubyzip (2.3.0)
-    safe_yaml (1.0.4)
     sass (3.2.19)
     sass-rails (4.0.5)
       railties (>= 4.0.0, < 5.0)
@@ -474,6 +482,10 @@ GEM
       sprockets (>= 2.8, < 4.0)
     stripe (1.57.1)
       rest-client (>= 1.4, < 4.0)
+    stripe-ruby-mock (2.4.1)
+      dante (>= 0.2.0)
+      multi_json (~> 1.0)
+      stripe (>= 1.31.0, <= 1.58.0)
     term-ansicolor (1.3.0)
       tins (~> 1.0)
     terminal-table (1.4.5)
@@ -507,14 +519,14 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
-    webmock (3.3.0)
+    webmock (1.24.6)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
     xml-simple (1.1.5)
     xmlrpc (0.2.1)
-    xpath (2.1.0)
-      nokogiri (~> 1.3)
+    xpath (3.2.0)
+      nokogiri (~> 1.8)
 
 PLATFORMS
   ruby
@@ -536,7 +548,6 @@ DEPENDENCIES
   email_reply_parser
   email_validator
   factory_girl_rails
-  fake_stripe (~> 0.3.0)
   flutie
   fog
   formulaic
@@ -553,6 +564,7 @@ DEPENDENCIES
   normalize-rails (~> 3.0.0)
   pg (~> 0.0)
   pry-rails
+  puma (~> 6.4.0)
   rack-ssl-enforcer
   rack-timeout
   rails (~> 4.2.0)
@@ -573,6 +585,7 @@ DEPENDENCIES
   spring-commands-rspec
   sprockets (>= 2.12.5)
   stripe (~> 1.57.1)
+  stripe-ruby-mock (~> 2.4.0)
   timecop
   title
   uglifier

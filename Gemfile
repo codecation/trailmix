@@ -61,12 +61,13 @@ end
 group :test do
   gem "selenium-webdriver"
   gem "database_cleaner"
-  gem "fake_stripe", "~> 0.3.0"
   gem "formulaic"
+  gem "stripe-ruby-mock", "~> 2.4.0"
   gem "launchy"
   gem "shoulda-matchers", require: false
   gem "timecop"
   gem "webmock"
+  gem "puma", "~> 6.4.0"
 end
 
 group :staging, :production do

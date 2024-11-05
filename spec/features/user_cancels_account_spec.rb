@@ -1,6 +1,11 @@
 feature "User cancels account" do
+  let(:stripe_helper) { StripeMock.create_test_helper }
+  before { StripeMock.start }
+  after { StripeMock.stop }
+
   scenario "and their information is removed" do
-    subscription = create(:subscription)
+    stripe_customer = Stripe::Customer.create
+    subscription = create(:subscription, stripe_customer_id: stripe_customer.id)
     user = subscription.user
     entry = create(:entry, user: user)
 

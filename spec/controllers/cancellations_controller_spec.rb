@@ -1,20 +1,26 @@
 require "rails_helper"
 
 describe CancellationsController do
+  let(:stripe_helper) { StripeMock.create_test_helper }
+  before { StripeMock.start }
+  after { StripeMock.stop }
+
   describe "#create" do
     context "when signed in" do
       it "destroys the current user" do
-        subscription = create(:subscription)
+        stripe_customer = Stripe::Customer.create
+        subscription = create(:subscription, stripe_customer_id: stripe_customer.id)
         user = subscription.user
-        sign_in(user)
 
+        sign_in(user)
         post :create, id: user.id
 
         expect(User.count).to be_zero
       end
 
       it "creates a Cancellation" do
-        subscription = create(:subscription)
+        stripe_customer = Stripe::Customer.create
+        subscription = create(:subscription, stripe_customer_id: stripe_customer.id)
         user = subscription.user
 
         sign_in(user)

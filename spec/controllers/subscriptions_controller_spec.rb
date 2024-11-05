@@ -40,7 +40,6 @@ describe SubscriptionsController, sidekiq: :inline do
 
         expect(User.count).to eq(0)
         expect(Subscription.count).to eq(0)
-        expect(FakeStripe.customer_count).to eq(0)
         expect(ActionMailer::Base.deliveries).to be_empty
       end
     end
@@ -53,7 +52,6 @@ describe SubscriptionsController, sidekiq: :inline do
 
         expect(User.count).to eq(0)
         expect(Subscription.count).to eq(0)
-        expect(FakeStripe.customer_count).to eq(0)
         expect(ActionMailer::Base.deliveries).to be_empty
       end
     end

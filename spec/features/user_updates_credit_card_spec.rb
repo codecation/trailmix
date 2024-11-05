@@ -1,9 +1,14 @@
 require "rails_helper"
 
 feature "User updates their credit card" do
+  let(:stripe_helper) { StripeMock.create_test_helper }
+  before { StripeMock.start }
+  after { StripeMock.stop }
+
   scenario "successfully" do
+    stripe_customer = Stripe::Customer.create
     user = create(:user)
-    create(:subscription, user: user)
+    create(:subscription, user: user, stripe_customer_id: stripe_customer.id)
 
     login_as(user)
     update_credit_card
