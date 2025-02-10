@@ -31,7 +31,7 @@ gem "rails", "~> 5.0.7"
 gem "recipient_interceptor"
 gem "redis"
 gem "sass-rails", "~> 5.0.7"
-gem "sidekiq", "~> 4.2.10"
+gem "sidekiq", "~> 5.2.10"
 gem "sprockets", ">= 2.12.5"
 gem "simple_form", "~> 5.0.3"
 gem "sinatra", "~> 2.0.8", require: false
