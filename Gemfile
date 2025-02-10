@@ -27,14 +27,14 @@ gem "normalize-rails", "~> 3.0.0"
 gem "pg", "~> 0.0"
 gem "rack-ssl-enforcer"
 gem "rack-timeout"
-gem "rails", "~> 4.2.0"
+gem "rails", "~> 5.0.7"
 gem "recipient_interceptor"
 gem "redis"
 gem "sass-rails", "~> 5.0.7"
 gem "sidekiq"
 gem "sprockets", ">= 2.12.5"
-gem "simple_form", "~> 3.1.0"
-gem "sinatra", ">= 1.3.0", require: false
+gem "simple_form", "~> 5.0.3"
+gem "sinatra", "~> 2.0.8", require: false
 gem "stripe", "~> 1.57.1"
 gem "title"
 gem "uglifier"
@@ -45,6 +45,7 @@ group :development do
   gem "better_errors"
   gem "spring"
   gem "spring-commands-rspec"
+  gem "web-console", "~> 2.0"
 end
 
 group :development, :test do
@@ -54,7 +55,6 @@ group :development, :test do
   gem "pry-rails"
   gem "rspec-activemodel-mocks"
   gem "rspec-rails", "~> 3.7.0"
-  gem "web-console", "~> 2.0"
 end
 
 group :test do
@@ -67,6 +67,7 @@ group :test do
   gem "timecop"
   gem "webmock"
   gem "puma", "~> 6.4.0"
+  gem "rails-controller-testing"
 end
 
 group :staging, :production do

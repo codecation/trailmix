@@ -10,7 +10,7 @@ describe AdminDashboard do
 
         result = AdminDashboard.new.users_by_day_since(cutoff)
 
-        expected = { Time.zone.parse("2014-01-29") => 1 }
+        expected = { Date.parse("2014-01-29") => 1 }
         expect(result).to eq(expected)
       end
     end
@@ -25,7 +25,7 @@ describe AdminDashboard do
 
         result = AdminDashboard.new.entries_by_day_since(cutoff)
 
-        expected = { Time.zone.parse("2014-01-29") => 1 }
+        expected = { Date.parse("2014-01-29") => 1 }
         expect(result).to eq(expected)
       end
     end
