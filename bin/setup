@@ -29,13 +29,8 @@ if ! command -v foreman &>/dev/null; then
   echo "See https://github.com/ddollar/foreman for install instructions."
 fi
 
-# Set up staging and production apps.
-if heroku join --app trailmix-staging &> /dev/null; then
-  git remote add staging git@heroku.com:trailmix-staging.git || true
-  echo 'You are a collaborator on the "trailmix-staging" Heroku app'
-fi
-
+# Set up production app.
 if heroku join --app trailmix-production &> /dev/null; then
-  git remote add production git@heroku.com:trailmix-production.git || true
+  heroku git:remote -a trailmix-production -r production || true
   echo 'You are a collaborator on the "trailmix-production" Heroku app'
 fi
