@@ -8,7 +8,7 @@ class SearchesController < ApplicationController
   private
 
   def search_params
-    permitted_params.fetch(:search, {}).merge(user: current_user)
+    permitted_params.fetch(:search, {}).permit(:term).merge(user: current_user)
   end
 
   def permitted_params

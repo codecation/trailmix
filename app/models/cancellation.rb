@@ -1,2 +1,2 @@
-class Cancellation < ActiveRecord::Base
+class Cancellation < ApplicationRecord
 end

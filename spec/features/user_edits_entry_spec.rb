@@ -19,8 +19,9 @@ feature "User edits entry" do
     another_users_entry = create(:entry, user: another_user)
 
     login_as(user)
-    visit edit_entry_path(another_users_entry)
 
-    expect(page.status_code).to eq(404)
+    assert_raises ActiveRecord::RecordNotFound do
+      visit edit_entry_path(another_users_entry)
+    end
   end
 end
