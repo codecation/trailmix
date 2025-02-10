@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Entry, :type => :model do
-  it { should belong_to(:import) }
-
   describe ".by_date" do
     it "sorts entries, by date, with the newest first" do
       user = create(:user)

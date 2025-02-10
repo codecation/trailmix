@@ -464,8 +464,6 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    shoulda-matchers (2.7.0)
-      activesupport (>= 3.0.0)
     sidekiq (5.2.10)
       connection_pool (~> 2.2, >= 2.2.2)
       rack (~> 2.0)
@@ -592,7 +590,6 @@ DEPENDENCIES
   rspec-rails (~> 3.7.0)
   sass-rails (~> 5.0.7)
   selenium-webdriver
-  shoulda-matchers
   sidekiq (~> 5.2.10)
   simple_form (~> 5.0.3)
   sinatra (~> 2.0.8)
