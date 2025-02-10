@@ -63,7 +63,6 @@ group :test do
   gem "formulaic"
   gem "stripe-ruby-mock", "~> 2.4.0"
   gem "launchy"
-  gem "shoulda-matchers", require: false
   gem "timecop"
   gem "webmock"
   gem "puma", "~> 6.4.0"
