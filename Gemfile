@@ -55,7 +55,7 @@ end
 group :development, :test do
   gem "awesome_print"
   gem "dotenv-rails"
-  gem "factory_girl_rails"
+  gem "factory_bot_rails"
   gem "pry-rails"
   gem "rspec-activemodel-mocks"
   gem "rspec-rails", "~> 4.1.2"
