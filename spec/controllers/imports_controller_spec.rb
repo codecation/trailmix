@@ -1,5 +1,3 @@
-require "rails_helper"
-
 describe ImportsController do
   describe "#create" do
     context "when the import fails to save" do
@@ -8,7 +6,7 @@ describe ImportsController do
         import = double("import", save: false)
         allow(Import).to(receive(:new).and_return(import))
 
-        post :create, import: { ohlife_export: double("export") }
+        post :create, params: { import: { ohlife_export: double("export") } }
 
         expect(flash[:error]).to include "Sorry"
       end

@@ -1,5 +1,3 @@
-require "rails_helper"
-
 feature "User updates their credit card" do
   let(:stripe_helper) { StripeMock.create_test_helper }
   before { StripeMock.start }

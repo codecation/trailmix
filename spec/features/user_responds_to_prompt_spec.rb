@@ -1,5 +1,3 @@
-require "rails_helper"
-
 feature "User responds to a prompt" do
   include Rack::Test::Methods
   include ActionDispatch::TestProcess

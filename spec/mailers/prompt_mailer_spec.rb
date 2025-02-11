@@ -1,5 +1,3 @@
-require "rails_helper"
-
 describe PromptMailer do
   describe "#prompt" do
     it "has the correct headers" do

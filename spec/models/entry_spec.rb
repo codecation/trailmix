@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Entry, :type => :model do
   describe ".by_date" do
     it "sorts entries, by date, with the newest first" do

@@ -1,4 +1,3 @@
-require "rails_helper"
 
 describe CancellationsController do
   let(:stripe_helper) { StripeMock.create_test_helper }
@@ -13,7 +12,7 @@ describe CancellationsController do
         user = subscription.user
 
         sign_in(user)
-        post :create, id: user.id
+        post :create, params: { id: user.id }
 
         expect(User.count).to be_zero
       end
@@ -24,7 +23,7 @@ describe CancellationsController do
         user = subscription.user
 
         sign_in(user)
-        post :create, id: user.id, reason: "I'm done journaling"
+        post :create, params: { id: user.id, reason: "I'm done journaling" }
         cancellation = Cancellation.last
 
         expect(cancellation.reason).to eq("I'm done journaling")
@@ -40,7 +39,7 @@ describe CancellationsController do
           stub_stripe(subscription.stripe_customer_id)
         sign_in(user)
 
-        post :create, id: user.id
+        post :create, params: { id: user.id }
 
         expect(stripe_subscription).to(have_received(:delete))
       end
@@ -48,7 +47,7 @@ describe CancellationsController do
 
     context "when signed out" do
       it "redirects to sign in" do
-        post :create, id: "not an id"
+        post :create, params: { id: "not an id" }
 
         expect(response).to redirect_to(new_user_session_path)
       end

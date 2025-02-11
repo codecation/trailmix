@@ -1,5 +1,3 @@
-require "rails_helper"
-
 describe AdminDashboardController do
   describe "#show" do
     context "when a logged out user requests it" do

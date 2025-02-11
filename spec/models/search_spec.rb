@@ -1,5 +1,3 @@
-require "rails_helper"
-
 describe Search do
   describe "#entries" do
     it "returns entries whose bodies match the search term" do
