@@ -1,5 +1,3 @@
-require "rails_helper"
-
 describe OhlifeImporter do
   describe "#run" do
     it "creates entries for each entry in the file" do

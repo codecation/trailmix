@@ -1,5 +1,3 @@
-require "rails_helper"
-
 feature "The server executes the prompt task", sidekiq: :inline do
   scenario "and all users are emailed" do
     first_user = create(:user)

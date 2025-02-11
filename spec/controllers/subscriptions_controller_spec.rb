@@ -1,5 +1,3 @@
-require "rails_helper"
-
 describe SubscriptionsController, sidekiq: :inline do
   describe "#create" do
     before do
@@ -9,7 +7,7 @@ describe SubscriptionsController, sidekiq: :inline do
 
     context "with valid params" do
       it "creates a user, subscription, stripe customer, and email" do
-        post :create, default_params
+        post :create, params: default_params
 
         expect(User.count).to eq(1)
         expect(Subscription.count).to eq(1)
@@ -25,7 +23,7 @@ describe SubscriptionsController, sidekiq: :inline do
         stripe_customer_id = "cus_123"
         stub_stripe_customer_create(stripe_customer_id)
 
-        post :create, default_params
+        post :create, params: default_params
         subscription = Subscription.last
 
         expect(subscription.stripe_customer_id).to eq(stripe_customer_id)
@@ -36,7 +34,7 @@ describe SubscriptionsController, sidekiq: :inline do
       it "does not create a new user, subscription, or stripe customer" do
         stub_invalid_user
 
-        post :create, default_params
+        post :create, params: default_params
 
         expect(User.count).to eq(0)
         expect(Subscription.count).to eq(0)
@@ -48,7 +46,7 @@ describe SubscriptionsController, sidekiq: :inline do
       it "does not create a user, subscription, or stripe customer" do
         stub_stripe_charge_failure
 
-        post :create, default_params
+        post :create, params: default_params
 
         expect(User.count).to eq(0)
         expect(Subscription.count).to eq(0)

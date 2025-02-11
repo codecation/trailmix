@@ -1,5 +1,3 @@
-require "rails_helper"
-
 describe AdminDashboard do
   describe ".users_by_day_since" do
     it "returns the count of users created, grouped by day" do

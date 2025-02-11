@@ -1,5 +1,3 @@
-require "rails_helper"
-
 feature "User searches entries" do
   scenario "and sees results" do
     user = create(:user)

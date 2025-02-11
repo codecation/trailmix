@@ -19,12 +19,13 @@ RSpec.configure do |config|
   end
 
   config.include Features, type: :feature
-  config.include Devise::TestHelpers, type: :controller
-  config.include Devise::TestHelpers, type: :view
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
   config.infer_base_class_for_anonymous_controllers = false
   config.infer_spec_type_from_file_location!
   config.order = "random"
   config.use_transactional_fixtures = false
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"
 end
 
 Capybara.javascript_driver = :webkit

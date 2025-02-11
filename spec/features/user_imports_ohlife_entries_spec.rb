@@ -1,5 +1,3 @@
-require "rails_helper"
-
 feature "User imports their OhLife entries" do
   scenario "immediately after creating their account", sidekiq: :inline do
     user = create(:user)
