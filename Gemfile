@@ -4,7 +4,7 @@ ruby "2.7.4"
 
 gem "airbrake"
 gem "autoprefixer-rails"
-gem "bigdecimal", "~> 1.4.0"
+gem "bigdecimal", "~> 3.1.9"
 gem "binding_of_caller"
 gem "bourbon", "~> 3.2.1"
 gem "carrierwave"
