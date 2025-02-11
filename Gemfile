@@ -11,6 +11,7 @@ gem "chartkick"
 # https://stackoverflow.com/a/79361034
 gem 'concurrent-ruby', '1.3.4'
 gem "devise", "~> 4.7.3"
+gem "drb"
 gem "email_reply_parser"
 gem "email_validator"
 gem "flutie"
@@ -23,6 +24,7 @@ gem "i18n-tasks"
 gem "jquery-rails"
 gem "kaminari"
 gem "mini_magick"
+gem "mutex_m"
 # https://github.com/ruby/net-imap/issues/16#issuecomment-803086765
 gem "net-http"
 gem "normalize-rails", "~> 3.0.0"
