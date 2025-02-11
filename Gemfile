@@ -75,7 +75,3 @@ group :staging, :production do
   gem "rails_12factor", "~> 0.0.3"
   gem "rails_serve_static_assets", "~> 0.0.4"
 end
-
-group :production do
-  gem "skylight"
-end
