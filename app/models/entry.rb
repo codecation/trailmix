@@ -13,7 +13,7 @@ class Entry < ApplicationRecord
   end
 
   def self.random
-    order("RANDOM()").first
+    order(Arel.sql("RANDOM()")).first
   end
 
   def for_today?
