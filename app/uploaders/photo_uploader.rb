@@ -9,7 +9,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    "#{hash}.jpg" if original_filename.present?
+    "#{hash}.jpg"
   end
 
   def fog_public
