@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def show
     @search = Search.new(search_params)

@@ -1,5 +1,5 @@
 class AdminDashboardController < ApplicationController
-  before_filter :authenticate_user!, :restrict_to_admins
+  before_action :authenticate_user!, :restrict_to_admins
 
   def show
     @dashboard = AdminDashboard.new
