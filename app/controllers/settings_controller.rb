@@ -7,7 +7,7 @@ class SettingsController < ApplicationController
   end
 
   def update
-    current_user.update_attributes!(user_params)
+    current_user.update!(user_params)
 
     flash[:notice] = "Your settings have been saved."
 

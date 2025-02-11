@@ -9,7 +9,9 @@ gem "binding_of_caller"
 gem "bourbon", "~> 3.2.1"
 gem "carrierwave"
 gem "chartkick"
-gem "devise", "~> 4.7.1"
+# https://stackoverflow.com/a/79361034
+gem 'concurrent-ruby', '1.3.4'
+gem "devise", "~> 4.7.3"
 gem "email_reply_parser"
 gem "email_validator"
 gem "flutie"
@@ -23,14 +25,16 @@ gem "jquery-rails"
 gem "kaminari"
 gem "mini_magick"
 gem "neat", "~> 1.5.1"
+# https://github.com/ruby/net-imap/issues/16#issuecomment-803086765
+gem "net-http"
 gem "normalize-rails", "~> 3.0.0"
 gem "pg", "~> 1.0"
 gem "rack-ssl-enforcer"
 gem "rack-timeout"
-gem "rails", "~> 5.2.0"
+gem "rails", "~> 6.0.0"
 gem "recipient_interceptor"
 gem "redis"
-gem "sass-rails", "~> 5.0.7"
+gem "sass-rails", "~> 6.0.0"
 gem "sidekiq", "~> 5.2.10"
 gem "sprockets", ">= 2.12.5"
 gem "simple_form", "~> 5.0.3"
@@ -54,7 +58,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "pry-rails"
   gem "rspec-activemodel-mocks"
-  gem "rspec-rails", "~> 3.7.0"
+  gem "rspec-rails", "~> 4.1.2"
 end
 
 group :test do
