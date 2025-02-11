@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.7.4"
+ruby "2.7.8"
 
 gem "airbrake"
 gem "autoprefixer-rails"
