@@ -10,7 +10,7 @@ class EntriesController < ApplicationController
   end
 
   def update
-    entry.update_attributes!(entry_params)
+    entry.update!(entry_params)
 
     redirect_to entries_path
   end
