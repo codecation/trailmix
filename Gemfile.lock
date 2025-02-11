@@ -361,7 +361,7 @@ GEM
       racc (~> 1.4)
     normalize-rails (3.0.1)
     orm_adapter (0.5.0)
-    pg (0.21.0)
+    pg (1.5.9)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -577,7 +577,7 @@ DEPENDENCIES
   mini_magick
   neat (~> 1.5.1)
   normalize-rails (~> 3.0.0)
-  pg (~> 0.0)
+  pg (~> 1.0)
   pry-rails
   puma (~> 6.4.0)
   rack-ssl-enforcer
