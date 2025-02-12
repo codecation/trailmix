@@ -597,8 +597,6 @@ GEM
     trollop (2.1.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uglifier (4.2.1)
-      execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.6)
@@ -700,7 +698,6 @@ DEPENDENCIES
   stripe-ruby-mock (~> 2.4.0)
   timecop
   title
-  uglifier
   unicorn
   web-console (~> 2.0)
   webmock

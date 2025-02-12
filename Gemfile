@@ -42,7 +42,6 @@ gem "simple_form", "~> 5.0.3"
 gem "sinatra", "~> 2.0.8", require: false
 gem "stripe", "~> 1.57.1"
 gem "title"
-gem "uglifier"
 gem "unicorn"
 gem "xmlrpc"
 
