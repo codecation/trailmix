@@ -1,3 +1,7 @@
+require_relative "../../app/models/email_processor"
+require_relative "../../app/mailers/prompt_mailer"
+require_relative "../../app/mailers/welcome_mailer"
+
 Griddler.configure do |config|
   config.processor_class = EmailProcessor
   config.reply_delimiter = [
