@@ -46,6 +46,6 @@ describe OhlifeImporter do
   end
 
   def ohlife_export
-    Rails.root + "spec/fixtures/ohlife_export.txt"
+    Rails.root + "spec/fixtures/files/ohlife_export.txt"
   end
 end
