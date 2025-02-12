@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module Trailmix
   class Application < Rails::Application
+    config.active_support.cache_format_version = 7.0
+
     config.i18n.enforce_available_locales = true
 
     config.active_record.default_timezone = :utc
