@@ -30,9 +30,8 @@ gem "net-http"
 gem "normalize-rails", "~> 3.0.0"
 gem "ostruct"
 gem "pg", "~> 1.0"
-gem "rack-ssl-enforcer"
 gem "rack-timeout"
-gem "rails", "~> 7.0.0"
+gem "rails", "~> 7.1.0"
 gem "recipient_interceptor"
 gem "redis"
 gem "reline"
@@ -60,7 +59,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "pry-rails"
   gem "rspec-activemodel-mocks"
-  gem "rspec-rails", "~> 4.1.2"
+  gem "rspec-rails", "~> 6.1.0"
 end
 
 group :test do

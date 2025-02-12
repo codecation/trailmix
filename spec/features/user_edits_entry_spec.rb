@@ -20,8 +20,7 @@ feature "User edits entry" do
 
     login_as(user)
 
-    assert_raises ActiveRecord::RecordNotFound do
-      visit edit_entry_path(another_users_entry)
-    end
+    visit edit_entry_path(another_users_entry)
+    expect(page.status_code).to eq(404)
   end
 end
