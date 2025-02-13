@@ -1,5 +1,5 @@
 class Entry < ApplicationRecord
-  belongs_to :import
+  belongs_to :import, optional: true
   belongs_to :user
 
   mount_uploader :photo, PhotoUploader
