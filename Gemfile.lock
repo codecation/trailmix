@@ -550,11 +550,10 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    sidekiq (5.2.10)
-      connection_pool (~> 2.2, >= 2.2.2)
+    sidekiq (6.5.10)
+      connection_pool (>= 2.2.5, < 3)
       rack (~> 2.0)
-      rack-protection (>= 1.5.0)
-      redis (~> 4.5, < 4.6.0)
+      redis (>= 4.5.0, < 5)
     simple_form (5.0.3)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -680,7 +679,7 @@ DEPENDENCIES
   rspec-rails (~> 6.1.0)
   sass-rails (~> 6.0.0)
   selenium-webdriver
-  sidekiq (~> 5.2.10)
+  sidekiq (~> 6.5.10)
   simple_form (~> 5.0.3)
   sinatra (~> 2.0.8)
   spring
