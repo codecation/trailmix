@@ -507,7 +507,10 @@ GEM
       psych (>= 4.0.0)
     recipient_interceptor (0.1.2)
       mail
-    redis (4.5.1)
+    redis (5.3.0)
+      redis-client (>= 0.22.0)
+    redis-client (0.23.2)
+      connection_pool
     regexp_parser (2.9.2)
     reline (0.6.0)
       io-console (~> 0.5)
@@ -559,11 +562,12 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    sidekiq (5.2.10)
-      connection_pool (~> 2.2, >= 2.2.2)
-      rack (~> 2.0)
-      rack-protection (>= 1.5.0)
-      redis (~> 4.5, < 4.6.0)
+    sidekiq (7.3.9)
+      base64
+      connection_pool (>= 2.3.0)
+      logger
+      rack (>= 2.2.4)
+      redis-client (>= 0.22.2)
     simple_form (5.0.3)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -689,7 +693,7 @@ DEPENDENCIES
   rspec-rails (~> 6.1.0)
   sass-rails (~> 6.0.0)
   selenium-webdriver
-  sidekiq (~> 5.2.10)
+  sidekiq (< 8)
   simple_form (~> 5.0.3)
   sinatra (~> 2.0.8)
   spring
