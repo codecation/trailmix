@@ -21,4 +21,5 @@ Sidekiq.configure_client do |config|
       url: ENV["REDIS_URL"],
       ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE }
   }
+  config.logger = Rails.logger if Rails.env.test?
 end
