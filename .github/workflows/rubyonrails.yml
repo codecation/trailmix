@@ -1,9 +1,9 @@
 name: "Ruby on Rails CI"
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -23,7 +23,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install Ruby and gems
-        uses: ruby/setup-ruby@78c01b705fd9d5ad960d432d3a0cfa341d50e410 # v1.179.1
+        uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
       - name: Set up database schema
