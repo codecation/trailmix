@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Install libcurl
+        run: sudo apt-get install build-essential libcurl4-openssl-dev
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
