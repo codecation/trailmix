@@ -34,7 +34,7 @@ gem "sass-rails", "~> 6.0.0"
 gem "sidekiq", "< 8"
 gem "sprockets", ">= 2.12.5"
 gem "simple_form", "~> 5.0.3"
-gem "sinatra", "~> 2.0.8", require: false
+gem "sinatra", "~> 4.1.0", require: false
 gem "stripe", "~> 1.57.1"
 gem "title"
 gem "unicorn"
@@ -44,7 +44,7 @@ group :development do
   gem "better_errors"
   gem "spring"
   gem "spring-commands-rspec"
-  gem "web-console", "~> 2.0"
+  gem "web-console"
 end
 
 group :development, :test do
