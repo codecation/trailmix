@@ -611,7 +611,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    uri (1.0.2)
+    uri (1.0.3)
     useragent (0.16.11)
     warden (1.2.9)
       rack (>= 2.0.9)
