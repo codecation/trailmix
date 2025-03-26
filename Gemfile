@@ -26,6 +26,7 @@ gem "mutex_m"
 gem "normalize-rails", "~> 3.0.0"
 gem "ostruct"
 gem "pg", "~> 1.0"
+gem "puma"
 gem "rack-timeout"
 gem "rails", "~> 8.0.0"
 gem "recipient_interceptor"
@@ -37,7 +38,6 @@ gem "simple_form", "~> 5.0.3"
 gem "sinatra", "~> 2.0.8", require: false
 gem "stripe", "~> 1.57.1"
 gem "title"
-gem "unicorn"
 gem "xmlrpc"
 
 group :development do
@@ -64,7 +64,6 @@ group :test do
   gem "launchy"
   gem "timecop"
   gem "webmock"
-  gem "puma", "~> 6.4.0"
   gem "rails-controller-testing"
 end
 
