@@ -20,6 +20,6 @@ class BackfillSubscriptionsTransition
   end
 
   def stripe_customers
-    Stripe::Customer.all(limit: 100)
+    Stripe::Customer.list(limit: 100).auto_paging_each
   end
 end

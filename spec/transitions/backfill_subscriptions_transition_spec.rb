@@ -35,14 +35,13 @@ describe BackfillSubscriptionsTransition do
   end
 
   def stub_stripe_customers(customers)
-    customer_list = double("Stripe::ListObject")
-    iterator = allow(customer_list).to(receive(:each))
-
-    customers.inject(iterator) do |iterator, customer|
-      iterator.and_yield(
-        double("Stripe::Customer", email: customer[:email], id: customer[:id]))
+    customer_doubles = customers.map do |customer|
+      double("Stripe::Customer", email: customer[:email], id: customer[:id])
     end
 
-    allow(Stripe::Customer).to(receive(:all).and_return(customer_list))
+    customer_list = double("Stripe::ListObject")
+    allow(customer_list).to(receive(:auto_paging_each)).and_return(customer_doubles.each)
+
+    allow(Stripe::Customer).to(receive(:list).and_return(customer_list))
   end
 end

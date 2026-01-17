@@ -5,5 +5,5 @@ Rails.configuration.stripe = {
 }
 
 Stripe.api_key = Rails.configuration.stripe[:secret_key]
-Stripe.api_version = ENV.fetch("STRIPE_API_VERSION", "2017-06-05")
+Stripe.api_version = ENV.fetch("STRIPE_API_VERSION", "2025-12-15.clover")
 Stripe.max_network_retries = 2

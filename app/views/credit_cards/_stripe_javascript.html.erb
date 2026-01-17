@@ -1,42 +1,50 @@
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script src="https://js.stripe.com/v3/"></script>
 
 <script type="text/javascript">
-  Stripe.setPublishableKey("<%= ENV.fetch('STRIPE_PUBLISHABLE_KEY') %>");
+  var stripe = Stripe("<%= ENV.fetch('STRIPE_PUBLISHABLE_KEY') %>");
+  var elements = stripe.elements();
 
-  var stripeResponseHandler = function(status, response) {
-    var $form = $('#credit-card-update');
-
-    if (response.error) {
-      // Show the errors on the form
-      var paymentErrors = $form.find('.js-payment-errors');
-      paymentErrors.text(response.error.message).removeClass('hidden');
-
-      $form.find('button').button('reset');
-    } else {
-      // token contains id, last4, and card type
-      var token = response.id;
-
-      // Disable all credit card fields so they aren't submitted to our server
-      $form.find(':text').prop('disabled', true);
-
-      // Insert the token into the form so it gets submitted to the server
-      $form.append($('<input type="hidden" name="stripeToken" />').val(token));
-      // and re-submit
-      $form.get(0).submit();
+  var cardElement = elements.create('card', {
+    style: {
+      base: {
+        fontSize: '16px',
+        color: '#333',
+        '::placeholder': { color: '#999' }
+      }
     }
-  };
+  });
 
   jQuery(function($) {
+    cardElement.mount('#card-element');
+
+    cardElement.on('change', function(event) {
+      var displayError = $('.js-payment-errors');
+      if (event.error) {
+        displayError.text(event.error.message).removeClass('hidden');
+      } else {
+        displayError.addClass('hidden').text('');
+      }
+    });
+
     $('#credit-card-update').submit(function(e) {
+      e.preventDefault();
       var $form = $(this);
 
-      // Disable the submit button to prevent repeated clicks
       $form.find('button').button('loading');
 
-      Stripe.card.createToken($form, stripeResponseHandler);
-
-      // Prevent the form from submitting with the default action
-      return false;
+      stripe.createPaymentMethod({
+        type: 'card',
+        card: cardElement
+      }).then(function(result) {
+        if (result.error) {
+          var displayError = $form.find('.js-payment-errors');
+          displayError.text(result.error.message).removeClass('hidden');
+          $form.find('button').button('reset');
+        } else {
+          $form.append($('<input type="hidden" name="stripe_payment_method_id" />').val(result.paymentMethod.id));
+          $form.get(0).submit();
+        }
+      });
     });
   });
 </script>

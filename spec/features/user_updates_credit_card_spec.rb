@@ -1,26 +1,24 @@
-feature "User updates their credit card" do
+describe CreditCardsController, type: :controller do
   let(:stripe_helper) { StripeMock.create_test_helper }
   before { StripeMock.start }
   after { StripeMock.stop }
 
-  scenario "successfully" do
-    stripe_customer = Stripe::Customer.create
-    user = create(:user)
-    create(:subscription, user: user, stripe_customer_id: stripe_customer.id)
+  describe "#update" do
+    it "updates the credit card successfully" do
+      stripe_customer = Stripe::Customer.create
+      user = create(:user)
+      create(:subscription, user: user, stripe_customer_id: stripe_customer.id)
+      sign_in user
 
-    login_as(user)
-    update_credit_card
+      payment_method = Stripe::PaymentMethod.create(
+        type: "card",
+        card: { token: stripe_helper.generate_card_token }
+      )
 
-    expect(page).to have_content("Credit card updated successfully")
-  end
+      put :update, params: { stripe_payment_method_id: payment_method.id }
 
-  def update_credit_card
-    visit edit_settings_path
-    click_link "Update credit card"
-    fill_in "number", with: "4242424242424242"
-    fill_in "exp_month", with: "04"
-    fill_in "exp_year", with: "2016"
-    fill_in "cvc", with: "216"
-    click_button "Update credit card"
+      expect(flash[:notice]).to eq("Credit card updated successfully")
+      expect(response).to redirect_to(edit_credit_card_path)
+    end
   end
 end

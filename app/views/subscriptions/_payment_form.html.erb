@@ -15,7 +15,12 @@
            placeholder="Password">
   </div>
 
-  <input type="hidden" id="stripe_card_id" name="stripe_card_id">
+  <div class="form-group">
+    <div id="card-element" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;"></div>
+    <div id="card-errors" class="text-danger" style="display: none; margin-top: 5px;"></div>
+  </div>
+
+  <input type="hidden" id="stripe_payment_method_id" name="stripe_payment_method_id">
 
   <div data-placement="right">
     <button

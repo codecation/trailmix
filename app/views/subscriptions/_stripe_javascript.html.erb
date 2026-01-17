@@ -1,26 +1,52 @@
 <% content_for :javascript do %>
-  <%= javascript_include_tag "https://checkout.stripe.com/checkout.js" %>
+  <script src="https://js.stripe.com/v3/"></script>
   <%= javascript_tag do %>
-    var handler = StripeCheckout.configure({
-      key: "<%= Rails.configuration.stripe[:publishable_key] %>",
-      image: "<%= image_path 'logo-stripe.png' %>",
-      name: "Trailmix",
-      description: "Monthly subscription with trial",
-      amount: 399,
-      panelLabel: "{{amount}} after 14-day trial",
-      allowRememberMe: false,
-      token: function(token) {
-        $("#sign-up-button").button("loading");
-        $("#stripe_card_id").val(token.id);
-        $("#sign-up-form").submit();
+    var stripe = Stripe("<%= Rails.configuration.stripe[:publishable_key] %>");
+    var elements = stripe.elements();
+
+    var cardElement = elements.create('card', {
+      style: {
+        base: {
+          fontSize: '16px',
+          color: '#333',
+          '::placeholder': { color: '#999' }
+        }
       }
     });
 
-    $("#sign-up-button").on("click", function(e) {
-      e.preventDefault();
+    $(function() {
+      cardElement.mount('#card-element');
 
-      handler.open({
-        email: $("#email").val()
+      cardElement.on('change', function(event) {
+        var displayError = $('#card-errors');
+        if (event.error) {
+          displayError.text(event.error.message).show();
+        } else {
+          displayError.hide().text('');
+        }
+      });
+
+      $('#sign-up-form').on('submit', function(e) {
+        e.preventDefault();
+        var $form = $(this);
+
+        $('#sign-up-button').button('loading');
+
+        stripe.createPaymentMethod({
+          type: 'card',
+          card: cardElement,
+          billing_details: {
+            email: $('#email').val()
+          }
+        }).then(function(result) {
+          if (result.error) {
+            $('#card-errors').text(result.error.message).show();
+            $('#sign-up-button').button('reset');
+          } else {
+            $('#stripe_payment_method_id').val(result.paymentMethod.id);
+            $form.get(0).submit();
+          }
+        });
       });
     });
   <% end %>

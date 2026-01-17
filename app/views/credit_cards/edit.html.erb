@@ -11,35 +11,7 @@
   <p class="js-payment-errors alert alert-danger hidden"></p>
 
   <div class="form-group">
-    <%= text_field_tag :number, nil,
-      class: "form-control input-lg",
-      placeholder: "Number (1234-1234-1234-1234)",
-      data: { stripe: "number" }
-    %>
-  </div>
-
-  <div class="form-group">
-    <%= text_field_tag :exp_month, nil,
-      class: "form-control input-lg",
-      placeholder: "Month (MM)",
-      data: { stripe: "exp-month" }
-    %>
-  </div>
-
-  <div class="form-group">
-    <%= text_field_tag :exp_year, nil,
-      class: "form-control input-lg",
-      placeholder: "Year (YY)",
-      data: { stripe: "exp-year" }
-    %>
-  </div>
-
-  <div class="form-group">
-    <%= text_field_tag :cvc, nil,
-      class: "form-control input-lg",
-      placeholder: "CVC (1234)",
-      data: { stripe: "cvc" }
-    %>
+    <div id="card-element" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;"></div>
   </div>
 
   <%= button_tag "Update credit card",

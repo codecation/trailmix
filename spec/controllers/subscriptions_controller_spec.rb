@@ -3,6 +3,9 @@ describe SubscriptionsController, sidekiq: :inline do
     before do
       stub_sign_in
       stub_stripe_customer_create
+      stub_stripe_subscription_create
+      allow(ENV).to receive(:fetch).and_call_original
+      allow(ENV).to receive(:fetch).with("STRIPE_PRICE_ID").and_return("price_test")
     end
 
     context "with valid params" do
@@ -14,8 +17,8 @@ describe SubscriptionsController, sidekiq: :inline do
         expect(Stripe::Customer).to(
           have_received(:create).with(
             email: default_params[:email],
-            card: default_params[:stripe_card_id],
-            plan: Rails.configuration.stripe[:plan_name]))
+            payment_method: default_params[:stripe_payment_method_id],
+            invoice_settings: { default_payment_method: default_params[:stripe_payment_method_id] }))
         expect(ActionMailer::Base.deliveries).not_to be_empty
       end
 
@@ -58,7 +61,7 @@ describe SubscriptionsController, sidekiq: :inline do
       {
         email: 'foo@bar.com',
         password: 'password',
-        stripe_card_id: 'abc123'
+        stripe_payment_method_id: 'pm_abc123'
       }
     end
 
@@ -72,6 +75,12 @@ describe SubscriptionsController, sidekiq: :inline do
       allow(Stripe::Customer).to(
         receive(:create).and_return(
           double("Stripe::Customer", id: stripe_customer_id)))
+    end
+
+    def stub_stripe_subscription_create
+      allow(Stripe::Subscription).to(
+        receive(:create).and_return(
+          double("Stripe::Subscription", id: "sub_123")))
     end
 
     def stub_sign_in

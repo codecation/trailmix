@@ -31,11 +31,19 @@ class SubscriptionsController < ApplicationController
   end
 
   def create_stripe_customer
-    Stripe::Customer.create(
+    customer = Stripe::Customer.create(
       email: params[:email],
-      card: params[:stripe_card_id],
-      plan: Rails.configuration.stripe[:plan_name]
+      payment_method: params[:stripe_payment_method_id],
+      invoice_settings: { default_payment_method: params[:stripe_payment_method_id] }
     )
+
+    Stripe::Subscription.create(
+      customer: customer.id,
+      items: [{ price: ENV.fetch("STRIPE_PRICE_ID") }],
+      default_payment_method: params[:stripe_payment_method_id]
+    )
+
+    customer
   end
 
   def send_welcome_email(user)
