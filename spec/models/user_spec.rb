@@ -1,12 +1,36 @@
 RSpec.describe User, :type => :model do
   describe ".promptable" do
-    it "returns promptable users for the current hour" do
+    it "returns users whose local hour matches the current time" do
       Timecop.freeze(Time.utc(2014, 1, 1, 11)) do # 11AM UTC
         create(:user, time_zone: "UTC", prompt_delivery_hour: 10)
         create(:user, time_zone: "UTC", prompt_delivery_hour: 12)
         utc_11am = create(:user, time_zone: "UTC", prompt_delivery_hour: 11)
 
         expect(User.promptable).to eq [utc_11am]
+      end
+    end
+
+    it "handles different time zones correctly" do
+      Timecop.freeze(Time.utc(2014, 1, 1, 16)) do # 4PM UTC = 11AM Eastern (UTC-5 in winter)
+        utc_user = create(:user, time_zone: "UTC", prompt_delivery_hour: 16)
+        eastern_user = create(:user, time_zone: "Eastern Time (US & Canada)", prompt_delivery_hour: 11)
+        create(:user, time_zone: "Eastern Time (US & Canada)", prompt_delivery_hour: 16)
+
+        expect(User.promptable).to match_array [utc_user, eastern_user]
+      end
+    end
+
+    it "handles DST transitions correctly" do
+      eastern_user = create(:user, time_zone: "Eastern Time (US & Canada)", prompt_delivery_hour: 11)
+
+      # Winter: Eastern is UTC-5, so 11AM Eastern = 4PM UTC
+      Timecop.freeze(Time.utc(2014, 1, 1, 16)) do
+        expect(User.promptable).to include(eastern_user)
+      end
+
+      # Summer: Eastern is UTC-4, so 11AM Eastern = 3PM UTC
+      Timecop.freeze(Time.utc(2014, 7, 1, 15)) do
+        expect(User.promptable).to include(eastern_user)
       end
     end
   end
@@ -60,28 +84,21 @@ RSpec.describe User, :type => :model do
   end
 
   describe "#prompt_delivery_hour" do
-    it "returns the prompt delivery hour in the user's time zone" do
-      Timecop.freeze(Time.utc(2014, 10, 1)) do
-        user = create(:user, time_zone: "Melbourne") # Melbourne is UTC+10
-        user.update_column :prompt_delivery_hour, 5
+    it "returns the stored local hour directly" do
+      user = create(:user, time_zone: "Melbourne")
+      user.update_column :prompt_delivery_hour, 8
 
-        prompt_delivery_hour = user.prompt_delivery_hour
-
-        expect(prompt_delivery_hour).to eq(15)
-      end
+      expect(user.prompt_delivery_hour).to eq(8)
     end
   end
 
   describe "#prompt_delivery_hour=" do
-    it "writes the prompt delivery hour in utc" do
-      Timecop.freeze(Time.utc(2014, 10, 1)) do
-        user = create(:user, time_zone: "Melbourne") # Melbourne is UTC+10
+    it "stores the local hour directly without UTC conversion" do
+      user = create(:user, time_zone: "Melbourne")
 
-        user.prompt_delivery_hour = 5
-        prompt_delivery_hour = user.read_attribute(:prompt_delivery_hour)
+      user.prompt_delivery_hour = 8
 
-        expect(prompt_delivery_hour).to eq(19)
-      end
+      expect(user.read_attribute(:prompt_delivery_hour)).to eq(8)
     end
   end
 

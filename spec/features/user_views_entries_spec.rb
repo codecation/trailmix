@@ -8,12 +8,24 @@ feature "User views entries" do
     visit entries_path
 
     expect(page).to have_content("My latest entry")
-    expect(page).to_not have_content("My first entry")
-
-    click_link 'Older'
-
     expect(page).to have_content("My first entry")
-    expect(page).to_not have_content("My latest entry")
+  end
+
+  scenario "when paginating entries" do
+    user = create(:user)
+    26.times { |i| create(:entry, user: user, body: "Entry #{i}", date: i.days.ago) }
+
+    login_as(user)
+    visit entries_path
+
+    expect(page).to have_content("Entry 0")
+    expect(page).to have_content("Entry 24")
+    expect(page).to_not have_content("Entry 25")
+
+    click_link "Older"
+
+    expect(page).to have_content("Entry 25")
+    expect(page).to_not have_content("Entry 0")
   end
 
   scenario "when an entry includes a photo" do

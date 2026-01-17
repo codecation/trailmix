@@ -1,4 +1,6 @@
 class Entry < ApplicationRecord
+  paginates_per 25
+
   belongs_to :import, optional: true
   belongs_to :user
 
