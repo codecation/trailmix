@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2016_01_25_013209) do
+ActiveRecord::Schema[8.0].define(version: 2026_01_17_000002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -39,12 +39,29 @@ ActiveRecord::Schema[8.0].define(version: 2016_01_25_013209) do
     t.string "ohlife_export", null: false
   end
 
+  create_table "stripe_events", force: :cascade do |t|
+    t.string "event_id", null: false
+    t.string "event_type", null: false
+    t.datetime "processed_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_stripe_events_on_event_id", unique: true
+  end
+
   create_table "subscriptions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "stripe_customer_id", null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "stripe_subscription_id"
+    t.string "status"
+    t.datetime "current_period_end"
+    t.boolean "cancel_at_period_end", default: false
+    t.datetime "canceled_at"
+    t.datetime "ended_at"
+    t.index ["status"], name: "index_subscriptions_on_status"
     t.index ["stripe_customer_id"], name: "index_subscriptions_on_stripe_customer_id", unique: true
+    t.index ["stripe_subscription_id"], name: "index_subscriptions_on_stripe_subscription_id", unique: true
     t.index ["user_id"], name: "index_subscriptions_on_user_id", unique: true
   end
 

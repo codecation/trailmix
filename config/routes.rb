@@ -21,5 +21,13 @@ Rails.application.routes.draw do
   resource :settings, only: [:edit, :update]
   resources :subscriptions, only: [:create]
 
+  # Stripe Checkout and Portal
+  post "/checkout", to: "checkout_sessions#create", as: :checkout
+  get "/checkout/success", to: "checkout_sessions#success", as: :checkout_success
+  post "/billing/portal", to: "checkout_sessions#portal", as: :billing_portal
+
+  # Stripe Webhooks
+  post "/stripe/webhooks", to: "stripe_webhooks#create"
+
   root to: "landing#show"
 end

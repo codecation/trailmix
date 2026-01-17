@@ -28,6 +28,9 @@
 <hr />
 
 <p>
-  <small><%= link_to "Update credit card", edit_credit_card_path %> |</small>
+  <small>
+    <%= button_to "Manage Subscription", billing_portal_path, method: :post, class: "btn btn-link btn-sm", style: "padding: 0; vertical-align: baseline;" %> |
+    <%= link_to "Update credit card", edit_credit_card_path %>
+  </small>
   <%= render "subscriptions/close_account" %>
 </p>

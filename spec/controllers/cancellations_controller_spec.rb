@@ -33,15 +33,15 @@ describe CancellationsController do
       end
 
       it "cancels the Stripe subscription" do
-        subscription = create(:subscription)
+        subscription = create(:subscription, stripe_subscription_id: "sub_123")
         user = subscription.user
-        stripe_subscription =
-          stub_stripe(subscription.stripe_customer_id)
         sign_in(user)
+
+        allow(Stripe::Subscription).to receive(:cancel).and_return(true)
 
         post :create, params: { id: user.id }
 
-        expect(stripe_subscription).to(have_received(:delete))
+        expect(Stripe::Subscription).to have_received(:cancel).with("sub_123")
       end
     end
 
@@ -50,20 +50,6 @@ describe CancellationsController do
         post :create, params: { id: "not an id" }
 
         expect(response).to redirect_to(new_user_session_path)
-      end
-    end
-
-    def stub_stripe(customer_id)
-      double("Stripe::Subscription", delete: true).tap do |subscription|
-        customer = double(
-          "Stripe::Customer",
-          id: customer_id,
-          subscriptions: [subscription]
-        )
-
-        allow(Stripe::Customer).to(
-          receive(:retrieve).with(customer_id).and_return(customer)
-        )
       end
     end
   end
