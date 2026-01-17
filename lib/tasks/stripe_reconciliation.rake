@@ -18,7 +18,7 @@ namespace :stripe do
 
   def reconcile_subscription(subscription, stats)
     customer = Stripe::Customer.retrieve(
-      subscription.stripe_customer_id,
+      id: subscription.stripe_customer_id,
       expand: ["subscriptions"]
     )
 
