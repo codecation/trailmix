@@ -132,8 +132,6 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.1)
-    domain_name (0.5.20180417)
-      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -190,8 +188,6 @@ GEM
       activesupport (>= 7)
     hashdiff (1.1.1)
     htmlentities (4.3.4)
-    http-cookie (1.0.3)
-      domain_name (~> 0.5)
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
     image_processing (1.14.0)
@@ -234,10 +230,6 @@ GEM
     marcel (1.0.4)
     matrix (0.4.2)
     method_source (1.1.0)
-    mime-types (3.6.0)
-      logger
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2025.0204)
     mini_magick (5.1.2)
       benchmark
       logger
@@ -245,7 +237,7 @@ GEM
     mini_portile2 (2.8.9)
     minitest (6.0.1)
       prism (~> 1.5)
-    multi_json (1.15.0)
+    multi_json (1.19.1)
     mustermann (3.0.4)
       ruby2_keywords (~> 0.0.1)
     mutex_m (0.3.0)
@@ -258,7 +250,6 @@ GEM
       timeout
     net-smtp (0.5.1)
       net-protocol
-    netrc (0.11.0)
     nio4r (2.7.5)
     nokogiri (1.19.0)
       mini_portile2 (~> 2.8.2)
@@ -368,10 +359,6 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rest-client (2.0.2)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 4.0)
-      netrc (~> 0.8)
     rexml (3.4.4)
     rspec-activemodel-mocks (1.0.1)
       activemodel (>= 3.0)
@@ -439,12 +426,12 @@ GEM
       sprockets (>= 3.0.0)
     ssrf_filter (1.2.0)
     stringio (3.2.0)
-    stripe (1.57.1)
-      rest-client (>= 1.4, < 4.0)
-    stripe-ruby-mock (2.4.1)
+    stripe (13.5.1)
+    stripe-ruby-mock (5.0.0)
       dante (>= 0.2.0)
+      drb (>= 2.0.4, < 3)
       multi_json (~> 1.0)
-      stripe (>= 1.31.0, <= 1.58.0)
+      stripe (> 5, < 14)
     thor (1.5.0)
     tilt (2.7.0)
     timecop (0.9.10)
@@ -452,9 +439,6 @@ GEM
     tsort (0.2.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.7.6)
     uri (1.1.1)
     useragent (0.16.11)
     warden (1.2.9)
@@ -535,8 +519,8 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   sprockets (>= 2.12.5)
-  stripe (~> 1.57.1)
-  stripe-ruby-mock (~> 2.4.0)
+  stripe
+  stripe-ruby-mock (~> 5.0.0)
   timecop
   web-console
   webmock

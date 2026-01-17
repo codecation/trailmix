@@ -63,8 +63,7 @@ describe SubscriptionsController, sidekiq: :inline do
     end
 
     def stub_stripe_charge_failure
-      error = Stripe::CardError.new(double, double, double)
-      allow(error).to(receive(:message).and_return("Failed to charge card"))
+      error = Stripe::CardError.new("Failed to charge card", :card)
 
       allow(Stripe::Customer).to(receive(:create).and_raise(error))
     end

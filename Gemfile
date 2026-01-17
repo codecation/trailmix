@@ -30,7 +30,7 @@ gem "sass-rails", "~> 6.0.0"
 gem "sidekiq", "< 8"
 gem "sinatra", "~> 4.2.0", require: false
 gem "sprockets", ">= 2.12.5"
-gem "stripe", "~> 1.57.1"
+gem "stripe"
 gem "xmlrpc"
 
 group :development do
@@ -53,7 +53,7 @@ group :test do
   gem "selenium-webdriver"
   gem "database_cleaner"
   gem "formulaic"
-  gem "stripe-ruby-mock", "~> 2.4.0"
+  gem "stripe-ruby-mock", "~> 5.0.0"
   gem "launchy"
   gem "timecop"
   gem "webmock"
