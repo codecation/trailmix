@@ -230,6 +230,10 @@ GEM
     marcel (1.0.4)
     matrix (0.4.2)
     method_source (1.1.0)
+    mime-types (3.7.0)
+      logger
+      mime-types-data (~> 3.2025, >= 3.2025.0507)
+    mime-types-data (3.2026.0113)
     mini_magick (5.1.2)
       benchmark
       logger
@@ -497,6 +501,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   launchy
+  mime-types
   mini_magick
   mutex_m
   ostruct
