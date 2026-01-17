@@ -17,7 +17,7 @@ A private journaling app that sends daily email prompts and creates entries from
 ./bin/setup
 
 # Run server
-foreman start
+./bin/dev
 
 # Run all tests (copy .env.sample to .env first)
 cp .env.sample .env  # if not already done

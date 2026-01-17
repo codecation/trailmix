@@ -20,14 +20,7 @@ bundle exec rake dev:prime
 # Add binstubs to PATH via export PATH=".git/safe/../../bin:$PATH" in ~/.zshenv
 mkdir -p .git/safe
 
-# Pick a port for Foreman
-echo "port: 5000" > .foreman
 
-# Print warning if Foreman is not installed
-if ! command -v foreman &>/dev/null; then
-  echo "foreman is not installed."
-  echo "See https://github.com/ddollar/foreman for install instructions."
-fi
 
 # Set up production app.
 if heroku join --app trailmix-production &> /dev/null; then

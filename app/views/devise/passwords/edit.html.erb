@@ -4,23 +4,21 @@
   </p>
 <% end %>
 
-<%= simple_form_for(resource,
-  as: resource_name,
-  url: password_path(resource_name),
-  html: { method: :put }
-) do |f| %>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
 
-  <%= f.error_notification %>
+  <% if resource.errors.any? %>
+    <div class="alert alert-danger">
+      <% resource.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
 
-  <%= f.input :reset_password_token, as: :hidden %>
+  <%= f.hidden_field :reset_password_token %>
 
   <div class="form-group">
-    <%= f.input :password,
-      label: false,
-      placeholder: "New password",
-      required: true,
-      autofocus: true %>
+    <%= f.password_field :password, autofocus: true, placeholder: "New password", class: "form-control", required: true %>
   </div>
 
-  <%= f.button :submit, "Change password" %>
+  <%= f.submit "Change password", class: "btn btn-primary" %>
 <% end %>

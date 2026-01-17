@@ -78,8 +78,6 @@ GEM
       airbrake-ruby (~> 6.0)
     airbrake-ruby (6.2.2)
       rbtree3 (~> 0.6)
-    autoprefixer-rails (10.4.19.0)
-      execjs (~> 2)
     awesome_print (1.2.0)
     base64 (0.3.0)
     bcrypt (3.1.20)
@@ -141,12 +139,9 @@ GEM
       railties (>= 3.2)
     drb (2.2.3)
     email_reply_parser (0.5.8)
-    email_validator (1.4.0)
-      activemodel
     erb (6.0.1)
     erubi (1.13.1)
     excon (0.72.0)
-    execjs (2.10.0)
     factory_bot (6.5.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.4.4)
@@ -163,7 +158,6 @@ GEM
     ffi (1.17.1-x86_64-darwin)
     ffi (1.17.1-x86_64-linux-gnu)
     ffi (1.17.1-x86_64-linux-musl)
-    flutie (2.0.0)
     fog-aws (2.0.1)
       fog-core (~> 1.38)
       fog-json (~> 1.0)
@@ -194,7 +188,6 @@ GEM
     groupdate (6.5.1)
       activesupport (>= 7)
     hashdiff (1.1.1)
-    high_voltage (3.1.2)
     htmlentities (4.3.4)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -285,7 +278,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.0-x86_64-linux-musl)
       racc (~> 1.4)
-    normalize-rails (3.0.1)
     orm_adapter (0.5.0)
     ostruct (0.6.1)
     pg (1.5.9)
@@ -426,9 +418,6 @@ GEM
       logger
       rack (>= 2.2.4)
       redis-client (>= 0.22.2)
-    simple_form (5.0.3)
-      actionpack (>= 5.0)
-      activemodel (>= 5.0)
     sinatra (4.2.1)
       logger (>= 1.6.0)
       mustermann (~> 3.0)
@@ -458,9 +447,6 @@ GEM
     tilt (2.7.0)
     timecop (0.9.10)
     timeout (0.6.0)
-    title (0.0.5)
-      i18n
-      rails (>= 3.1)
     tsort (0.2.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -504,7 +490,6 @@ PLATFORMS
 
 DEPENDENCIES
   airbrake
-  autoprefixer-rails
   awesome_print
   benchmark
   better_errors
@@ -517,21 +502,17 @@ DEPENDENCIES
   dotenv-rails
   drb
   email_reply_parser
-  email_validator
   factory_bot_rails
-  flutie
   fog-aws
   formulaic
   griddler
   griddler-sendgrid
   groupdate
-  high_voltage
   jquery-rails
   kaminari
   launchy
   mini_magick
   mutex_m
-  normalize-rails (~> 3.0.0)
   ostruct
   pg (~> 1.0)
   pry-rails
@@ -548,7 +529,6 @@ DEPENDENCIES
   sass-rails (~> 6.0.0)
   selenium-webdriver
   sidekiq (< 8)
-  simple_form (~> 5.0.3)
   sinatra (~> 4.2.0)
   spring
   spring-commands-rspec
@@ -556,7 +536,6 @@ DEPENDENCIES
   stripe (~> 1.57.1)
   stripe-ruby-mock (~> 2.4.0)
   timecop
-  title
   web-console (~> 2.0)
   webmock
   xmlrpc

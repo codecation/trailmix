@@ -1,2 +1,21 @@
-#!/usr/bin/env ruby
-exec "./bin/rails", "server", *ARGV
+#!/usr/bin/env bash
+set -e
+
+cleanup() {
+  echo "Shutting down..."
+  kill $WEB_PID $WORKER_PID 2>/dev/null
+  wait $WEB_PID $WORKER_PID 2>/dev/null
+  exit 0
+}
+
+trap cleanup INT TERM
+
+echo "Starting web server on port ${PORT:-5000}..."
+bundle exec puma -C config/puma.rb &
+WEB_PID=$!
+
+echo "Starting Sidekiq worker..."
+bundle exec sidekiq &
+WORKER_PID=$!
+
+wait

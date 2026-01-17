@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "/search", to: "searches#show"
 
   get "/pages/ohlife_refugees", to: redirect("/pages/ohlife-alternative")
+  get "/pages/:id", to: "pages#show", as: :page
 
   resources :cancellations, only: [:create]
   resource :credit_card, only: [:edit, :update]

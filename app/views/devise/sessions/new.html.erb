@@ -5,27 +5,16 @@
   </p>
 <% end %>
 
-<%= simple_form_for(
-  resource,
-  as: resource_name,
-  url: session_path(resource_name)
-) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
   <div class="form-group">
-    <%= f.input :email,
-      label: false,
-      required: true,
-      autofocus: true,
-      placeholder: "Email address" %>
+    <%= f.email_field :email, autofocus: true, placeholder: "Email address", class: "form-control", required: true %>
   </div>
 
   <div class="form-group">
-    <%= f.input :password,
-      label: false,
-      required: true,
-      placeholder: "Password" %>
+    <%= f.password_field :password, placeholder: "Password", class: "form-control", required: true %>
   </div>
 
-  <%= f.button :submit, "Sign in" %>
+  <%= f.submit "Sign in", class: "btn btn-primary" %>
   or <%= link_to "Sign up", new_registration_path %>.
 <% end %>
