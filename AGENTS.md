@@ -16,8 +16,11 @@ A private journaling app that sends daily email prompts and creates entries from
 # Setup
 ./bin/setup
 
-# Run server (use timeout to capture boot errors)
+# Run server (web only, use timeout to capture boot errors)
 timeout 10 ./bin/dev || true
+
+# Run server with Sidekiq worker (requires Redis)
+timeout 10 ./bin/dev-with-worker || true
 
 # Run all tests (copy .env.sample to .env first)
 cp .env.sample .env  # if not already done

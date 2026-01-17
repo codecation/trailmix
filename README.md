@@ -60,6 +60,10 @@ After setting up, you can run the application:
 
     % ./bin/dev
 
+This starts just the web server. If you need background job processing (requires Redis):
+
+    % ./bin/dev-with-worker
+
 Guidelines
 ----------
 
