@@ -1,32 +1,31 @@
 <% if @entries.empty? %>
   <%= render "welcome" %>
 <% else %>
-  <% @entries.each do |entry| %>
-    <article class="entry">
-      <header>
-        <h2>
-          <% if entry.for_today? %>
-            Today
-          <% else %>
-            <%= l(entry.date, format: :day_of_week) %>
-          <% end %>
-        </h2>
-        <p class="lead">
-          <%= l(entry.date, format: :month_day_year) %>
-        </p>
-      </header>
+  <div class="entries-list">
+    <% @entries.each do |entry| %>
+      <article class="entry">
+        <header>
+          <h2>
+            <%= link_to l(entry.date, format: :month_day_year), edit_entry_path(entry) %>
+          </h2>
+        </header>
 
-      <%= simple_format(truncate(entry.body, length: 300)) %>
+        <div class="entry-body">
+          <%= simple_format(entry.body) %>
+        </div>
 
-      <% if entry.photo.url %>
-        <%= image_tag entry.photo.url, width: 200 %>
-      <% end %>
+        <% if entry.photo.url %>
+          <div class="entry-photo">
+            <%= image_tag entry.photo.url %>
+          </div>
+        <% end %>
 
-      <p>
-        <%= link_to "Read more", edit_entry_path(entry) %>
-      </p>
-    </article>
-  <% end %>
 
-  <%= paginate @entries %>
+      </article>
+    <% end %>
+  </div>
+
+  <div class="entries-pagination">
+    <%= paginate @entries %>
+  </div>
 <% end %>
