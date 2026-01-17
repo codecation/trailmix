@@ -14,5 +14,7 @@
 <%= simple_format(entry.body) %>
 
 <% if entry.photo.url %>
-  <%= image_tag entry.photo.url, width: 400 %>
+  <a href="<%= entry.photo.url %>" target="_blank">
+    <%= image_tag entry.photo.url, width: 400 %>
+  </a>
 <% end %>

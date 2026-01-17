@@ -16,7 +16,9 @@
 
         <% if entry.photo.url %>
           <div class="entry-photo">
-            <%= image_tag entry.photo.url %>
+            <a href="<%= entry.photo.url %>" target="_blank">
+              <%= image_tag entry.photo.url %>
+            </a>
           </div>
         <% end %>
 
