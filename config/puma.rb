@@ -1,6 +1,12 @@
 # https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server
 
-workers Integer(ENV['WEB_CONCURRENCY'] || 2)
+# Use single mode in development to avoid macOS fork() issues
+environment = ENV['RACK_ENV'] || ENV['RAILS_ENV'] || 'development'
+if environment == 'development'
+  workers 0
+else
+  workers Integer(ENV['WEB_CONCURRENCY'] || 2)
+end
 threads_count = Integer(ENV['RAILS_MAX_THREADS'] || 5)
 threads threads_count, threads_count
 

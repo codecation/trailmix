@@ -16,8 +16,8 @@ A private journaling app that sends daily email prompts and creates entries from
 # Setup
 ./bin/setup
 
-# Run server
-./bin/dev
+# Run server (use timeout to capture boot errors)
+timeout 10 ./bin/dev || true
 
 # Run all tests (copy .env.sample to .env first)
 cp .env.sample .env  # if not already done
