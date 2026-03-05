@@ -1,8 +1,2 @@
-# Patch to address incompatability between Ruby 3.1 and Psych 4.x
-# https://stackoverflow.com/a/71192990
-
-module YAML
-  class << self
-    alias_method :load, :unsafe_load if YAML.respond_to? :unsafe_load
-  end
-end
+# Psych 4+ makes YAML.load safe by default (requires permitted_classes for
+# non-basic types). No monkey-patching needed on Ruby 3.4 / Rails 8.

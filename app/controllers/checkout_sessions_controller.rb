@@ -27,11 +27,19 @@ class CheckoutSessionsController < ApplicationController
   end
 
   def success
-    checkout_session = Stripe::Checkout::Session.retrieve(params[:session_id])
+    session_id = params[:session_id]
+
+    if StripeEvent.processed?(session_id)
+      flash[:error] = "This checkout session has already been used. Please sign in."
+      return redirect_to new_user_session_path
+    end
+
+    checkout_session = Stripe::Checkout::Session.retrieve(session_id)
 
     if checkout_session.payment_status == "paid" || checkout_session.status == "complete"
       user = find_or_create_user_from_session(checkout_session)
       if user
+        StripeEvent.record!(event_id: session_id, event_type: "checkout.session.success")
         sign_in(user)
         flash[:notice] = "Welcome to Trailmix! Your subscription is now active."
         redirect_to entries_path
