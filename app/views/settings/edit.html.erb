@@ -29,8 +29,9 @@
 
 <p>
   <small>
-    <%= button_to "Manage Subscription", billing_portal_path, method: :post, class: "btn btn-link btn-sm", style: "padding: 0; vertical-align: baseline;" %> |
-    <%= link_to "Update credit card", edit_credit_card_path %>
+    <%= button_to "Manage Subscription", billing_portal_path, method: :post, class: "btn btn-link btn-sm", style: "padding: 0; vertical-align: baseline;", form: { style: "display: inline;" } %> |
+    <%= link_to "Update credit card", edit_credit_card_path %> |
+    <%= link_to "Export entries", new_export_path %>
   </small>
   <%= render "subscriptions/close_account" %>
 </p>
