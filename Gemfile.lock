@@ -80,7 +80,7 @@ GEM
       rbtree3 (~> 0.6)
     awesome_print (1.2.0)
     base64 (0.3.0)
-    bcrypt (3.1.20)
+    bcrypt (3.1.21)
     benchmark (0.5.0)
     better_errors (2.8.0)
       coderay (>= 1.0.0)
@@ -125,10 +125,10 @@ GEM
     database_cleaner-core (2.0.1)
     date (3.5.1)
     debug_inspector (1.2.0)
-    devise (4.9.4)
+    devise (5.0.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
+      railties (>= 7.0)
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.1)
@@ -138,7 +138,7 @@ GEM
       railties (>= 3.2)
     drb (2.2.3)
     email_reply_parser (0.5.8)
-    erb (6.0.1)
+    erb (6.0.2)
     erubi (1.13.1)
     excon (0.72.0)
     factory_bot (6.5.0)
@@ -195,8 +195,9 @@ GEM
       ruby-vips (>= 2.0.17, < 3)
     io-console (0.8.2)
     ipaddress (0.8.3)
-    irb (1.16.0)
+    irb (1.17.0)
       pp (>= 0.6.0)
+      prism (>= 1.3.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jquery-rails (4.6.0)
@@ -218,7 +219,7 @@ GEM
     launchy (2.4.2)
       addressable (~> 2.3)
     logger (1.7.0)
-    loofah (2.25.0)
+    loofah (2.25.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.9.0)
@@ -239,7 +240,8 @@ GEM
       logger
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (6.0.1)
+    minitest (6.0.2)
+      drb (~> 2.0)
       prism (~> 1.5)
     multi_json (1.19.1)
     mustermann (3.0.4)
@@ -280,7 +282,7 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.8.0)
+    prism (1.9.0)
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -328,8 +330,8 @@ GEM
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.6.2)
-      loofah (~> 2.21)
+    rails-html-sanitizer (1.7.0)
+      loofah (~> 2.25)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
     rails_12factor (0.0.3)
       rails_serve_static_assets
@@ -347,7 +349,7 @@ GEM
       zeitwerk (~> 2.6)
     rake (13.3.1)
     rbtree3 (0.7.1)
-    rdoc (7.1.0)
+    rdoc (7.2.0)
       erb
       psych (>= 4.0.0)
       tsort
@@ -360,9 +362,9 @@ GEM
     regexp_parser (2.9.2)
     reline (0.6.3)
       io-console (~> 0.5)
-    responders (3.1.1)
-      actionpack (>= 5.2)
-      railties (>= 5.2)
+    responders (3.2.0)
+      actionpack (>= 7.0)
+      railties (>= 7.0)
     rexml (3.4.4)
     rspec-activemodel-mocks (1.0.1)
       activemodel (>= 3.0)
@@ -463,7 +465,7 @@ GEM
     xmlrpc (0.2.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.7.4)
+    zeitwerk (2.7.5)
 
 PLATFORMS
   aarch64-linux-gnu
@@ -488,7 +490,7 @@ DEPENDENCIES
   carrierwave
   chartkick
   database_cleaner
-  devise (~> 4.9.4)
+  devise (~> 5.0.3)
   dotenv-rails
   drb
   email_reply_parser
