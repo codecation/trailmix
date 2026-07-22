@@ -8,6 +8,9 @@ gem "bigdecimal", "~> 3.1.9"
 gem "binding_of_caller"
 gem "carrierwave"
 gem "chartkick"
+# connection_pool 3.x changes TimedStack#pop's signature, which crashes
+# sidekiq 7's scheduler thread. Drop this pin when sidekiq moves to >= 8.
+gem "connection_pool", "~> 2.5"
 gem "devise", "~> 5.0", ">= 5.0.4"
 gem "drb"
 gem "email_reply_parser"
