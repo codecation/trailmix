@@ -26,10 +26,6 @@ FactoryBot.define do
     stripe_customer_id
   end
 
-  factory :import do
-    user
-  end
-
   factory :griddler_email, class: OpenStruct do
     to { [{
       full: "to_user@example.com",

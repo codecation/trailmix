@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_01_17_000002) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_22_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -27,16 +27,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_17_000002) do
     t.text "body", null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.integer "import_id"
     t.date "date", null: false
     t.string "photo"
-  end
-
-  create_table "imports", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "ohlife_export", null: false
   end
 
   create_table "stripe_events", force: :cascade do |t|

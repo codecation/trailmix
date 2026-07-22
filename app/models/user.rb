@@ -6,7 +6,6 @@ class User < ApplicationRecord
          :validatable
 
   has_many :entries, dependent: :destroy
-  has_many :imports, dependent: :destroy
   has_one :subscription, dependent: :destroy
 
   before_create :generate_reply_token

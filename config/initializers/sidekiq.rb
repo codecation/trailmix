@@ -2,10 +2,11 @@ require "sidekiq"
 require "sidekiq/web"
 
 Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
-  [user, password] == [
-    ENV.fetch("SIDEKIQ_WEB_USER"),
-    ENV.fetch("SIDEKIQ_WEB_PASSWORD")
-  ]
+  ActiveSupport::SecurityUtils.secure_compare(
+    user, ENV.fetch("SIDEKIQ_WEB_USER")
+  ) & ActiveSupport::SecurityUtils.secure_compare(
+    password, ENV.fetch("SIDEKIQ_WEB_PASSWORD")
+  )
 end
 
 # https://devcenter.heroku.com/articles/connecting-heroku-redis#connecting-in-ruby

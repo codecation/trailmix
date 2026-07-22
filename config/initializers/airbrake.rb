@@ -49,7 +49,12 @@ if (project_id = ENV['AIRBRAKE_PROJECT_ID']) &&
     # Airbrake. By default, all "password" attributes will have their contents
     # replaced.
     # https://github.com/airbrake/airbrake-ruby#blocklist_keys
-    c.blocklist_keys = [/password/i, /authorization/i]
+    c.blocklist_keys = [
+      /password/i, /authorization/i,
+      # Journal content must never reach the error tracker: entry bodies,
+      # inbound email replies, search terms, and emails/tokens.
+      /body/i, /text/i, /html/i, /term/i, /reason/i, /email/i, /token/i
+    ]
 
     # Alternatively, you can integrate with Rails' filter_parameters.
     # Read more: https://goo.gl/gqQ1xS
