@@ -60,7 +60,7 @@ describe SubscriptionsController, sidekiq: :inline do
     def default_params
       {
         email: 'foo@bar.com',
-        password: 'password',
+        password: 'correct horse battery staple',
         stripe_payment_method_id: 'pm_abc123'
       }
     end

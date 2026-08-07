@@ -12,15 +12,13 @@ end
 # https://devcenter.heroku.com/articles/connecting-heroku-redis#connecting-in-ruby
 Sidekiq.configure_server do |config|
   config.redis = {
-    url: ENV["REDIS_URL"],
-    ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE }
+    url: ENV["REDIS_URL"]
   }
 end
 
 Sidekiq.configure_client do |config|
   config.redis = {
-      url: ENV["REDIS_URL"],
-      ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE }
+      url: ENV["REDIS_URL"]
   }
   config.logger = Rails.logger if Rails.env.test?
 end

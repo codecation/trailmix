@@ -4,7 +4,7 @@ FactoryBot.define do
 
   factory :user do
     email
-    password { 'abc123' }
+    password { "correct horse battery staple" }
   end
 
   factory :entry do

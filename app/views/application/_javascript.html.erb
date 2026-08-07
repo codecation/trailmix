@@ -5,7 +5,7 @@
 <%= render "analytics" %>
 
 <% if Rails.env.test? %>
-  <%= javascript_tag do %>
+  <%= javascript_tag nonce: true do %>
     $.fx.off = true;
     $.ajaxSetup({ async: false });
   <% end %>

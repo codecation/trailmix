@@ -1,4 +1,13 @@
 RSpec.describe User, :type => :model do
+  describe "password validation" do
+    it "requires at least 12 characters" do
+      user = build(:user, password: "too short")
+
+      expect(user).not_to be_valid
+      expect(user.errors[:password]).to include("is too short (minimum is 12 characters)")
+    end
+  end
+
   describe ".promptable" do
     it "returns users whose local hour matches the current time" do
       Timecop.freeze(Time.utc(2014, 1, 1, 11)) do # 11AM UTC

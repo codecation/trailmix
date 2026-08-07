@@ -1,0 +1,6 @@
+services:
+  web:
+    command: /home/user/.local/bin/mise exec -- ./bin/dev-with-worker
+    portal:
+      title: Trailmix
+      description: Rails development server with its Sidekiq worker.

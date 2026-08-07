@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+sudo service postgresql start >/dev/null
+sudo service redis-server start >/dev/null
+
+echo "PostgreSQL and Redis are running."

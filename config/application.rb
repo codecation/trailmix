@@ -14,6 +14,7 @@ module Trailmix
     config.i18n.enforce_available_locales = true
 
     config.active_record.default_timezone = :utc
+    config.active_storage.draw_routes = false
 
     config.generators do |generate|
       generate.helper false

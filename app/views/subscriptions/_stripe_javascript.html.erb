@@ -1,6 +1,6 @@
 <% content_for :javascript do %>
   <script src="https://js.stripe.com/v3/"></script>
-  <%= javascript_tag do %>
+  <%= javascript_tag nonce: true do %>
     var stripe = Stripe("<%= Rails.configuration.stripe[:publishable_key] %>");
     var elements = stripe.elements();
 

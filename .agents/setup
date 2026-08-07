@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+packages=(
+  build-essential
+  libcurl4-openssl-dev
+  libffi-dev
+  libgdbm-dev
+  libncurses-dev
+  libpq-dev
+  libreadline-dev
+  libssl-dev
+  libyaml-dev
+  postgresql
+  redis-server
+  zlib1g-dev
+)
+
+missing_packages=()
+for package in "${packages[@]}"; do
+  if ! dpkg-query -W -f='${Status}' "$package" 2>/dev/null | grep -q "install ok installed"; then
+    missing_packages+=("$package")
+  fi
+done
+
+if ((${#missing_packages[@]})); then
+  echo "Installing system packages..."
+  sudo apt-get update
+  sudo DEBIAN_FRONTEND=noninteractive apt-get install -y "${missing_packages[@]}"
+fi
+
+if [[ ! -x "$HOME/.local/bin/mise" ]]; then
+  echo "Installing mise..."
+  curl -fsSL https://mise.run | sh
+fi
+
+profile_marker="# Trailmix mise activation"
+if ! grep -Fqx "$profile_marker" "$HOME/.bash_profile" 2>/dev/null; then
+  cat >> "$HOME/.bash_profile" <<'EOF'
+
+# Trailmix mise activation
+eval "$(~/.local/bin/mise activate bash)"
+EOF
+fi
+
+echo "Installing Ruby..."
+"$HOME/.local/bin/mise" trust --yes mise.toml
+"$HOME/.local/bin/mise" install --yes
+
+echo "Installing gems..."
+if ! "$HOME/.local/bin/mise" exec -- gem list --installed bundler --version 2.6.2 >/dev/null; then
+  "$HOME/.local/bin/mise" exec -- gem install bundler --version 2.6.2 --no-document
+fi
+"$HOME/.local/bin/mise" exec -- bundle install
+
+[[ -f .env ]] || cp -- .env.sample .env
+
+echo "Starting PostgreSQL and Redis..."
+sudo service postgresql start
+sudo service redis-server start
+
+for hba_file in /etc/postgresql/*/main/pg_hba.conf; do
+  sudo sed -i -E \
+    '/^host[[:space:]]+all[[:space:]]+all[[:space:]]+(127\.0\.0\.1\/32|::1\/128)[[:space:]]+/s/scram-sha-256/trust/' \
+    "$hba_file"
+done
+sudo service postgresql reload
+
+db_user="$(id -un)"
+if ! sudo -u postgres psql --tuples-only --no-align --command \
+  "SELECT 1 FROM pg_roles WHERE rolname = '$db_user'" | grep -qx 1; then
+  sudo -u postgres createuser --superuser "$db_user"
+fi
+
+echo "Preparing development and test databases..."
+"$HOME/.local/bin/mise" exec -- bin/rails db:prepare
+RAILS_ENV=test "$HOME/.local/bin/mise" exec -- bin/rails db:prepare

@@ -5,6 +5,7 @@
 /.bundle
 /.env
 /.foreman
+/.amp/portals/
 /coverage/*
 /db/*.sqlite3
 /log/*
