@@ -43,6 +43,11 @@ eval "$(~/.local/bin/mise activate bash)"
 EOF
 fi
 
+shims_path='export PATH="$HOME/.local/share/mise/shims:$PATH"'
+if ! grep -Fqx "$shims_path" "$HOME/.bash_profile" 2>/dev/null; then
+  printf '\n%s\n' "$shims_path" >> "$HOME/.bash_profile"
+fi
+
 echo "Installing Ruby..."
 "$HOME/.local/bin/mise" trust --yes mise.toml
 "$HOME/.local/bin/mise" install --yes
