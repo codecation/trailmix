@@ -10,7 +10,7 @@ describe AdminDashboardController do
 
     context "when a non-admin user requests it" do
       it "redirects" do
-        non_admin = mock_model("User", email: "foo@bar.com")
+        non_admin = instance_double(User, email: "foo@bar.com")
         stub_current_user_with(non_admin)
 
         get :show
@@ -22,7 +22,7 @@ describe AdminDashboardController do
     context "when an admin requests it" do
       it "renders successfully" do
         email = ENV.fetch("ADMIN_EMAILS").split(",").first
-        admin = mock_model("User", email: email)
+        admin = instance_double(User, email: email)
         stub_current_user_with(admin)
 
         get :show

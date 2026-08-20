@@ -78,7 +78,6 @@ GEM
       airbrake-ruby (~> 6.0)
     airbrake-ruby (6.2.2)
       rbtree3 (~> 0.6)
-    awesome_print (1.2.0)
     base64 (0.3.0)
     bcrypt (3.1.22)
     benchmark (0.5.0)
@@ -175,10 +174,6 @@ GEM
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (1.2.3)
       reline
-    formulaic (0.4.0)
-      activesupport
-      capybara
-      i18n
     globalid (1.4.0)
       activesupport (>= 6.1)
     griddler (1.6.0)
@@ -218,8 +213,6 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    launchy (2.4.2)
-      addressable (~> 2.3)
     logger (1.7.0)
     loofah (2.25.2)
       crass (~> 1.0.2)
@@ -322,10 +315,6 @@ GEM
       activesupport (= 8.0.5.1)
       bundler (>= 1.15.0)
       railties (= 8.0.5.1)
-    rails-controller-testing (1.0.5)
-      actionpack (>= 5.0.1.rc1)
-      actionview (>= 5.0.1.rc1)
-      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.3.0)
       activesupport (>= 5.0.0)
       minitest
@@ -333,11 +322,6 @@ GEM
     rails-html-sanitizer (1.7.1)
       loofah (~> 2.25, >= 2.25.2)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.4)
-    rails_stdout_logging (0.0.3)
     railties (8.0.5.1)
       actionpack (= 8.0.5.1)
       activesupport (= 8.0.5.1)
@@ -371,10 +355,6 @@ GEM
       actionpack (>= 7.0)
       railties (>= 7.0)
     rexml (3.4.4)
-    rspec-activemodel-mocks (1.0.1)
-      activemodel (>= 3.0)
-      activesupport (>= 3.0)
-      rspec-mocks (>= 2.99, < 4.0)
     rspec-core (3.13.3)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.3)
@@ -396,7 +376,6 @@ GEM
       ffi (~> 1.12)
       logger
     ruby2_keywords (0.0.5)
-    rubyzip (3.4.1)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -408,12 +387,6 @@ GEM
       sprockets-rails
       tilt
     securerandom (0.4.1)
-    selenium-webdriver (4.46.0)
-      base64 (~> 0.2)
-      logger (~> 1.4)
-      rexml (~> 3.2, >= 3.2.5)
-      rubyzip (>= 1.2.2, < 4.0)
-      websocket (~> 1.0)
     sidekiq (7.3.9)
       base64
       connection_pool (>= 2.3.0)
@@ -465,12 +438,10 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
-    websocket (1.2.11)
     websocket-driver (0.8.2)
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    xmlrpc (0.2.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.8.2)
@@ -490,11 +461,11 @@ PLATFORMS
 
 DEPENDENCIES
   airbrake
-  awesome_print
   benchmark
   better_errors
   bigdecimal (~> 3.1.9)
   binding_of_caller
+  capybara
   carrierwave
   chartkick
   connection_pool (~> 2.5)
@@ -505,13 +476,11 @@ DEPENDENCIES
   email_reply_parser
   factory_bot_rails
   fog-aws
-  formulaic
   griddler
   griddler-sendgrid
   groupdate
   jquery-rails
   kaminari
-  launchy
   mime-types
   mini_magick
   mutex_m
@@ -522,15 +491,10 @@ DEPENDENCIES
   rack-attack
   rack-timeout
   rails (~> 8.0.5, >= 8.0.5.1)
-  rails-controller-testing
-  rails_12factor (~> 0.0.3)
-  rails_serve_static_assets (~> 0.0.4)
   recipient_interceptor
   redis
-  rspec-activemodel-mocks
   rspec-rails (~> 6.1.0)
   sass-rails (~> 6.0.0)
-  selenium-webdriver
   sidekiq (< 8)
   sinatra (~> 4.2.0)
   spring
@@ -541,7 +505,6 @@ DEPENDENCIES
   timecop
   web-console
   webmock
-  xmlrpc
 
 RUBY VERSION
    ruby 3.4.2p28

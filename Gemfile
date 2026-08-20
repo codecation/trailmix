@@ -36,7 +36,6 @@ gem "sidekiq", "< 8"
 gem "sinatra", "~> 4.2.0", require: false
 gem "sprockets", ">= 2.12.5"
 gem "stripe"
-gem "xmlrpc"
 
 group :development do
   gem "better_errors"
@@ -46,26 +45,16 @@ group :development do
 end
 
 group :development, :test do
-  gem "awesome_print"
   gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "pry-rails"
-  gem "rspec-activemodel-mocks"
   gem "rspec-rails", "~> 6.1.0"
 end
 
 group :test do
-  gem "selenium-webdriver"
+  gem "capybara"
   gem "database_cleaner"
-  gem "formulaic"
   gem "stripe-ruby-mock", "~> 5.0.0"
-  gem "launchy"
   gem "timecop"
   gem "webmock"
-  gem "rails-controller-testing"
-end
-
-group :staging, :production do
-  gem "rails_12factor", "~> 0.0.3"
-  gem "rails_serve_static_assets", "~> 0.0.4"
 end

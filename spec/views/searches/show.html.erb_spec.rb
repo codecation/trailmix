@@ -1,7 +1,8 @@
 describe "searches/show" do
   context "when no entries are found" do
     it "informs the user" do
-      search = mock_model("Search", term: "cat", entries: [])
+      search = Search.new(term: "cat")
+      allow(search).to receive(:entries).and_return([])
       assign(:search, search)
 
       render template: "searches/show"
@@ -12,7 +13,8 @@ describe "searches/show" do
 
   context "when no search term is provided" do
     it "does not inform the user" do
-      search = mock_model("Search", term: "", entries: [])
+      search = Search.new(term: "")
+      allow(search).to receive(:entries).and_return([])
       assign(:search, search)
 
       render template: "searches/show"

@@ -1,12 +1,15 @@
 require "spec_helper"
 
 describe LandingController do
+  render_views
+
   describe "#show" do
     context "when the user is signed out" do
       it "renders the landing page" do
         get :show
 
-        expect(response).to render_template :show
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to include("That's why we built Trailmix")
       end
     end
 
