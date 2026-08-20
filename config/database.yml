@@ -4,7 +4,7 @@ development: &default
   encoding: utf8
   host: localhost
   min_messages: warning
-  pool: 2
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
   timeout: 5000
 
 test:

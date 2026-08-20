@@ -1,4 +1,4 @@
-describe SubscriptionsController, sidekiq: :inline do
+describe SubscriptionsController, active_job: :inline do
   describe "#create" do
     before do
       stub_sign_in

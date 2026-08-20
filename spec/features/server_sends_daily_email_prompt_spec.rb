@@ -1,4 +1,4 @@
-feature "The server executes the prompt task", sidekiq: :inline do
+feature "The server executes the prompt task", active_job: :inline do
   scenario "and all users are emailed" do
     first_user = create(:user)
     second_user = create(:user)

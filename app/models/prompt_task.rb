@@ -6,7 +6,7 @@ class PromptTask
 
   def run
     @user_ids.each do |user_id|
-      @worker.perform_async(user_id)
+      @worker.perform_later(user_id)
     end
   end
 end

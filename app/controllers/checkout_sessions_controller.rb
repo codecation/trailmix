@@ -89,7 +89,7 @@ class CheckoutSessionsController < ApplicationController
     return nil unless pending_params
 
     user = User.create!(pending_params)
-    WelcomeMailerWorker.perform_async(user.id)
+    WelcomeMailerWorker.perform_later(user.id)
     user
   end
 

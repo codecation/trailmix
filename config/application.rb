@@ -15,6 +15,7 @@ module Trailmix
 
     config.active_record.default_timezone = :utc
     config.active_storage.draw_routes = false
+    config.active_job.queue_adapter = :solid_queue
 
     config.generators do |generate|
       generate.helper false

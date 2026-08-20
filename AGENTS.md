@@ -7,7 +7,7 @@ A private journaling app that sends daily email prompts and creates entries from
 - Ruby 3.4.2 (managed with mise)
 - Rails 8.0
 - PostgreSQL
-- Sidekiq (background jobs)
+- Solid Queue (database-backed background jobs)
 - RSpec (testing)
 
 ## Commands
@@ -19,7 +19,7 @@ A private journaling app that sends daily email prompts and creates entries from
 # Run server (web only, use timeout to capture boot errors)
 timeout 10 ./bin/dev || true
 
-# Run server with Sidekiq worker (requires Redis)
+# Run server with Solid Queue worker
 timeout 10 ./bin/dev-with-worker || true
 
 # Run all tests (copy .env.sample to .env first)

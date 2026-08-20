@@ -3,9 +3,6 @@ Rails.application.routes.draw do
 
   mount_griddler
 
-  require "sidekiq/web"
-  mount Sidekiq::Web => "/jobs"
-
   get "/admin_dashboard", to: "admin_dashboard#show", as: :admin_dashboard
   get "/landing", to: "landing#show", as: :new_registration
   get "/search", to: "searches#show"

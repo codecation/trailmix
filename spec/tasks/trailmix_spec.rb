@@ -1,6 +1,6 @@
 require "rake"
 
-describe "trailmix:schedule_all_prompts", sidekiq: :inline do
+describe "trailmix:schedule_all_prompts", active_job: :inline do
   before do
     load "tasks/trailmix.rake"
     Rake::Task.define_task(:environment)

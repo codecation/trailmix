@@ -12,7 +12,6 @@ packages=(
   libssl-dev
   libyaml-dev
   postgresql
-  redis-server
   zlib1g-dev
 )
 
@@ -60,9 +59,8 @@ fi
 
 [[ -f .env ]] || cp -- .env.sample .env
 
-echo "Starting PostgreSQL and Redis..."
+echo "Starting PostgreSQL..."
 sudo service postgresql start
-sudo service redis-server start
 
 for hba_file in /etc/postgresql/*/main/pg_hba.conf; do
   sudo sed -i -E \

@@ -1,6 +1,4 @@
-class PromptWorker
-  include Sidekiq::Worker
-
+class PromptWorker < ApplicationJob
   def perform(user_id)
     user = User.find(user_id)
     entry = user.prompt_entry

@@ -60,7 +60,7 @@ After setting up, you can run the application:
 
     % ./bin/dev
 
-This starts just the web server. If you need background job processing (requires Redis):
+This starts just the web server. To also process background jobs with Solid Queue:
 
     % ./bin/dev-with-worker
 
