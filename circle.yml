@@ -1,3 +1,0 @@
-checkout:
-  post:
-    - cp .env.sample .env
