@@ -4,7 +4,7 @@ before_install:
   - "gem install bundler --version '1.17.3'"
   - export DISPLAY=:99.0
 before_script:
-  - cp .sample.env .env
+  - cp .env.sample .env
   - psql -c 'create database "trailmix_test";' -U postgres
   - bundle exec rake db:setup
 addons:

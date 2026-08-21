@@ -23,7 +23,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup environment variables
-        run: cp .sample.env .env
+        run: cp .env.sample .env
       - name: Install libcurl
         run: sudo apt-get install build-essential libcurl4-openssl-dev
       - name: Install Ruby and gems
