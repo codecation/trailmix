@@ -4,7 +4,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   process :auto_orient
   process resize_to_fit: [800, 800], quality: 80
 
-  ALLOWED_CONTENT_TYPES = %r{\Aimage/(jpeg|png|gif|webp|heic|heif)\z}
+  ALLOWED_CONTENT_TYPES = %r{\Aimage/(jpe?g|pjpeg|png|gif|webp|heic|heif)\z}
 
   def extension_allowlist
     %w(jpg jpeg gif png webp heic heif)
