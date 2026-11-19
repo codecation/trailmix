@@ -21,8 +21,8 @@ class EmailProcessor
   end
 
   def attachment
-    if email.attachments
-      email.attachments.first
+    Array(email.attachments).find do |file|
+      file.content_type.to_s.match?(PhotoUploader::ALLOWED_CONTENT_TYPES)
     end
   end
 

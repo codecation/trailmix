@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  mount_griddler
+  post "/email_processor", to: "inbound_emails#create", as: :email_processor
 
   get "/admin_dashboard", to: "admin_dashboard#show", as: :admin_dashboard
   get "/landing", to: "landing#show", as: :new_registration

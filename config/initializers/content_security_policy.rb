@@ -16,7 +16,6 @@ Rails.application.configure do
     policy.object_src :none
     policy.script_src :self,
                       "https://js.stripe.com",
-                      "https://cdn.segment.io",
                       "https://www.google.com",
                       "https://www.gstatic.com"
     policy.style_src :self, :https, :unsafe_inline

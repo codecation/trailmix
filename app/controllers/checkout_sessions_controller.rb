@@ -48,7 +48,7 @@ class CheckoutSessionsController < ApplicationController
         StripeEvent.record!(event_id: session_id, event_type: "checkout.session.success")
         flash[:notice] = "Your subscription is now active. Please sign in."
         redirect_to new_user_session_path
-      elsif (user = create_user_from_pending_params)
+      elsif (user = create_user_from_pending_params(email))
         activate_subscription(user, checkout_session)
         StripeEvent.record!(event_id: session_id, event_type: "checkout.session.success")
         sign_in(user)
@@ -84,9 +84,12 @@ class CheckoutSessionsController < ApplicationController
     User.find_by(email: params[:email]) || User.new(user_params)
   end
 
-  def create_user_from_pending_params
+  # Only create the account if the paid checkout belongs to this browser's
+  # pending signup, so someone else's session ID can't fund a new account.
+  def create_user_from_pending_params(checkout_email)
     pending_params = session_store.delete(:pending_user_params)
     return nil unless pending_params
+    return nil unless pending_params["email"].to_s.casecmp?(checkout_email.to_s)
 
     user = User.create!(pending_params)
     WelcomeMailerWorker.perform_later(user.id)

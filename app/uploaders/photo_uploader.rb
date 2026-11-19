@@ -4,8 +4,16 @@ class PhotoUploader < CarrierWave::Uploader::Base
   process :auto_orient
   process resize_to_fit: [800, 800], quality: 80
 
-  def extension_white_list
-    %w(jpg jpeg gif png)
+  ALLOWED_CONTENT_TYPES = %r{\Aimage/(jpeg|png|gif|webp|heic|heif)\z}
+
+  def extension_allowlist
+    %w(jpg jpeg gif png webp heic heif)
+  end
+
+  # Checked against the file's actual bytes, so a renamed SVG/MVG/PS file
+  # never reaches ImageMagick.
+  def content_type_allowlist
+    ALLOWED_CONTENT_TYPES
   end
 
   def filename

@@ -1,6 +1,7 @@
 class Rack::Attack
   SIGN_IN_PATH = "/users/sign_in".freeze
   PASSWORD_RESET_PATH = "/users/password".freeze
+  SIGNUP_PATHS = %w[/subscriptions /checkout].freeze
 
   def self.submitted_email(request)
     request.params.dig("user", "email").to_s.strip.downcase.presence
@@ -25,5 +26,10 @@ class Rack::Attack
 
   throttle("password resets by email", limit: 3, period: 1.hour) do |request|
     submitted_email(request) if request.post? && request.path == PASSWORD_RESET_PATH
+  end
+
+  # Signup creates Stripe customers from submitted cards; slow card testing.
+  throttle("signups by IP", limit: 5, period: 1.hour) do |request|
+    request.ip if request.post? && SIGNUP_PATHS.include?(request.path)
   end
 end
