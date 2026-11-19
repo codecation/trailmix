@@ -81,14 +81,8 @@ GEM
     base64 (0.3.0)
     bcrypt (3.1.22)
     benchmark (0.5.0)
-    better_errors (2.8.0)
-      coderay (>= 1.0.0)
-      erubi (>= 1.0.0)
-      rack (>= 0.9.0)
     bigdecimal (3.1.9)
     bindex (0.8.1)
-    binding_of_caller (1.0.1)
-      debug_inspector (>= 1.2.0)
     builder (3.3.0)
     capybara (3.39.2)
       addressable
@@ -107,7 +101,6 @@ GEM
       marcel (~> 1.0.0)
       ssrf_filter (~> 1.0)
     chartkick (3.4.0)
-    coderay (1.1.3)
     concurrent-ruby (1.3.8)
     connection_pool (2.5.5)
     crack (1.0.0)
@@ -122,7 +115,6 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     date (3.5.1)
-    debug_inspector (1.2.0)
     devise (5.0.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -230,7 +222,6 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
-    method_source (1.1.0)
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
@@ -243,7 +234,6 @@ GEM
       drb (~> 2.0)
       prism (~> 1.5)
     multi_json (1.21.1)
-    mutex_m (0.3.0)
     net-imap (0.6.4.1)
       date
       net-protocol
@@ -280,11 +270,6 @@ GEM
       prettyprint
     prettyprint (0.2.0)
     prism (1.9.0)
-    pry (0.15.2)
-      coderay (~> 1.1)
-      method_source (~> 1.0)
-    pry-rails (0.3.11)
-      pry (>= 0.13.0)
     public_suffix (7.0.5)
     puma (8.1.2)
       nio4r (~> 2.0)
@@ -389,9 +374,6 @@ GEM
       fugit (~> 1.11)
       railties (>= 7.1)
       thor (>= 1.3.1)
-    spring (1.1.3)
-    spring-commands-rspec (1.0.2)
-      spring (>= 0.9.1)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
       logger
@@ -451,9 +433,7 @@ PLATFORMS
 DEPENDENCIES
   airbrake
   benchmark
-  better_errors
   bigdecimal (~> 3.1.9)
-  binding_of_caller
   capybara
   carrierwave
   chartkick
@@ -471,10 +451,8 @@ DEPENDENCIES
   kaminari
   mime-types
   mini_magick
-  mutex_m
   ostruct
   pg (~> 1.0)
-  pry-rails
   puma
   rack-attack
   rack-timeout
@@ -483,8 +461,6 @@ DEPENDENCIES
   rspec-rails (~> 6.1.0)
   sass-rails (~> 6.0.0)
   solid_queue
-  spring
-  spring-commands-rspec
   sprockets (>= 2.12.5)
   stripe
   stripe-ruby-mock (~> 5.0.0)
