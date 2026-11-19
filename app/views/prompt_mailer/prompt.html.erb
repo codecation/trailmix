@@ -14,6 +14,7 @@
   <%= simple_format @entry.body %>
 
   <% if @entry.photo.url %>
-    <%= image_tag @entry.photo.url, width: 400 %>
+    <%# Signed URL: S3 caps expiry at 7 days, so photos in older emails stop loading. %>
+    <%= image_tag @entry.photo.url(expire_at: 6.days.from_now), width: 400 %>
   <% end %>
 <% end %>

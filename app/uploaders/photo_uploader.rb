@@ -12,10 +12,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
     "#{hash}.jpg"
   end
 
-  def fog_public
-    true
-  end
-
   private
 
   def hash

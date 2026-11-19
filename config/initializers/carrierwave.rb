@@ -12,6 +12,7 @@ CarrierWave.configure do |config|
 
     config.fog_directory = "trailmix"
     config.fog_public    = false
+    config.fog_authenticated_url_expiration = 1.hour.to_i
   end
 end
 
